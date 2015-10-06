@@ -24,14 +24,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Include ~/.bashrc if ~/.bashrc exists
+#  Include ~/.bashrc if the user is running bash and ~/.bashrc exists
 if [[ -n "$BASH_VERSION" ]]; then
-    if [[ -f "$HOME/.bashrc" ]]; then
+	if [[ -f "$HOME/.bashrc" ]]; then
 		. "$HOME/.bashrc"
-    fi
-fi
-
-#  Add ~/bin to PATH if ~/bin exists
-if [[ -d "$HOME/bin"]] ; then
-    PATH="$HOME/bin:$PATH"
+	fi
 fi
