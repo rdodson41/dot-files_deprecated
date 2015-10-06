@@ -22,14 +22,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-[user]
-	name = Richard E. Dodson
-	email = richard.elias.dodson@gmail.com
-
 [alias]
 	net = remote --verbose
 	pwd = branch --verbose --verbose --all
-	ls = log --graph --oneline
-	stat = status
+	ls = log --oneline --graph
 	user = config --get-regexp ^user[.]
 	alias = config --get-regexp ^alias[.]
