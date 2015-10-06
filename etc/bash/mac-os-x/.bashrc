@@ -26,9 +26,9 @@
 
 #  Include ~/.bash_aliases if the user is running bash and ~/.bash_aliases exists 
 if [[ -n "$BASH_VERSION" ]]; then
-    if [[ -f "$HOME/.bash_aliases" ]]; then
-        . "$HOME/.bash_aliases"
-    fi
+	if [[ -f "$HOME/.bash_aliases" ]]; then
+		. "$HOME/.bash_aliases"
+	fi
 fi
 
 #  Set the command line prompt
