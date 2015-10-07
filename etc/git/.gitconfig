@@ -23,8 +23,9 @@
 #
 
 [alias]
+	a = add
 	net = remote --verbose
 	pwd = branch --verbose --verbose --all
 	ls = log --oneline --graph
-	user = config --get-regexp ^user[.]
+	w = config --get-regexp ^user[.]
 	alias = config --get-regexp ^alias[.]
