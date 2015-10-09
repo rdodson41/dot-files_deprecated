@@ -24,6 +24,8 @@
 
 [alias]
 	a = add
+	b = branch
+	c = commit
 	net = remote --verbose
 	pwd = branch --verbose --verbose --all
 	ls = log --oneline --graph
