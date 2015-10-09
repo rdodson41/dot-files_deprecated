@@ -22,12 +22,11 @@
 "  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 "
 
-"  Set identation preferences
+"  Set identation options
 set tabstop=4
 set shiftwidth=4
 
-"  Set background preferences
+"  Set display options
+set number
 set background=dark
-
-"  Set syntax preferences
 syntax on
