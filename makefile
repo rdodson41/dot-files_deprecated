@@ -23,3 +23,52 @@
 #  You should have received a copy of the GNU General Public License
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
+
+UNAME = $(shell uname)
+ifeq ($(UNAME),Darwin)
+	OS = mac-os-x
+else
+	OS = default
+endif
+
+PROJECT_NAME = rdodson41/dot-files
+
+ETC = etc
+OPT = opt
+
+USR_LOCAL = /usr/local
+USR_LOCAL_OPT = $(USR_LOCAL)/$(OPT)
+
+INSTALL = $(USR_LOCAL_OPT)
+
+LINK_LIST = $(HOME)/.bashrc $(HOME)/.bash_profile $(HOME)/.bash_aliases $(HOME)/.gitconfig $(HOME)/.vimrc
+UNLINK_LIST = $(patsubst %,unlink/%,$(LINK_LIST))
+
+.PHONY: usage
+usage:
+
+.PHONY: install
+install:
+	@cd $(INSTALL) && mkdir -p $(PROJECT_NAME)
+	@rsync -avh $(ETC) $(INSTALL)/$(PROJECT_NAME)
+
+.PHONY: uninstall
+uninstall:
+	@rsync -avh --delete `mktemp -d`/ $(INSTALL)/$(PROJECT_NAME)
+	@cd $(INSTALL) && rmdir -p $(PROJECT_NAME)
+
+.PHONY: link
+link: $(LINK_LIST)
+	
+$(HOME)/%: $(INSTALL)/$(PROJECT_NAME)/$(ETC)/*/%
+	@ln -vi -s $? $@
+
+$(HOME)/%: $(INSTALL)/$(PROJECT_NAME)/$(ETC)/*/$(OS)/%
+	@ln -vi -s $? $@
+
+.PHONY: unlink
+unlink: $(UNLINK_LIST)
+
+.PHONY: unlink/%
+unlink/%:
+	@rm -f $*
