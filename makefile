@@ -25,19 +25,16 @@
 #
 
 UNAME = $(shell uname)
-ifeq ($(UNAME),Darwin)
-	OS = mac-os-x
-else
-	OS = default
-endif
 
-PROJECT_NAME = rdodson41/dot-files
+PROJECT = rdodson41/dot-files
 
 ETC = etc
-OPT = opt
+ETC_LIST = $(shell
 
 USR_LOCAL = /usr/local
 USR_LOCAL_OPT = $(USR_LOCAL)/$(OPT)
+USR_LOCAL_OPT_PROJECT = $(USR_LOCAL_OPT)/$(PROJECT)
+USR_LOCAL_OPT_PROJECT_ETC = $(USR_LOCAL_OPT_PROJECT)/$(ETC)
 
 INSTALL = $(USR_LOCAL_OPT)
 
@@ -46,6 +43,7 @@ UNLINK_LIST = $(patsubst %,unlink/%,$(LINK_LIST))
 
 .PHONY: usage
 usage:
+	@echo $(ETC_LIST)
 
 .PHONY: install
 install:
