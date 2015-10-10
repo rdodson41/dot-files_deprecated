@@ -24,49 +24,36 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-UNAME = $(shell uname)
-
 PROJECT = rdodson41/dot-files
 
 ETC = etc
-ETC_LIST = $(shell
+LIST = $(shell find $(ETC) -type f)
 
-USR_LOCAL = /usr/local
-USR_LOCAL_OPT = $(USR_LOCAL)/$(OPT)
+USR = /usr
+USR_LOCAL = $(USR)/local
+USR_LOCAL_LIST = $(patsubst %,$(USR_LOCAL)/%,$(LIST))
+
+USR_LOCAL_OPT = $(USR_LOCAL)/opt
 USR_LOCAL_OPT_PROJECT = $(USR_LOCAL_OPT)/$(PROJECT)
-USR_LOCAL_OPT_PROJECT_ETC = $(USR_LOCAL_OPT_PROJECT)/$(ETC)
+USR_LOCAL_OPT_PROJECT_LIST = $(patsubst %,$(USR_LOCAL_OPT_PROJECT)/%,$(LIST))
 
-INSTALL = $(USR_LOCAL_OPT)
-
-LINK_LIST = $(HOME)/.bashrc $(HOME)/.bash_profile $(HOME)/.bash_aliases $(HOME)/.gitconfig $(HOME)/.vimrc
-UNLINK_LIST = $(patsubst %,unlink/%,$(LINK_LIST))
+HOME_LIST = $(patsubst %,$(HOME)/%,$(LIST))
 
 .PHONY: usage
 usage:
-	@echo $(ETC_LIST)
 
 .PHONY: install
-install:
-	@cd $(INSTALL) && mkdir -p $(PROJECT_NAME)
-	@rsync -avh $(ETC) $(INSTALL)/$(PROJECT_NAME)
+install: $(USR_LOCAL_LIST)
 
-.PHONY: uninstall
-uninstall:
-	@rsync -avh --delete `mktemp -d`/ $(INSTALL)/$(PROJECT_NAME)
-	@cd $(INSTALL) && rmdir -p $(PROJECT_NAME)
+$(USR_LOCAL):
+	@mkdir -vp $@
 
-.PHONY: link
-link: $(LINK_LIST)
-	
-$(HOME)/%: $(INSTALL)/$(PROJECT_NAME)/$(ETC)/*/%
-	@ln -vi -s $? $@
+$(USR_LOCAL)/%: $(USR_LOCAL_OPT_PROJECT)/% | $(USR_LOCAL)
+	@mkdir -vp $(@D)
+	@ln -vir -s $? $@
 
-$(HOME)/%: $(INSTALL)/$(PROJECT_NAME)/$(ETC)/*/$(OS)/%
-	@ln -vi -s $? $@
+$(USR_LOCAL_OPT_PROJECT):
+	@mkdir -vp $@
 
-.PHONY: unlink
-unlink: $(UNLINK_LIST)
-
-.PHONY: unlink/%
-unlink/%:
-	@rm -f $*
+$(USR_LOCAL_OPT_PROJECT_LIST): | $(USR_LOCAL_OPT_PROJECT)
+	@rsync -vha $(ETC) $(USR_LOCAL_OPT_PROJECT)
