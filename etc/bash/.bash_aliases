@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/mac-os-x/.bash_aliases
+#  Name:     rdodson41/dot-files/etc/bash/.bash_aliases
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Tue Sep 22 14:55:56 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
@@ -24,8 +24,17 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Initialize aliases
-alias ls="ls -FGhlT"
+#  Initialize ls alias
+case $(uname)
+Darwin)
+ 	alias ls="ls -FGhlT"
+	;;
+Linux)
+	alias ls="ls -Fhl --color=auto --time-style=long-iso"
+	;;
+esac
+
+#  Initialize grep aliases
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
