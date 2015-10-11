@@ -24,36 +24,31 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-PROJECT = rdodson41/dot-files
+ROOT =
 
 ETC = etc
-LIST = $(shell find $(ETC) -type f)
 
-USR = /usr
+OPT = opt
+OPT_PROJECT = $(OPT)/rdodson41/dot-files
+
+USR = usr
 USR_LOCAL = $(USR)/local
-USR_LOCAL_LIST = $(patsubst %,$(USR_LOCAL)/%,$(LIST))
 
-USR_LOCAL_OPT = $(USR_LOCAL)/opt
-USR_LOCAL_OPT_PROJECT = $(USR_LOCAL_OPT)/$(PROJECT)
-USR_LOCAL_OPT_PROJECT_LIST = $(patsubst %,$(USR_LOCAL_OPT_PROJECT)/%,$(LIST))
-
-HOME_LIST = $(patsubst %,$(HOME)/%,$(LIST))
+SYNC = $(ETC)
+TEMP = $(shell mktemp -d)/
 
 .PHONY: usage
 usage:
 
+$(ROOT)/$(USR_LOCAL):
+	@mkdir -pv $@
+
 .PHONY: install
-install: $(USR_LOCAL_LIST)
+install: $(ROOT)/$(USR_LOCAL)
+	@cd $< && mkdir -pv $(OPT_PROJECT)
+	@rsync -avh --delete $(SYNC) $</$(OPT_PROJECT)
 
-$(USR_LOCAL):
-	@mkdir -vp $@
-
-$(USR_LOCAL)/%: $(USR_LOCAL_OPT_PROJECT)/% | $(USR_LOCAL)
-	@mkdir -vp $(@D)
-	@ln -vir -s $? $@
-
-$(USR_LOCAL_OPT_PROJECT):
-	@mkdir -vp $@
-
-$(USR_LOCAL_OPT_PROJECT_LIST): | $(USR_LOCAL_OPT_PROJECT)
-	@rsync -vha $(ETC) $(USR_LOCAL_OPT_PROJECT)
+.PHONY: uninstall
+uninstall: $(ROOT)/$(USR_LOCAL)
+	@rsync -avh --delete $(TEMP) $</$(OPT_PROJECT)
+	@cd $< && rmdir -pv $(OPT_PROJECT)
