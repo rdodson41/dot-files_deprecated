@@ -22,6 +22,8 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+[code]
+	editor  = vi
 [alias]
 	a       = add --verbose
 	aa      = add --verbose --all
