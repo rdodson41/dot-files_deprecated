@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_profile
+#  Name:     rdodson41/dot-files/etc/bash/.bash_aliases
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Sun Oct 11 17:18:18 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
@@ -30,18 +30,21 @@ KERNAL_NAME=$(uname)
 #  Set ls to:
 #    -F, --classify               indicate file type
 #    -G, --color=auto             colorize output if standard output is connected to a terminal
-#    -T, --time-style=long-iso    show long-iso time values
-#    -h, --human-readable         show human-readable size values
+#    -T, --time-style=long-iso    list times in long-iso format
+#    -h, --human-readable         list sizes in human-readable format
 case "$KERNAL_NAME" in
-Darwin)
+"Darwin")
 	alias ls="ls -FGTh"
 	;;
-Linux)
-	alias ls="ls --classify --human-readable --time-style=long-iso --color=auto"
+"Linux")
+	alias ls="ls -Fh --color=auto --time-style=long-iso"
 	;;
 esac
 
-#  Alias ls
+#  Alias ls to:
+#    -A, --almost-all             list all files with the exception of . and ..
+#    -R, --recursive              list subdirectories recursively
+#    -l, --format=long            list files in long format
 alias l="ls"
 alias la="ls -A"
 alias lal="ls -Al"
