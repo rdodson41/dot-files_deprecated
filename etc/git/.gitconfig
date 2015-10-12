@@ -22,7 +22,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-[code]
+[core]
 	editor  = vi
 [alias]
 	a       = add --verbose
