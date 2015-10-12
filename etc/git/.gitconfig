@@ -1,0 +1,72 @@
+#  
+#  Name:     rdodson41/dot-files/etc/git/.gitconfig
+#  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  Created:  Thu Sep 10 23:03:47 UTC 2015
+#  License:  GNU General Public License, Version 3, 29 June 2007
+#  
+#  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  
+#  This file is part of dot-files.
+#  
+#  dot-files is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#  
+#  dot-files is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#  
+#  You should have received a copy of the GNU General Public License
+#  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
+#
+
+[alias]
+	a         = add --verbose
+	aa        = add --verbose --all
+	b         = branch --verbose --verbose
+	ba        = branch --verbose --verbose --all
+	ch        = checkout
+	c         = commit --verbose
+	ca        = commit --verbose --all
+	cas       = commit --verbose --all --gpg-sign
+	cs        = commit --verbose --gpg-sign
+	csa       = commit --verbose --gpg-sign --all
+	cf        = config
+	cfl       = config --list
+	cfls      = config --list --system
+	cflu      = config --list --global
+	cflp      = config --list --local
+	cfe       = config --edit
+	cfes      = config --edit --system
+	cfeu      = config --edit --global
+	cfep      = config --edit --local
+	cfs       = config --system
+	cfsl      = config --system --list
+	cfse      = config --system --edit
+	cfu       = config --global
+	cful      = config --global --list
+	cfue      = config --global --edit
+	cfp       = config --local
+	cfpl      = config --local --list
+	cfpe      = config --local --edit
+	cfga      = config --get-regexp ^alias[.]
+	cfgb      = config --get-regexp ^branch[.]
+	cfgc      = config --get-regexp ^core[.]
+	cfgr      = config --get-regexp ^remote[.]
+	cfgu      = config --get-regexp ^user[.]
+	l         = log --graph --format  =oneline
+	ls        = log --graph --format  =short
+	lm        = log --graph --format  =medium
+	lf        = log --graph --format  =full
+	lff       = log --graph --format  =fuller
+	le        = log --graph --format  =email
+	lr        = log --graph --format  =raw
+	r         = remote --verbose
+	s         = status
+	sl		  = status --long
+	ss        = status --short
+
+[core]
+	editor    = vi
