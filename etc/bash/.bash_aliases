@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_aliases
+#  Name:     rdodson41/dot-files/etc/bash/.bash_profile
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
-#  Created:  Tue Sep 22 14:55:56 UTC 2015
+#  Created:  Sun Oct 11 17:18:18 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
 #
 #  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
@@ -24,17 +24,44 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Initialize ls alias
-case $(uname)
+#  Set kernal name
+KERNAL_NAME=$(uname)
+
+#  Set ls to:
+#    -F, --classify               indicate file type
+#    -G, --color=auto             colorize output if standard output is connected to a terminal
+#    -T, --time-style=long-iso    show long-iso time values
+#    -h, --human-readable         show human-readable size values
+case "$KERNAL_NAME" in
 Darwin)
- 	alias ls="ls -FGhlT"
+	alias ls="ls -FGTh"
 	;;
 Linux)
-	alias ls="ls -Fhl --color=auto --time-style=long-iso"
+	alias ls="ls --classify --human-readable --time-style=long-iso --color=auto"
 	;;
 esac
 
-#  Initialize grep aliases
+#  Alias ls
+alias l="ls"
+alias la="ls -A"
+alias lal="ls -Al"
+alias lalr="ls -ARl"
+alias lar="ls -AR"
+alias larl="ls -ARl"
+alias ll="ls -l"
+alias lla="ls -Al"
+alias llar="ls -ARl"
+alias llr="ls -Rl"
+alias llra="ls -ARl"
+alias lr="ls -R"
+alias lra="ls -AR"
+alias lral="ls -ARl"
+alias lrl="ls -Rl"
+alias lrla="ls -Arl"
+
+#  Set grep, egrep, fgrep, and rgrep to:
+#        --color=auto             colorize output if standard output is connected to a terminal
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
+alias rgrep="rgrep --color=auto"
