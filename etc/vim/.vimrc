@@ -29,6 +29,6 @@ set shiftwidth=4
 "  Enable line numbers
 set number
 
-"  Set colorzation options
+"  Set colorization options
 set background=dark
 syntax on
