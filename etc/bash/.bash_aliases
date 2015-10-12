@@ -27,7 +27,7 @@
 #  Set kernal name
 KERNAL_NAME=$(uname)
 
-#  Set ls to:
+#  Alias ls to:
 #    -F, --classify               indicate file type
 #    -G, --color=auto             colorize output if standard output is connected to a terminal
 #    -T, --time-style=long-iso    list times in long-iso format
@@ -68,3 +68,7 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias rgrep="rgrep --color=auto"
+
+#  Alias git
+alias g="git"
+alias gw="echo \"Name:,\$(git config user.name)\"; echo \"Email Address:,\$(git config user.email)\"; } | column -s , -t"
