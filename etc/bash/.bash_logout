@@ -1,17 +1,9 @@
-# ~/.bash_logout: executed by bash(1) when login shell exits.
-
-# when leaving the console clear the screen to increase privacy
-
-if [ "$SHLVL" = 1 ]; then
-    [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
-fi
-Sun Oct 11 17:18:02 UTC 2015
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_profile
+#  Name:     rdodson41/dot-files/etc/bash/.bash_logout
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
-#  Created:  Tue Sep 22 20:03:57 UTC 2015
+#  Created:  Sun Oct 11 17:18:02 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
 #
 #  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
@@ -31,3 +23,10 @@ Sun Oct 11 17:18:02 UTC 2015
 #  You should have received a copy of the GNU General Public License
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
+
+#  Clear the console if the user exits a top-level shell and /usr/bin/clear_console is executable
+if [[ "$SHLVL" = 1 ]]; then
+    if [[ -x /usr/bin/clear_console ]]; then
+		/usr/bin/clear_console -q
+	fi
+fi
