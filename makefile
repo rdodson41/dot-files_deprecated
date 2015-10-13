@@ -24,31 +24,11 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-ROOT =
-
-ETC = etc
-
-OPT = opt
-OPT_PROJECT = $(OPT)/rdodson41/dot-files
-
-USR = usr
-USR_LOCAL = $(USR)/local
-
-SYNC = $(ETC)
-TEMP = $(shell mktemp -d)/
-
 .PHONY: usage
 usage:
 
-$(ROOT)/$(USR_LOCAL):
-	@mkdir -pv $@
-
 .PHONY: install
-install: $(ROOT)/$(USR_LOCAL)
-	@cd $< && mkdir -pv $(OPT_PROJECT)
-	@rsync -avh --delete $(SYNC) $</$(OPT_PROJECT)
+install:
 
 .PHONY: uninstall
-uninstall: $(ROOT)/$(USR_LOCAL)
-	@rsync -avh --delete $(TEMP) $</$(OPT_PROJECT)
-	@cd $< && rmdir -pv $(OPT_PROJECT)
+uninstall: 
