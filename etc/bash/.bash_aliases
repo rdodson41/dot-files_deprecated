@@ -72,3 +72,6 @@ alias rgrep="rgrep --color=auto"
 #  Alias git
 alias g="git"
 alias gw="echo \"Name:,\$(git config user.name)\"; echo \"Email Address:,\$(git config user.email)\"; } | column -s , -t"
+
+#  Alias exit
+alias x="exit"
