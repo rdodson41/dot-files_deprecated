@@ -56,13 +56,13 @@
 	cfgc      = config --get-regexp ^core[.]
 	cfgr      = config --get-regexp ^remote[.]
 	cfgu      = config --get-regexp ^user[.]
-	l         = log --graph --format  =oneline
-	ls        = log --graph --format  =short
-	lm        = log --graph --format  =medium
-	lf        = log --graph --format  =full
-	lff       = log --graph --format  =fuller
-	le        = log --graph --format  =email
-	lr        = log --graph --format  =raw
+	l         = log --graph --format=oneline
+	ls        = log --graph --format=short
+	lm        = log --graph --format=medium
+	lf        = log --graph --format=full
+	lff       = log --graph --format=fuller
+	le        = log --graph --format=email
+	lr        = log --graph --format=raw
 	r         = remote --verbose
 	s         = status
 	sl		  = status --long
