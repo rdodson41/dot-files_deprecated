@@ -24,17 +24,25 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+HOME = home
+
+ROOT =
+ROOT_HOME = $(ROOT)/$(HOME)
+ROOT_HOME_USER = $(ROOT_HOME)/$(USER)
+
+FIND_HOME = $(shell find $(HOME) -maxdepth 1 ! -path $(HOME))
+FIND_ROOT_HOME_USER = $(patsubst $(HOME)/%,$(ROOT_HOME_USER)/%,$(FIND_HOME))
+
+.DEFAULT: usage
 .PHONY: usage
 usage:
 
 .PHONY: install
-install: $(patsubst home/%,$(HOME)/%,$(shell find home -type f))
+install: $(FIND_ROOT_HOME_USER)
 
-$(HOME)/%: home/%
-	@ln -frs "$?" "$@"
+$(ROOT_HOME_USER)/%: $(HOME)/%
+	@ln -frs $? $@
 
 .PHONY: uninstall
-uninstall: $(patsubst home/%,$(HOME)/%/uninstall,$(shell find home -type f))
-
-$(HOME)/%/uninstall:
-	@rm -f "$(HOME)/$*"
+uninstall:
+	@rm -f $(FIND_ROOT_HOME_USER)
