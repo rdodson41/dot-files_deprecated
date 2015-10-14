@@ -26,22 +26,23 @@
 
 home = home
 
-root_home_user = $(HOME)
+root_home = $(HOME)
 
 find_home = $(shell find $(home) -maxdepth 1 ! -path $(home))
-find_root_home_user = $(patsubst $(home)/%,$(root_home_user)/%,$(find_home))
+find_root_home = $(patsubst $(home)/%,$(root_home)/%,$(find_home))
 
-.DEFAULT: usage
-.PHONY: usage
-usage:
+.DEFAULT:
 	@>&2 echo "make: usage: make [ install | uninstall ]"
 
-.PHONY: install
-install: $(find_root_home_user)
+.PHONY: usage
+usage: .DEFAULT
 
-$(root_home_user)/%: $(home)/%
+.PHONY: install
+install: $(find_root_home)
+
+$(root_home)/%: $(home)/%
 	@ln -frs $? $@
 
 .PHONY: uninstall
 uninstall:
-	@rm -f $(find_root_home_user)
+	@rm -f $(find_root_home)
