@@ -34,6 +34,7 @@ find_root_home_user = $(patsubst $(home)/%,$(root_home_user)/%,$(find_home))
 .DEFAULT: usage
 .PHONY: usage
 usage:
+	@>&2 echo "make: usage: make [ install | uninstall ]"
 
 .PHONY: install
 install: $(find_root_home_user)
