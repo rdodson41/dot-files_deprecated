@@ -32,12 +32,13 @@ KERNAL_NAME=$(uname)
 #    -G, --color=auto             colorize output if standard output is connected to a terminal
 #    -T, --time-style=long-iso    list times in long-iso format
 #    -h, --human-readable         list sizes in human-readable format
+#    -l, --format=long            list files in long format
 case "$KERNAL_NAME" in
 "Darwin")
-	alias ls="ls -FGTh"
+	alias ls="ls -FGThl"
 	;;
 "Linux")
-	alias ls="ls -Fh --color=auto --time-style=long-iso"
+	alias ls="ls -Fhl --color=auto --time-style=long-iso"
 	;;
 esac
 
