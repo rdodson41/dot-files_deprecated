@@ -24,21 +24,17 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-ETC = etc
-ETC_FIND = $(shell find $(ETC) -type f -printf "%f\n")
-
-
 .PHONY: usage
 usage:
 
 .PHONY: install
-install: $(patsubst %,$(HOME)/%,$(ETC_FIND))
+install: $(patsubst home/%,$(HOME)/%,$(shell find home -type f))
 
-$(HOME)/%: $(ETC)/*/%
-	@ln -frs "$?" ~
+$(HOME)/%: home/%
+	@ln -frs "$?" "$@"
 
 .PHONY: uninstall
-uninstall: $(patsubst %,$(HOME)/%/uninstall,$(ETC_FIND))
+uninstall: $(patsubst home/%,$(HOME)/%/uninstall,$(shell find home -type f))
 
 $(HOME)/%/uninstall:
-	@rm -f "$(HOME)/$*" 
+	@rm -f "$(HOME)/$*"
