@@ -24,31 +24,25 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-ROOT =
+home = home
 
-ETC = etc
+root_home = $(HOME)
 
-OPT = opt
-OPT_PROJECT = $(OPT)/rdodson41/dot-files
+find_home = $(shell find $(home) -maxdepth 1 ! -path $(home))
+find_root_home = $(patsubst $(home)/%,$(root_home)/%,$(find_home))
 
-USR = usr
-USR_LOCAL = $(USR)/local
-
-SYNC = $(ETC)
-TEMP = $(shell mktemp -d)/
+.DEFAULT:
+	@>&2 echo "make: usage: make [ install | uninstall ]"
 
 .PHONY: usage
-usage:
-
-$(ROOT)/$(USR_LOCAL):
-	@mkdir -pv $@
+usage: .DEFAULT
 
 .PHONY: install
-install: $(ROOT)/$(USR_LOCAL)
-	@cd $< && mkdir -pv $(OPT_PROJECT)
-	@rsync -avh --delete $(SYNC) $</$(OPT_PROJECT)
+install: $(find_root_home)
+
+$(root_home)/%: $(home)/%
+	@ln -frs $? $@
 
 .PHONY: uninstall
-uninstall: $(ROOT)/$(USR_LOCAL)
-	@rsync -avh --delete $(TEMP) $</$(OPT_PROJECT)
-	@cd $< && rmdir -pv $(OPT_PROJECT)
+uninstall:
+	@rm -f $(find_root_home)
