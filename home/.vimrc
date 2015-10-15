@@ -26,7 +26,7 @@
 set tabstop=4
 set shiftwidth=4
 
-"  Enable line numbers
+"  Set line numbers
 set number
 
 "  Set colorization options
