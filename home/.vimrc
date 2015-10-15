@@ -1,5 +1,5 @@
 "
-"  Name:     rdodson41/dot-files/etc/vim/.vimrc
+"  Name:     rdodson41/dot-files/vim/.vimrc
 "  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 "  Created:  Mon Sep 21 18:22:22 UTC 2015
 "  License:  GNU General Public License, Version 3, 29 June 2007

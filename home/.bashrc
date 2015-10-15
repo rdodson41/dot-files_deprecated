@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bashrc
+#  Name:     rdodson41/dot-files/home/.bashrc
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Tue Sep 22 20:20:57 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007

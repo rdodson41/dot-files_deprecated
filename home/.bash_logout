@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_logout
+#  Name:     rdodson41/dot-files/home/.bash_logout
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Sun Oct 11 17:18:02 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007

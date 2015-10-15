@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_profile
+#  Name:     rdodson41/dot-files/home/.bash_profile
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Tue Sep 22 20:03:57 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
