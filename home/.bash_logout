@@ -24,9 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Clear the console if the user exits a top-level shell and /usr/bin/clear_console is executable
+#  Clear the console if the user exits a top-level shell
 if [[ "$SHLVL" = 1 ]]; then
-    if [[ -x /usr/bin/clear_console ]]; then
-		/usr/bin/clear_console -q
-	fi
+	clear_console -q
 fi
