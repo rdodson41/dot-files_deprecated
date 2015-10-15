@@ -37,8 +37,7 @@ else
 	PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 fi
 
-if [[ -z "dircolors_file" ]]; then
-	dircolors_file="/usr/local/opt/seebi/dircolors-solarized/dircolors.ansi-dark"
+if [[ -z "$dircolors_file" ]]; then
+	dircolors_file="../opt/seebi/dircolors-solarized/dircolors.ansi-dark"
 fi
-echo "$dircolors_file"
 eval $(dircolors "$dircolors_file")
