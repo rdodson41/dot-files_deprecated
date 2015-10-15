@@ -73,7 +73,7 @@ alias rgrep="rgrep --color=auto"
 #  Alias git
 alias g="git"
 for alias in $(git config --global --get-regexp ^alias[.] | cut -d " " -f 1 | cut -d "." -f 2); do
-	echo "alias: $alias"
+	alias "g${alias}"="git ${alias}"
 done
 
 #  Alias exit
