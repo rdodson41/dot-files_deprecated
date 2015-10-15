@@ -25,14 +25,18 @@
 [alias]
 	a         = add --verbose
 	aa        = add --verbose --all
+	au        = add --verbose --update
 	b         = branch --verbose --verbose
 	ba        = branch --verbose --verbose --all
+	br        = branch --verbose --verbose --remotes
 	la        = log --graph --oneline
 	ls        = log --graph --oneline -10
 	lm        = log --graph --oneline -20
 	ll		  = log --graph --oneline -40
 	r         = remote --verbose
 	s         = status
+	ss        = status --short
+	sl        = status --long
 
 [core]
 	editor    = vi
