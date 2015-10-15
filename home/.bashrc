@@ -29,7 +29,7 @@ if [[ -f "$HOME/.bash_aliases" ]]; then
 	source "$HOME/.bash_aliases"
 fi
 
-#  Include ~/.bash_prompt if it exists; otherwise, default the top-level prompt
+#  Include ~/.bash_prompt if it exists; otherwise, default the top-level command line prompt
 if [[ -f "$HOME/.bash_prompt" ]]; then
 	source "$HOME/.bash_prompt"
 else
