@@ -30,5 +30,6 @@ set shiftwidth=4
 set number
 
 "  Set colorization options
-set background=dark
 syntax on
+set background=dark
+colorscheme solarized
