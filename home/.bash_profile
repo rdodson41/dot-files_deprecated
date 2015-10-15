@@ -24,9 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Include ~/.bashrc if bash executes this file and ~/.bashrc exists
-if [[ -n "$BASH_VERSION" ]]; then
-	if [[ -f "$HOME/.bashrc" ]]; then
-		. "$HOME/.bashrc"
-	fi
+#  Include ~/.bashrc if it exists
+if [[ -f "$HOME/.bashrc" ]]; then
+	source "$HOME/.bashrc"
 fi
