@@ -29,6 +29,7 @@
 	b         = branch --verbose --verbose
 	ba        = branch --verbose --verbose --all
 	br        = branch --verbose --verbose --remotes
+	l         = log --graph --oneline -10
 	la        = log --graph --oneline
 	ls        = log --graph --oneline -10
 	lm        = log --graph --oneline -20
