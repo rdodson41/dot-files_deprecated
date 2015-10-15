@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_aliases
+#  Name:     rdodson41/dot-files/home/.bash_aliases
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Sun Oct 11 17:18:18 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
@@ -38,32 +38,20 @@ case "$KERNAL_NAME" in
 	alias ls="ls -FGThl"
 	;;
 "Linux")
-	alias ls="ls -Fhl --color=auto --time-style=long-iso"
+	alias ls="ls -Fhl --time-style=long-iso --color=auto"
 	;;
 esac
 
 #  Alias ls to:
 #    -A, --almost-all             list all files with the exception of . and ..
 #    -R, --recursive              list subdirectories recursively
-#    -l, --format=long            list files in long format
 alias l="ls"
 alias la="ls -A"
-alias lal="ls -Al"
-alias lalr="ls -ARl"
 alias lar="ls -AR"
-alias larl="ls -ARl"
-alias ll="ls -l"
-alias lla="ls -Al"
-alias llar="ls -ARl"
-alias llr="ls -Rl"
-alias llra="ls -ARl"
 alias lr="ls -R"
-alias lra="ls -AR"
-alias lral="ls -ARl"
-alias lrl="ls -Rl"
-alias lrla="ls -Arl"
+alias lra="ls -RA"
 
-#  Set grep, egrep, fgrep, and rgrep to:
+#  Alias grep, egrep, fgrep, and rgrep to:
 #        --color=auto             colorize output if standard output is connected to a terminal
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
@@ -72,7 +60,7 @@ alias rgrep="rgrep --color=auto"
 
 #  Alias git
 alias g="git"
-for alias in $(git config --global --get-regexp ^alias[.] | cut -d " " -f 1 | cut -d "." -f 2); do
+for alias in $(git config --get-regexp ^alias[.] | cut -d " " -f 1 | cut -d "." -f 2); do
 	alias "g${alias}"="git ${alias}"
 done
 
