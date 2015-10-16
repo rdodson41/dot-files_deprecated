@@ -24,6 +24,22 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+home = /home
+
+pwd = $(shell pwd)
+pwd_home = $(pwd)$(home)
+
+root_home = $(HOME)
+
+find_pwd_home = $(shell find $(pwd_home) ! -path $(pwd_home))
+find_root_home = $(patsubst $(pwd_home)%,$(root_home)%,$(find_pwd_home))
+
 .PHONY: usage
 usage:
 	@>&2 echo "make: usage: make [ install | uninstall ]"
+
+.PHONY: install
+install: $(find_root_home)
+
+$(root_home)%: $(pwd_home)%
+	@test -d $? && mkdir $@ || ln -s $? $@
