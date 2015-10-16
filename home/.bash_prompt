@@ -90,7 +90,7 @@ else
 	host="${bold}${yellow}"
 fi
 
-directory="${bold}${violet}"
+directory="${bold}${blue}"
 
 branch="${bold}${green}"
 
