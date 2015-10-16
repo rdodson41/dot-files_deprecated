@@ -29,17 +29,11 @@ if [[ -f "$HOME/.bash_aliases" ]]; then
 	source "$HOME/.bash_aliases"
 fi
 
-#  Include ~/.bash_prompt if it exists; otherwise, default the top-level command line prompt
+#  Include ~/.bash_prompt if it exists
 if [[ -f "$HOME/.bash_prompt" ]]; then
 	# source "$HOME/.bash_prompt"
-	true
-else
 	PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 fi
 
-set
-
-if [[ -z "$dircolors_file" ]]; then
-	dircolors_file="/usr/local/opt/seebi/dircolors-solarized/dircolors.ansi-dark"
-fi
-eval $(dircolors "$dircolors_file")
+#  Set directory colors to Solarized Dark
+eval "$(dircolors "/usr/local/opt/seebi/dircolors-solarized/dircolors.ansi-dark")"
