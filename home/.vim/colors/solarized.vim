@@ -1,1 +1,1 @@
-/usr/local/opt/altercation/vim-colors-solarized/colors/solarized.vim
+../../../opt/altercation/vim-colors-solarized/colors/solarized.vim
