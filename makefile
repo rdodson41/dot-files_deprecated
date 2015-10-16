@@ -24,25 +24,6 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-home = home
-
-root_home = $(HOME)
-
-find_home = $(shell find $(home) -maxdepth 1 ! -path $(home))
-find_root_home = $(patsubst $(home)/%,$(root_home)/%,$(find_home))
-
-.DEFAULT:
-	@>&2 echo "make: usage: make [ install | uninstall ]"
-
 .PHONY: usage
-usage: .DEFAULT
-
-.PHONY: install
-install: $(find_root_home)
-
-$(root_home)/%: $(home)/%
-	@ln -frs $? $@
-
-.PHONY: uninstall
-uninstall:
-	@rm -f $(find_root_home)
+usage:
+	@>&2 echo "make: usage: make [ install | uninstall ]"
