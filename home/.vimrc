@@ -26,10 +26,13 @@
 set tabstop=4
 set shiftwidth=4
 
-"  Set line numbers
+"  Enable line numbers
 set number
 
-"  Set colorization options
+"  Enable colorization
 syntax on
-set background=dark
+
+"  Set colorization options
 colorscheme solarized
+set t_Co=16
+set background=dark
