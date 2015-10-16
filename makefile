@@ -25,14 +25,23 @@
 #
 
 home = /home
+opt = /opt
+usr = /usr
+usr_local = $(usr)/local
+
+root = 
+root_home = $(HOME)
+root_home_vim = $(root_home)/.vim
 
 pwd = $(shell pwd)
-pwd_home = $(pwd)$(home)
 
-root_home = $(HOME)
+altercation_vim_colors_solarized = /altercation/vim-colors-solarized
 
-find_pwd_home = $(shell find $(pwd_home) ! -path $(pwd_home))
-find_root_home = $(patsubst $(pwd_home)%,$(root_home)%,$(find_pwd_home))
+colors = /colors
+colors_solarized = $(colors)/solarized.vim
+
+find_pwd_home = $(shell find $(pwd)$(home) ! -type d)
+find_root_home = $(patsubst $(pwd)$(home)%,$(root_home)%,$(find_pwd_home)) $(root_home_vim)$(colors_solarized)
 
 .PHONY: usage
 usage:
@@ -41,5 +50,13 @@ usage:
 .PHONY: install
 install: $(find_root_home)
 
-$(root_home)%: $(pwd_home)%
-	@test -d $? && mkdir $@ || ln -s $? $@
+$(root_home)/%: $(pwd)$(home)/%
+	@ln -fs $? $@
+
+$(root_home_vim)/%: $(root)$(usr_local)$(opt)$(altercation_vim_colors_solarized)/%
+	@mkdir -p $(@D)
+	@ln -fs $? $@
+
+.PHONY: uninstall
+uninstall:
+	@rm -f $(find_root_home)
