@@ -31,8 +31,7 @@ fi
 
 #  Include ~/.bash_prompt if it exists
 if [[ -f "$HOME/.bash_prompt" ]]; then
-	# source "$HOME/.bash_prompt"
-	PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+	source "$HOME/.bash_prompt"
 fi
 
 #  Set directory colors to Solarized Dark
