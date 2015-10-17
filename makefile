@@ -24,30 +24,40 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set absolute file paths
+root = 
+root_home = $(HOME)
+root_home_vim = $(root_home)/.vim
+
+#  Set absolute file paths - working directory
+pwd = $(shell pwd)
+
+#  Set relative file paths
 home = /home
 opt = /opt
 usr = /usr
 usr_local = $(usr)/local
 
-root = 
-root_home = $(HOME)
-root_home_vim = $(root_home)/.vim
-
-pwd = $(shell pwd)
-
+#  Set relative file paths - Solarized
 solarized = /solarized
 solarized_vim_colors_solarized = $(solarized)/vim-colors-solarized
 
+#  Set relative file paths - vim colors
 colors = /colors
 colors_solarized = $(colors)/solarized.vim
 
+#  Find files - working directory
 find_pwd_home = $(shell find $(pwd)$(home) ! -type d)
+
+#  Find files - home directory
 find_root_home = $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(find_pwd_home)) $(root_home_vim)$(colors_solarized)
 
+#  Log usage
 .PHONY: help usage
 help usage:
 	@>&2 echo "make: usage: make [ help | install | uninstall ]"
 
+#  Install files
 .PHONY: install
 install: $(find_root_home)
 
@@ -58,6 +68,7 @@ $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 	@mkdir -p $(@D)
 	@ln -fs $? $@
 
+#  Uninstall files
 .PHONY: uninstall
 uninstall:
 	@rm -f $(find_root_home)
