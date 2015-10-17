@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_logout
+#  Name:     rdodson41/dot-files/home/.bash_logout
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Sun Oct 11 17:18:02 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
@@ -24,9 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Clear the console if the user exits a top-level shell and /usr/bin/clear_console is executable
+#  Clear the console if the user exits a top-level shell
 if [[ "$SHLVL" = 1 ]]; then
-    if [[ -x /usr/bin/clear_console ]]; then
-		/usr/bin/clear_console -q
-	fi
+	clear_console -q
 fi

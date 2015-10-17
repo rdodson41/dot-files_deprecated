@@ -1,5 +1,5 @@
 "
-"  Name:     rdodson41/dot-files/etc/vim/.vimrc
+"  Name:     rdodson41/dot-files/vim/.vimrc
 "  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 "  Created:  Mon Sep 21 18:22:22 UTC 2015
 "  License:  GNU General Public License, Version 3, 29 June 2007
@@ -29,6 +29,10 @@ set shiftwidth=4
 "  Enable line numbers
 set number
 
-"  Set colorization options
-set background=dark
+"  Enable colorization
 syntax on
+
+"  Set colorization options
+colorscheme solarized
+set t_Co=16
+set background=dark

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/etc/bash/.bash_profile
+#  Name:     rdodson41/dot-files/home/.bash_profile
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Tue Sep 22 20:03:57 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
@@ -24,9 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Include ~/.bashrc if bash executes this file and ~/.bashrc exists
-if [[ -n "$BASH_VERSION" ]]; then
-	if [[ -f "$HOME/.bashrc" ]]; then
-		. "$HOME/.bashrc"
-	fi
+#  Include ~/.bashrc if it exists
+if [[ -f "$HOME/.bashrc" ]]; then
+	source "$HOME/.bashrc"
 fi

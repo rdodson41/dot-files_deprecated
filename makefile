@@ -24,24 +24,38 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-home = home
+home = /home
+opt = /opt
+usr = /usr
+usr_local = $(usr)/local
 
+root = 
 root_home = $(HOME)
+root_home_vim = $(root_home)/.vim
 
-find_home = $(shell find $(home) -maxdepth 1 ! -path $(home))
-find_root_home = $(patsubst $(home)/%,$(root_home)/%,$(find_home))
+pwd = $(shell pwd)
 
-.DEFAULT:
+altercation_vim_colors_solarized = /altercation/vim-colors-solarized
+
+colors = /colors
+colors_solarized = $(colors)/solarized.vim
+
+find_pwd_home = $(shell find $(pwd)$(home) ! -type d)
+find_root_home = $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(find_pwd_home)) $(root_home_vim)$(colors_solarized)
+
+.PHONY: help usage
+help usage:
 	@>&2 echo "make: usage: make [ install | uninstall ]"
-
-.PHONY: usage
-usage: .DEFAULT
 
 .PHONY: install
 install: $(find_root_home)
 
-$(root_home)/%: $(home)/%
-	@ln -frs $? $@
+$(root_home)/%: $(pwd)$(home)/%
+	@ln -fs $? $@
+
+$(root_home_vim)/%: $(root)$(usr_local)$(opt)$(altercation_vim_colors_solarized)/%
+	@mkdir -p $(@D)
+	@ln -fs $? $@
 
 .PHONY: uninstall
 uninstall:
