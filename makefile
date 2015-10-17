@@ -35,7 +35,8 @@ root_home_vim = $(root_home)/.vim
 
 pwd = $(shell pwd)
 
-vim_colors_solarized = /vim-colors-solarized
+solarized = /solarized
+solarized_vim_colors_solarized = $(solarized)/vim-colors-solarized
 
 colors = /colors
 colors_solarized = $(colors)/solarized.vim
@@ -53,7 +54,7 @@ install: $(find_root_home)
 $(root_home)/%: $(pwd)$(home)/%
 	@ln -fs $? $@
 
-$(root_home_vim)/%: $(root)$(usr_local)$(opt)$(vim_colors_solarized)/%
+$(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 	@mkdir -p $(@D)
 	@ln -fs $? $@
 
