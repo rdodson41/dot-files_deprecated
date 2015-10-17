@@ -35,4 +35,4 @@ if [[ -f "$HOME/.bash_prompt" ]]; then
 fi
 
 #  Set directory colors to Solarized Dark
-eval "$(dircolors "/usr/local/opt/seebi/dircolors-solarized/dircolors.ansi-dark")"
+eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
