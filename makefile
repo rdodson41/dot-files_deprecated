@@ -46,7 +46,7 @@ find_root_home = $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(find_pwd_home)) $(r
 
 .PHONY: help usage
 help usage:
-	@>&2 echo "make: usage: make [ install | uninstall ]"
+	@>&2 echo "make: usage: make [ help | install | uninstall ]"
 
 .PHONY: install
 install: $(find_root_home)
