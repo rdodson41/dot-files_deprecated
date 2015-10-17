@@ -41,10 +41,10 @@ colors = /colors
 colors_solarized = $(colors)/solarized.vim
 
 find_pwd_home = $(shell find $(pwd)$(home) ! -type d)
-find_root_home = $(patsubst $(pwd)$(home)%,$(root_home)%,$(find_pwd_home)) $(root_home_vim)$(colors_solarized)
+find_root_home = $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(find_pwd_home)) $(root_home_vim)$(colors_solarized)
 
-.PHONY: usage
-usage:
+.PHONY: help usage
+help usage:
 	@>&2 echo "make: usage: make [ install | uninstall ]"
 
 .PHONY: install
