@@ -81,16 +81,9 @@ else
 	host="${bold}${yellow}"
 fi
 
-directory="${bold}${blue}"
+pwd="${bold}${blue}"
 
-branch="${bold}${green}"
+git="${bold}${green}"
 
 # Set the terminal title to the current working directory.
-PS1=
-PS1+="\[${user}\]\u"
-PS1+="\[${reset}\]@"
-PS1+="\[${host}\]\h"
-PS1+="\[${reset}\]:"
-PS1+="\[${directory}\]\w"
-PS1+="\[${branch}\]\$(git-prompt)"
-PS1+="\[${reset}\] \$ "
+PS1="${user}\u${reset}@${host}\h${reset}:${pwd}\w${git}\$(git-prompt)${reset} \$ "
