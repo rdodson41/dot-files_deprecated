@@ -38,31 +38,31 @@ git-prompt() {
 #  Set colors
 if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
-	bold="\[$(tput bold)\]"
-	reset="\[$(tput sgr0)\]"
-	black="\[$(tput setaf 0)\]"
-	blue="\[$(tput setaf 33)\]"
-	cyan="\[$(tput setaf 37)\]"
-	green="\[$(tput setaf 64)\]"
-	orange="\[$(tput setaf 166)\]"
-	purple="\[$(tput setaf 125)\]"
-	red="\[$(tput setaf 124)\]"
-	violet="\[$(tput setaf 61)\]"
-	white="\[$(tput setaf 15)\]"
-	yellow="\[$(tput setaf 136)\]"
+	bold="$(tput bold)"
+	reset="$(tput sgr0)"
+	black="$(tput setaf 0)"
+	blue="$(tput setaf 33)"
+	cyan="$(tput setaf 37)"
+	green="$(tput setaf 64)"
+	orange="$(tput setaf 166)"
+	purple="$(tput setaf 125)"
+	red="$(tput setaf 124)"
+	violet="$(tput setaf 61)"
+	white="$(tput setaf 15)"
+	yellow="$(tput setaf 136)"
 else
-	reset="\[\e[0m\]"
-	bold="\[\e[1m\]"	
-	black="\[\e[30m\]"
-	red="\[\e[31m\]"
-	green="\[\e[32m\]"
-	yellow="\[\e[33m\]"
-	blue="\[\e[34m\]"
-	magenta="\[\e[35m\]"
-	cyan="\[\e[36m\]"
-	white="\[\e[37m\]"
-	orange="\[\e[91m\]"
-	violet="\[\e[95m\]"
+	reset="\e[0m"
+	bold="\e[1m"	
+	black="\e[30m"
+	red="\e[31m"
+	green="\e[32m"
+	yellow="\e[33m"
+	blue="\e[34m"
+	magenta="\e[35m"
+	cyan="\e[36m"
+	white="\e[37m"
+	orange="\e[91m"
+	violet="\e[95m"
 fi
 
 #  Colorize the user name red if the user is logged in as root; otherwise, colorize the user name yellow
@@ -80,4 +80,4 @@ else
 fi
 
 #  Set the top-level command line prompt
-PS1="${user}\u${reset}@${host}\h${reset}:${bold}${blue}\w${bold}${green}\$(git-prompt)${reset} \$ "
+PS1="\[${user}\]\u\[${reset}\]@\[${host}\]\h\[${reset}\]:\[${bold}${blue}\]\w\[${bold}${green}\]\$(git-prompt)\[${reset}\] \$ "
