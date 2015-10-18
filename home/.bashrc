@@ -29,6 +29,16 @@ if [[ -f "$HOME/.bash_aliases" ]]; then
 	source "$HOME/.bash_aliases"
 fi
 
+#  Include ~/.bash_colors if it exists
+if [[ -f "$HOME/.bash_colors" ]]; then
+	source "$HOME/.bash_colors"
+fi
+
+#  Include ~/.bash_colors_solarized if it exists
+if [[ -f "$HOME/.bash_colors_solarized" ]]; then
+	source "$HOME/.bash_colors_solarized"
+fi
+
 #  Include ~/.bash_prompt if it exists
 if [[ -f "$HOME/.bash_prompt" ]]; then
 	source "$HOME/.bash_prompt"
