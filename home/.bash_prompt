@@ -24,11 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-# Shell prompt based on the Solarized Dark theme.
-# Screenshot: http://i.imgur.com/EkEtphC.png
-# Heavily inspired by @necolas’s prompt: https://github.com/necolas/dotfiles
-# iTerm → Profiles → Text → use 13pt Monaco with 1.1 vertical spacing.
-
+#  Echo git prompt
 git-prompt() {
 	if git rev-parse --is-inside-work-tree &> /dev/null; then
 		echo " [$(git symbolic-ref --quiet --short HEAD || git rev-parse --short HEAD || echo "unknown")]"
@@ -37,17 +33,28 @@ git-prompt() {
 
 #  Colorize the user name red if the user is logged in as root; otherwise, colorize the user name yellow
 if [[ "${USER}" == "root" ]]; then
-	user="${bold}${red}"
+	color_user="${color_solarized_bold_red}"
 else
-	user="${bold}${yellow}"
+	color_user="${color_solarized_bold_yellow}"
 fi
 
 #  Colorize the host name red if the user is logged in via ssh; otehrwise, colorize the host name yellow
 if [[ "${SSH_TTY}" ]]; then
-	host="${bold}${red}"
+	color_host="${color_solarized_bold_red}"
 else
-	host="${bold}${yellow}"
+	color_host="${color_solarized_bold_yellow}"
 fi
 
+color_pwd="${color_solarized_bold_blue}"
+
+color_git_prompt="${color_solarized_bold_green}"
+
 #  Set the top-level command line prompt
-PS1="\[${user}\]\u\[${reset}\]@\[${host}\]\h\[${reset}\]:\[${bold}${blue}\]\w\[${bold}${green}\]\$(git-prompt)\[${reset}\] \$ "
+PS1=
+PS1="${PS1}\[${color_user}\]\u"
+PS1="${PS1}\[${color_normal}\]@"
+PS1="${PS1}\[${color_host}\]\h"
+PS1="${PS1}\[${color_normal}\]:"
+PS1="${PS1}\[${color_pwd}\]\w"
+PS1="${PS1}\[${color_git_prompt}\]\$(git-prompt)"
+PS1="${PS1}\[${color_normal}\] \$ "
