@@ -35,12 +35,11 @@ git-prompt() {
 	fi
 }
 
+#  Set colors
 if tput setaf 1 &> /dev/null; then
-	echo "true"
 	tput sgr0; # reset colors
 	bold="\[$(tput bold)\]"
 	reset="\[$(tput sgr0)\]"
-	# Solarized colors, taken from http://git.io/solarized-colors.
 	black="\[$(tput setaf 0)\]"
 	blue="\[$(tput setaf 33)\]"
 	cyan="\[$(tput setaf 37)\]"
@@ -52,7 +51,6 @@ if tput setaf 1 &> /dev/null; then
 	white="\[$(tput setaf 15)\]"
 	yellow="\[$(tput setaf 136)\]"
 else
-	echo "false"
 	reset="\[\e[0m\]"
 	bold="\[\e[1m\]"	
 	black="\[\e[30m\]"
@@ -67,23 +65,19 @@ else
 	violet="\[\e[95m\]"
 fi
 
-# Highlight the user name when logged in as root.
+#  Colorize the user name red if the user is logged in as root; otherwise, colorize the user name yellow
 if [[ "${USER}" == "root" ]]; then
 	user="${bold}${red}"
 else
 	user="${bold}${yellow}"
 fi
 
-# Highlight the hostname when connected via SSH.
+#  Colorize the host name red if the user is logged in via ssh; otehrwise, colorize the host name yellow
 if [[ "${SSH_TTY}" ]]; then
 	host="${bold}${red}"
 else
 	host="${bold}${yellow}"
 fi
 
-pwd="${bold}${blue}"
-
-git="${bold}${green}"
-
-# Set the terminal title to the current working directory.
-PS1="${user}\u${reset}@${host}\h${reset}:${pwd}\w${git}\$(git-prompt)${reset} \$ "
+#  Set the top-level command line prompt
+PS1="${user}\u${reset}@${host}\h${reset}:${bold}${blue}\w${bold}${green}\$(git-prompt)${reset} \$ "
