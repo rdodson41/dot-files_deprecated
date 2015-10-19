@@ -72,3 +72,12 @@ $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 .PHONY: uninstall
 uninstall:
 	@rm -f $(find_root_home)
+
+#  Update repository
+.PHONY: update
+update: uninstall git-pull install
+
+#  Git pull
+.PHONY: git-pull
+git-pull:
+	@git pull --verbose
