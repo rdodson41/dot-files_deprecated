@@ -24,10 +24,17 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Echo git prompt
-git-prompt() {
+#  Echo git branch
+echo-git-branch() {
 	if git rev-parse --is-inside-work-tree &> /dev/null; then
-		echo -e "${color_solarized_normal} ${color_solarized_bold_green}[$(git symbolic-ref --quiet --short HEAD || git rev-parse --short HEAD || echo "unknown")]"
+		echo " [$(git symbolic-ref --quiet --short HEAD || git rev-parse --quiet --short HEAD || echo "unknown")]"
+	fi
+}
+
+#  Echo git status
+echo-git-status() {
+	if git rev-parse --is-inside-work-tree &> /dev/null; then
+		echo " [!]"
 	fi
 }
 
@@ -52,5 +59,6 @@ PS1="${PS1}\[${color_solarized_normal}\]@"
 PS1="${PS1}\[${color_solarized_host_name}\]\h"
 PS1="${PS1}\[${color_solarized_normal}\]:"
 PS1="${PS1}\[${color_solarized_bold_blue}\]\w"
-PS1="${PS1}\$(git-prompt)"
+PS1="${PS1}\[${color_solarized_bold_green}\]\$(echo-git-branch)"
+PS1="${PS1}\[${color_solarized_bold_red}\]\$(echo-git-status)"
 PS1="${PS1}\[${color_solarized_normal}\] \$ "
