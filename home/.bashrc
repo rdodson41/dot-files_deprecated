@@ -24,6 +24,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set kernal name
+KERNAL_NAME=$(uname)
+
 #  Include ~/.bash/aliases if it exists
 if [[ -f "$HOME/.bash/aliases" ]]; then
 	source "$HOME/.bash/aliases"

@@ -24,9 +24,6 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set kernal name
-KERNAL_NAME=$(uname)
-
 #  Alias ls to:
 #    -F, --classify               indicate file type
 #    -G, --color=auto             colorize output if standard output is connected to a terminal
