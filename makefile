@@ -76,9 +76,5 @@ uninstall:
 
 #  Update repository
 .PHONY: update
-update: uninstall git-pull install
-
-#  Git pull
-.PHONY: git-pull
-git-pull:
+update: uninstall
 	@git pull --verbose
