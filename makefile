@@ -62,6 +62,7 @@ help usage:
 install: $(find_root_home)
 
 $(root_home)/%: $(pwd)$(home)/%
+	@mkdir -p $(@D)
 	@ln -fs $? $@
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
