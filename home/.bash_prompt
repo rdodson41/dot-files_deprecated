@@ -34,7 +34,13 @@ echo-git-branch() {
 #  Echo git status
 echo-git-status() {
 	if git rev-parse --is-inside-work-tree &> /dev/null; then
-		echo " [!]"
+		if ! git diff --quiet --staged; then
+			echo " [+]"
+		elif ! git diff --quiet; then
+			echo " [!]"
+		elif [[ -n "$(git ls-files --others --exclude-standard)" ]]; then
+			echo " [?]"
+		fi
 	fi
 }
 
