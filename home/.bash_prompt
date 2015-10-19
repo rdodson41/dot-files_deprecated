@@ -27,34 +27,30 @@
 #  Echo git prompt
 git-prompt() {
 	if git rev-parse --is-inside-work-tree &> /dev/null; then
-		echo " [$(git symbolic-ref --quiet --short HEAD || git rev-parse --short HEAD || echo "unknown")]"
+		echo -e "${color_solarized_normal} ${color_solarized_bold_green}[$(git symbolic-ref --quiet --short HEAD || git rev-parse --short HEAD || echo "unknown")]"
 	fi
 }
 
-#  Colorize the user name red if the user is logged in as root; otherwise, colorize the user name yellow
+#  Colorize the user name Solarized red if the user is logged in as root; otherwise, colorize the user name Solarized yellow
 if [[ "${USER}" == "root" ]]; then
-	color_user="${color_solarized_bold_red}"
+	color_solarized_user_name="${color_solarized_bold_red}"
 else
-	color_user="${color_solarized_bold_yellow}"
+	color_solarized_user_name="${color_solarized_bold_yellow}"
 fi
 
-#  Colorize the host name red if the user is logged in via ssh; otehrwise, colorize the host name yellow
+#  Colorize the host name Solarized red if the user is logged in via ssh; otehrwise, colorize the host name Solarized yellow
 if [[ "${SSH_TTY}" ]]; then
-	color_host="${color_solarized_bold_red}"
+	color_solarized_host_name="${color_solarized_bold_red}"
 else
-	color_host="${color_solarized_bold_yellow}"
+	color_solarized_host_name="${color_solarized_bold_yellow}"
 fi
-
-color_pwd="${color_solarized_bold_blue}"
-
-color_git_prompt="${color_solarized_bold_green}"
 
 #  Set the top-level command line prompt
 PS1=
-PS1="${PS1}\[${color_user}\]\u"
-PS1="${PS1}\[${color_normal}\]@"
-PS1="${PS1}\[${color_host}\]\h"
-PS1="${PS1}\[${color_normal}\]:"
-PS1="${PS1}\[${color_pwd}\]\w"
-PS1="${PS1}\[${color_git_prompt}\]\$(git-prompt)"
-PS1="${PS1}\[${color_normal}\] \$ "
+PS1="${PS1}\[${color_solarized_user_name}\]\u"
+PS1="${PS1}\[${color_solarized_normal}\]@"
+PS1="${PS1}\[${color_solarized_host_name}\]\h"
+PS1="${PS1}\[${color_solarized_normal}\]:"
+PS1="${PS1}\[${color_solarized_bold_blue}\]\w"
+PS1="${PS1}\$(git-prompt)"
+PS1="${PS1}\[${color_solarized_normal}\] \$ "
