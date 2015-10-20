@@ -24,11 +24,39 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set gpg agent information
+export GPG_AGENT_INFO
+
 #  Set gpg tty
 export GPG_TTY="$(tty)"
 
-#  Include ~/.gpg-agent-info if it exists
-if [[ -f "$HOME/.gpg-agent-info" ]]; then
-	source "$HOME/.gpg-agent-info"
-	export GPG_AGENT_INFO
-fi
+#  List active gpg agents
+gpg-agent-list() {
+	ps -e "$@" | grep "[g]pg-agent"
+}
+
+#  Initialize a gpg agent if no gpg agents are active
+gpg-agent() {
+	if ! gpg-agent-list &> /dev/null; then
+		command gpg-agent --verbose --daemon --write-env-file "$HOME/.gpg-agent-info" "$@"
+		gpg-agent-info-update
+	else
+		>&2 echo "gpg-agent: error: One or more gpg agents are already active"
+		return 1
+	fi
+}
+
+#  Update gpg agent information
+gpg-agent-info-update() {
+	if [[ -f "$HOME/.gpg-agent-info" ]]; then
+		source "$HOME/.gpg-agent-info"
+	fi
+}
+
+#  Kill active gpg agents
+gpg-agent-kill() {
+	kill $(gpg-agent-list | cut -d " " -f 1)
+}
+
+#  Update gpg agent information
+gpg-agent-info-update
