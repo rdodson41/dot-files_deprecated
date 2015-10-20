@@ -39,7 +39,7 @@ if [[ -f "$HOME/.bash/colors" ]]; then
 	source "$HOME/.bash/colors"
 fi
 
-#  Include ~/.bash/colors_solarized if it exists
+#  Include ~/.bash/colors-solarized if it exists
 if [[ -f "$HOME/.bash/colors-solarized" ]]; then
 	source "$HOME/.bash/colors-solarized"
 fi
@@ -49,5 +49,7 @@ if [[ -f "$HOME/.bash/prompt" ]]; then
 	source "$HOME/.bash/prompt"
 fi
 
-#  Set directory colors to Solarized Dark
-eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
+#  Set directory colors to Solarized Dark if dircolors exists
+if which dircolors &> /dev/null; then
+	eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
+fi
