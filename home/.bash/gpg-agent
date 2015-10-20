@@ -38,7 +38,7 @@ gpg-agent-list() {
 #  Initialize a gpg agent if no gpg agents are active
 gpg-agent() {
 	if ! gpg-agent-list &> /dev/null; then
-		command gpg-agent --verbose --daemon --write-env-file "$HOME/.gpg-agent-info" "$@"
+		command gpg-agent --verbose --write-env-file "$HOME/.gpg-agent-info" "$@"
 		gpg-agent-info-update
 	else
 		>&2 echo "gpg-agent: error: One or more gpg agents are already active"
