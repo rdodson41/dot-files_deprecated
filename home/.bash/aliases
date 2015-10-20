@@ -36,12 +36,12 @@ alias -- ..="cd .."
 if [[ "${kernal_name}" == "Darwin" ]]; then
 	if which gls &> /dev/null; then
 		command_ls="command gls"
-	else
-		command_ls="command ls"
 	fi
 	if which gdircolors &> /dev/null; then
 		alias dircolors="command gdircolors"
 	fi
+else
+	command_ls="ls"
 fi
 
 #  Alias ls to:
