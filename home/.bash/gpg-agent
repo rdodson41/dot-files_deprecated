@@ -50,12 +50,23 @@ gpg-agent() {
 gpg-agent-info-update() {
 	if [[ -f "$HOME/.gpg-agent-info" ]]; then
 		source "$HOME/.gpg-agent-info"
+	elif [[ -d "$HOME/.gpg-agent-info" ]]; then
+		>&2 echo "gpg-agent: error: $HOME/.gpg-agent-info is a directory"
+		return 1
+	else
+		>&2 echo "gpg-agent: error: $HOME/.gpg-agent-info does not exist"
+		return 1
 	fi
 }
 
 #  Kill active gpg agents
 gpg-agent-kill() {
-	kill $(gpg-agent-list | cut -c 1-5) 
+	if gpg-agent-list &> /dev/null; then
+		kill $(gpg-agent-list | cut -c 1-5) 
+	else
+		>&2 echo "gpg-agent: error: No gpg agents are active"
+		return 1
+	fi
 }
 
 #  Update gpg agent information
