@@ -42,39 +42,37 @@ usr_local = $(usr)/local
 solarized = /solarized
 solarized_vim_colors_solarized = $(solarized)/vim-colors-solarized
 
-#  Set relative file paths - vim colors
+#  Set relative file paths - Solarized - vim colors
 colors = /colors
 colors_solarized = $(colors)/solarized.vim
-
-#  Find files - working directory
-find_pwd_home = $(shell find $(pwd)$(home) ! -type d)
-
-#  Find files - home directory
-find_root_home = $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(find_pwd_home)) $(root_home_vim)$(colors_solarized)
 
 #  Log usage
 .PHONY: help usage
 help usage:
-	@>&2 echo "make: usage: make [ help | install | uninstall ]"
+	@>&2 echo "make: usage: make [ help | pull | install | uninstall | update ]"
 
-#  Install files
+#  Pull repository
+.PHONY: pull
+pull:
+	@git pull --verbose
+
+#  Install repository
 .PHONY: install
-install: $(find_root_home)
+install: pull $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(shell find $(pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 $(root_home)/%: $(pwd)$(home)/%
 	@mkdir -p $(@D)
-	@ln -fs $? $@
+	@ln -is $? $@
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 	@mkdir -p $(@D)
-	@ln -fs $? $@
+	@ln -is $? $@
 
-#  Uninstall files
+#  Uninstall repository
 .PHONY: uninstall
 uninstall:
-	@rm -f $(find_root_home)
+	@rm -f $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(shell find $(pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 #  Update repository
 .PHONY: update
-update: uninstall
-	@git pull --verbose
+update: uninstall install
