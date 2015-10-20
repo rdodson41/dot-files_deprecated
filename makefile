@@ -60,11 +60,11 @@ install: pull $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root
 
 $(root_home)/%: $(root_pwd)$(home)/%
 	@mkdir -p $(@D)
-	@ln -is $? $@
+	@ln -s $? $@
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 	@mkdir -p $(@D)
-	@ln -is $? $@
+	@ln -s $? $@
 
 #  Uninstall repository
 .PHONY: uninstall
