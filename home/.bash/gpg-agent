@@ -23,3 +23,12 @@
 #  You should have received a copy of the GNU General Public License
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
+
+#  Set gpg tty
+export GPG_TTY="$(tty)"
+
+#  Include ~/.gpg-agent-info if it exists
+if [[ -f "$HOME/.gpg-agent-info" ]]; then
+	source "$HOME/.gpg-agent-info"
+	export GPG_AGENT_INFO
+fi
