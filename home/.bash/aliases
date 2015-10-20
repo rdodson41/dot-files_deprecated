@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/home/.bash_aliases
+#  Name:     rdodson41/dot-files/home/.bash/aliases
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 #  Created:  Sun Oct 11 17:18:18 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
@@ -25,7 +25,25 @@
 #
 
 #  Set kernal name
-KERNAL_NAME=$(uname)
+kernal_name="$(uname)"
+
+#  Alias cd to enable faster navigation
+alias -- ~="cd ~"
+alias -- -="cd -"
+alias -- ..="cd .."
+
+#  Set ls
+ls="ls"
+
+#  Set ls and alias dircolors to the GNU versions of the commands if the operating system is OS X and the GNU versions of the commands exist
+if [[ "${kernal_name}" == "Darwin" ]]; then
+	if which gls &> /dev/null; then
+		ls="command gls"
+	fi
+	if which gdircolors &> /dev/null; then
+		alias dircolors="command gdircolors"
+	fi
+fi
 
 #  Alias ls to:
 #    -F, --classify               indicate file type
@@ -33,14 +51,11 @@ KERNAL_NAME=$(uname)
 #    -T, --time-style=long-iso    list times in long-iso format
 #    -h, --human-readable         list sizes in human-readable format
 #    -l, --format=long            list files in long format
-case "$KERNAL_NAME" in
-"Darwin")
-	alias ls="ls -FGThl"
-	;;
-"Linux")
-	alias ls="ls -Fhl --time-style=long-iso --color=auto"
-	;;
-esac
+if ${ls} --version &> /dev/null; then
+	alias ls="${ls} --classify --format=long --human-readable --time-style=long-iso --color=auto"
+else
+	alias ls="${ls} -FGThl"
+fi
 
 #  Alias ls to:
 #    -A, --almost-all             list all files with the exception of . and ..
@@ -60,7 +75,7 @@ alias rgrep="rgrep --color=auto"
 
 #  Alias git
 alias g="git"
-for alias in $(git config --get-regexp ^alias[.] | cut -d " " -f 1 | cut -d "." -f 2-); do
+for alias in $(git config --global --get-regexp "^alias[.]" | cut -d " " -f 1 | cut -d "." -f 2-); do
 	alias "g${alias}"="git ${alias}"
 done
 

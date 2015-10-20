@@ -1,0 +1,70 @@
+#!/bin/bash
+
+#
+#  Name:     rdodson41/dot-files/home/.bash/prompt
+#  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  Created:  Thu Oct 15 00:23:06 UTC 2015
+#  License:  GNU General Public License, Version 3, 29 June 2007
+#
+#  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  
+#  This file is part of dot-files.
+#  
+#  dot-files is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#  
+#  dot-files is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#  
+#  You should have received a copy of the GNU General Public License
+#  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
+#
+
+#  Echo git branch
+echo-git-branch() {
+	if git rev-parse --is-inside-work-tree &> /dev/null; then
+		echo " [$(git symbolic-ref --quiet --short HEAD || git rev-parse --quiet --short HEAD || echo "unknown")]"
+	fi
+}
+
+#  Echo git status
+echo-git-status() {
+	if git rev-parse --is-inside-work-tree &> /dev/null; then
+		if ! git diff --quiet --staged; then
+			echo " [+]"
+		elif ! git diff --quiet; then
+			echo " [!]"
+		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
+			echo " [?]"
+		fi
+	fi
+}
+
+#  Colorize the user name Solarized red if the user is logged in as root; otherwise, colorize the user name Solarized yellow
+if [[ "${USER}" == "root" ]]; then
+	color_solarized_user_name="${color_solarized_bold_red}"
+else
+	color_solarized_user_name="${color_solarized_bold_yellow}"
+fi
+
+#  Colorize the host name Solarized red if the user is logged in via ssh; otehrwise, colorize the host name Solarized yellow
+if [[ -n "${SSH_TTY}" ]]; then
+	color_solarized_host_name="${color_solarized_bold_red}"
+else
+	color_solarized_host_name="${color_solarized_bold_yellow}"
+fi
+
+#  Set the top-level command line prompt
+PS1=
+PS1="${PS1}\[${color_solarized_user_name}\]\u"
+PS1="${PS1}\[${color_solarized_normal}\]@"
+PS1="${PS1}\[${color_solarized_host_name}\]\h"
+PS1="${PS1}\[${color_solarized_normal}\]:"
+PS1="${PS1}\[${color_solarized_bold_blue}\]\w"
+PS1="${PS1}\[${color_solarized_bold_green}\]\$(echo-git-branch)"
+PS1="${PS1}\[${color_solarized_bold_red}\]\$(echo-git-status)"
+PS1="${PS1}\[${color_solarized_normal}\] \$ "

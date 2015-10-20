@@ -1,0 +1,81 @@
+#!/bin/bash
+
+#
+#  Name:     rdodson41/dot-files/home/.bash/colors
+#  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  Created:  Sun Oct 18 16:00:26 UTC 2015
+#  License:  GNU General Public License, Version 3, 29 June 2007
+#
+#  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  
+#  This file is part of dot-files.
+#  
+#  dot-files is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#  
+#  dot-files is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#  
+#  You should have received a copy of the GNU General Public License
+#  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
+#
+
+#  Set colors
+color_black="\e[38;5;000m"
+color_red="\e[38;5;001m"
+color_green="\e[38;5;002m"
+color_yellow="\e[38;5;003m"
+color_blue="\e[38;5;004m"
+color_magenta="\e[38;5;005m"
+color_cyan="\e[38;5;006m"
+color_white="\e[38;5;007m"
+color_bright_black="\e[38;5;008m"
+color_bright_red="\e[38;5;009m"
+color_bright_green="\e[38;5;010m"
+color_bright_yellow="\e[38;5;011m"
+color_bright_blue="\e[38;5;012m"
+color_bright_magenta="\e[38;5;013m"
+color_bright_cyan="\e[38;5;014m"
+color_bright_white="\e[38;5;015m"
+
+#  Set colors - normal
+color_normal="\e[0m"
+color_normal_black="${color_normal}${color_black}"
+color_normal_red="${color_normal}${color_red}"
+color_normal_green="${color_normal}${color_green}"
+color_normal_yellow="${color_normal}${color_yellow}"
+color_normal_blue="${color_normal}${color_blue}"
+color_normal_magenta="${color_normal}${color_magenta}"
+color_normal_cyan="${color_normal}${color_cyan}"
+color_normal_white="${color_normal}${color_white}"
+color_normal_bright_black="${color_normal}${color_bright_black}"
+color_normal_bright_red="${color_normal}${color_bright_red}"
+color_normal_bright_green="${color_normal}${color_bright_green}"
+color_normal_bright_yellow="${color_normal}${color_bright_yellow}"
+color_normal_bright_blue="${color_normal}${color_bright_blue}"
+color_normal_bright_magenta="${color_normal}${color_bright_magenta}"
+color_normal_bright_cyan="${color_normal}${color_bright_cyan}"
+color_normal_bright_white="${color_normal}${color_bright_white}"
+
+#  Set colors - bold
+color_bold="\e[1m"
+color_bold_black="${color_bold}${color_black}"
+color_bold_red="${color_bold}${color_red}"
+color_bold_green="${color_bold}${color_green}"
+color_bold_yellow="${color_bold}${color_yellow}"
+color_bold_blue="${color_bold}${color_blue}"
+color_bold_magenta="${color_bold}${color_magenta}"
+color_bold_cyan="${color_bold}${color_cyan}"
+color_bold_white="${color_bold}${color_white}"
+color_bold_bright_black="${color_bold}${color_bright_black}"
+color_bold_bright_red="${color_bold}${color_bright_red}"
+color_bold_bright_green="${color_bold}${color_bright_green}"
+color_bold_bright_yellow="${color_bold}${color_bright_yellow}"
+color_bold_bright_blue="${color_bold}${color_bright_blue}"
+color_bold_bright_magenta="${color_bold}${color_bright_magenta}"
+color_bold_bright_cyan="${color_bold}${color_bright_cyan}"
+color_bold_bright_white="${color_bold}${color_bright_white}"

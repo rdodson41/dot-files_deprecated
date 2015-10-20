@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #
-#  Name:     rdodson41/dot-files/home/.bash_logout
+#  Name:     rdodson41/dot-files/home/.bash/gpg-agent
 #  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
-#  Created:  Sun Oct 11 17:18:02 UTC 2015
+#  Created:  Tue Oct 20 01:27:08 UTC 2015
 #  License:  GNU General Public License, Version 3, 29 June 2007
 #
 #  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
@@ -24,7 +24,15 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Clear the console if the user exits a top-level shell
-if [[ "$SHLVL" = 1 ]]; then
-	clear_console -q
-fi
+#  Set gpg tty
+export GPG_TTY="$(tty)"
+
+#  Initialize gpg-agent if it is not already active
+gpg-agent() {
+	if [[ -z "${GPG_AGENT_INFO}" ]]; then
+		command gpg-agent --daemon "${SHELL}"
+	else
+		>&2 echo "gpg-agent: error: gpg-agent is already active"
+		return 1
+	fi
+}

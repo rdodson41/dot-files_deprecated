@@ -29,11 +29,12 @@ set shiftwidth=4
 "  Enable line numbers
 set number
 
-"  Set color scheme to Solarized
-colorscheme solarized
+"  Enable syntax colorization
+syntax enable
 
 "  Set background to dark
 set background=dark
 
-"  Enable syntax colorization
-syntax on
+"  Set color scheme to Solarized
+set t_Co=16
+colorscheme solarized

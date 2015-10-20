@@ -1,0 +1,81 @@
+#!/bin/bash
+
+#
+#  Name:     rdodson41/dot-files/home/.bash/colors-solarized
+#  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  Created:  Sun Oct 18 17:14:47 UTC 2015
+#  License:  GNU General Public License, Version 3, 29 June 2007
+#
+#  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
+#  
+#  This file is part of dot-files.
+#  
+#  dot-files is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#  
+#  dot-files is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU General Public License for more details.
+#  
+#  You should have received a copy of the GNU General Public License
+#  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
+#
+
+#  Set colors - Solarized
+color_solarized_base03="\e[38;5;008m"
+color_solarized_base02="\e[38;5;000m"
+color_solarized_base01="\e[38;5;010m"
+color_solarized_base00="\e[38;5;011m"
+color_solarized_base0="\e[38;5;012m"
+color_solarized_base1="\e[38;5;014m"
+color_solarized_base2="\e[38;5;007m"
+color_solarized_base3="\e[38;5;015m"
+color_solarized_yellow="\e[38;5;003m"
+color_solarized_orange="\e[38;5;009m"
+color_solarized_red="\e[38;5;001m"
+color_solarized_magenta="\e[38;5;005m"
+color_solarized_violet="\e[38;5;013m"
+color_solarized_blue="\e[38;5;004m"
+color_solarized_cyan="\e[38;5;006m"
+color_solarized_green="\e[38;5;002m"
+
+#  Set colors - Solarized - normal
+color_solarized_normal="\e[0m"
+color_solarized_normal_base03="${color_solarized_normal}${color_solarized_base03}"
+color_solarized_normal_base02="${color_solarized_normal}${color_solarized_base02}"
+color_solarized_normal_base01="${color_solarized_normal}${color_solarized_base01}"
+color_solarized_normal_base00="${color_solarized_normal}${color_solarized_base00}"
+color_solarized_normal_base0="${color_solarized_normal}${color_solarized_base0}"
+color_solarized_normal_base1="${color_solarized_normal}${color_solarized_base1}"
+color_solarized_normal_base2="${color_solarized_normal}${color_solarized_base2}"
+color_solarized_normal_base3="${color_solarized_normal}${color_solarized_base3}"
+color_solarized_normal_yellow="${color_solarized_normal}${color_solarized_yellow}"
+color_solarized_normal_orange="${color_solarized_normal}${color_solarized_orange}"
+color_solarized_normal_red="${color_solarized_normal}${color_solarized_red}"
+color_solarized_normal_magenta="${color_solarized_normal}${color_solarized_magenta}"
+color_solarized_normal_violet="${color_solarized_normal}${color_solarized_violet}"
+color_solarized_normal_blue="${color_solarized_normal}${color_solarized_blue}"
+color_solarized_normal_cyan="${color_solarized_normal}${color_solarized_cyan}"
+color_solarized_normal_green="${color_solarized_normal}${color_solarized_green}"
+
+#  Set colors - Solarized - bold
+color_solarized_bold="\e[1m"
+color_solarized_bold_base03="${color_solarized_bold}${color_solarized_base03}"
+color_solarized_bold_base02="${color_solarized_bold}${color_solarized_base02}"
+color_solarized_bold_base01="${color_solarized_bold}${color_solarized_base01}"
+color_solarized_bold_base00="${color_solarized_bold}${color_solarized_base00}"
+color_solarized_bold_base0="${color_solarized_bold}${color_solarized_base0}"
+color_solarized_bold_base1="${color_solarized_bold}${color_solarized_base1}"
+color_solarized_bold_base2="${color_solarized_bold}${color_solarized_base2}"
+color_solarized_bold_base3="${color_solarized_bold}${color_solarized_base3}"
+color_solarized_bold_yellow="${color_solarized_bold}${color_solarized_yellow}"
+color_solarized_bold_orange="${color_solarized_bold}${color_solarized_orange}"
+color_solarized_bold_red="${color_solarized_bold}${color_solarized_red}"
+color_solarized_bold_magenta="${color_solarized_bold}${color_solarized_magenta}"
+color_solarized_bold_violet="${color_solarized_bold}${color_solarized_violet}"
+color_solarized_bold_blue="${color_solarized_bold}${color_solarized_blue}"
+color_solarized_bold_cyan="${color_solarized_bold}${color_solarized_cyan}"
+color_solarized_bold_green="${color_solarized_bold}${color_solarized_green}"

@@ -24,15 +24,32 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Include ~/.bash_aliases if it exists
-if [[ -f "$HOME/.bash_aliases" ]]; then
-	source "$HOME/.bash_aliases"
+#  Include ~/.bash/aliases if it exists
+if [[ -f "$HOME/.bash/aliases" ]]; then
+	source "$HOME/.bash/aliases"
 fi
 
-#  Include ~/.bash_prompt if it exists
-if [[ -f "$HOME/.bash_prompt" ]]; then
-	source "$HOME/.bash_prompt"
+#  Include ~/.bash/gpg-agent if it exists
+if [[ -f "$HOME/.bash/gpg-agent" ]]; then
+	source "$HOME/.bash/gpg-agent"
 fi
 
-#  Set directory colors to Solarized Dark
-eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
+#  Include ~/.bash/colors if it exists
+if [[ -f "$HOME/.bash/colors" ]]; then
+	source "$HOME/.bash/colors"
+fi
+
+#  Include ~/.bash/colors-solarized if it exists
+if [[ -f "$HOME/.bash/colors-solarized" ]]; then
+	source "$HOME/.bash/colors-solarized"
+fi
+
+#  Include ~/.bash/prompt if it exists
+if [[ -f "$HOME/.bash/prompt" ]]; then
+	source "$HOME/.bash/prompt"
+fi
+
+#  Set directory colors to Solarized Dark if dircolors exists
+if dircolors --version &> /dev/null; then
+	eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
+fi
