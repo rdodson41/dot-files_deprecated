@@ -29,10 +29,10 @@ kernal_name="$(uname)"
 
 #  Alias commands to their respective GNU versions if the system is OS X and the GNU versions exist
 if [[ "${kernal_name}" == "Darwin" ]]; then
-	if which gls > /dev/null; then
+	if which gls &> /dev/null; then
 		alias ls="command gls"
 	fi
-	if which gdircolors > /dev/null; then
+	if which gdircolors &> /dev/null; then
 		alias dircolors="command gdircolors"
 	fi
 fi
@@ -42,13 +42,18 @@ alias -- ~="cd ~"
 alias -- -="cd -" 
 alias -- ..="cd .."
 
-
 #  Alias ls to:
 #    -F, --classify               indicate file type
 #    -G, --color=auto             colorize output if standard output is connected to a terminal
 #    -T, --time-style=long-iso    list times in long-iso format
 #    -h, --human-readable         list sizes in human-readable format
 #    -l, --format=long            list files in long format
+if ls --color -d &> /dev/null; then
+	alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
+else
+	alias ls="ls -FGThl"
+fi
+
 case "$KERNAL_NAME" in
 "Darwin")
 	alias ls="ls -FGThl"
