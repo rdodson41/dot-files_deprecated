@@ -55,7 +55,7 @@ gpg-agent-info-update() {
 
 #  Kill active gpg agents
 gpg-agent-kill() {
-	kill $(gpg-agent-list | cut -d " " -f 1)
+	kill $(gpg-agent-list | cut -c 1-5) 
 }
 
 #  Update gpg agent information
