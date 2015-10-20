@@ -40,7 +40,7 @@ usr_local = $(usr)/local
 solarized = /solarized
 solarized_vim_colors_solarized = $(solarized)/vim-colors-solarized
 
-#  Set relative file paths - Solarized - vim colors
+#  Set relative file paths - vim colors
 colors = /colors
 colors_solarized = $(colors)/solarized.vim
 
