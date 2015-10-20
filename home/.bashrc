@@ -29,6 +29,11 @@ if [[ -f "$HOME/.bash/aliases" ]]; then
 	source "$HOME/.bash/aliases"
 fi
 
+#  Include ~/.bash/gpg-agent if it exists
+if [[ -f "$HOME/.bash/gpg-agent" ]]; then
+	source "$HOME/.bash/gpg-agent"
+fi
+
 #  Include ~/.bash/colors if it exists
 if [[ -f "$HOME/.bash/colors" ]]; then
 	source "$HOME/.bash/colors"
