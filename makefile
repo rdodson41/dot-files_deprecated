@@ -28,9 +28,7 @@
 root = 
 root_home = $(HOME)
 root_home_vim = $(root_home)/.vim
-
-#  Set absolute file paths - working directory
-pwd = $(shell pwd)
+root_pwd = $(PWD)
 
 #  Set relative file paths
 home = /home
@@ -58,9 +56,9 @@ pull:
 
 #  Install repository
 .PHONY: install
-install: pull $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(shell find $(pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+install: pull $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
-$(root_home)/%: $(pwd)$(home)/%
+$(root_home)/%: $(root_pwd)$(home)/%
 	@mkdir -p $(@D)
 	@ln -is $? $@
 
@@ -71,7 +69,7 @@ $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 #  Uninstall repository
 .PHONY: uninstall
 uninstall:
-	@rm -f $(patsubst $(pwd)$(home)/%,$(root_home)/%,$(shell find $(pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+	@rm -f $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 #  Update repository
 .PHONY: update
