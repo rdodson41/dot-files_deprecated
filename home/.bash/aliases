@@ -24,6 +24,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set kernal name
+kernal_name="$(uname)"
+
 #  Alias cd to enable faster navigation
 alias -- ~="cd ~"
 alias -- -="cd -" 
