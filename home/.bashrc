@@ -50,6 +50,6 @@ if [[ -f "$HOME/.bash/prompt" ]]; then
 fi
 
 #  Set directory colors to Solarized Dark if dircolors exists
-if which dircolors &> /dev/null; then
+if dircolors --version &> /dev/null; then
 	eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
 fi
