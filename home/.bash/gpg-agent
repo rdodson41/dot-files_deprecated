@@ -32,7 +32,7 @@ export GPG_TTY="$(tty)"
 
 #  List active gpg agents
 gpg-agent-list() {
-	ps -e "$@" | grep "[g]pg-agent"
+	ps -x "$@" | grep "[g]pg-agent"
 }
 
 #  Initialize a gpg agent if no gpg agents are active
