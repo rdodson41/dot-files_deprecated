@@ -38,7 +38,7 @@ echo-git-status() {
 			echo " [+]"
 		elif ! git diff --quiet; then
 			echo " [!]"
-		elif [[ -n "$(git ls-files --others --exclude-standard)" ]]; then
+		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
 			echo " [?]"
 		fi
 	fi
@@ -52,7 +52,7 @@ else
 fi
 
 #  Colorize the host name Solarized red if the user is logged in via ssh; otehrwise, colorize the host name Solarized yellow
-if [[ "${SSH_TTY}" ]]; then
+if [[ -n "${SSH_TTY}" ]]; then
 	color_solarized_host_name="${color_solarized_bold_red}"
 else
 	color_solarized_host_name="${color_solarized_bold_yellow}"
