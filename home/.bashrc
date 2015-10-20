@@ -40,8 +40,8 @@ if [[ -f "$HOME/.bash/colors" ]]; then
 fi
 
 #  Include ~/.bash/colors_solarized if it exists
-if [[ -f "$HOME/.bash/colors_solarized" ]]; then
-	source "$HOME/.bash/colors_solarized"
+if [[ -f "$HOME/.bash/colors-solarized" ]]; then
+	source "$HOME/.bash/colors-solarized"
 fi
 
 #  Include ~/.bash/prompt if it exists
