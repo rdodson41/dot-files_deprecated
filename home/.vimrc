@@ -36,4 +36,5 @@ syntax enable
 set background=dark
 
 "  Set color scheme to Solarized
+set t_Co=16
 colorscheme solarized
