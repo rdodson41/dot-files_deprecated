@@ -27,10 +27,21 @@
 #  Set kernal name
 kernal_name="$(uname)"
 
+#  Alias commands to their respective GNU versions if the system is OS X and the GNU versions exist
+if [[ "${kernal_name}" == "Darwin" ]]; then
+	if which gls > /dev/null; then
+		alias ls="command gls"
+	fi
+	if which gdircolors > /dev/null; then
+		alias dircolors="command gdircolors"
+	fi
+fi
+		
 #  Alias cd to enable faster navigation
 alias -- ~="cd ~"
 alias -- -="cd -" 
 alias -- ..="cd .."
+
 
 #  Alias ls to:
 #    -F, --classify               indicate file type
