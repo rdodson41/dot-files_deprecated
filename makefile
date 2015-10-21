@@ -51,7 +51,6 @@ colors_solarized = $(colors)/solarized.vim
 .PHONY: help usage
 help usage:
 	@echo "make: usage: make [ help | pull | install | uninstall | update ]" >&2
-	@echo "$(SHELL)"
 
 #  Pull repository
 .PHONY: pull
