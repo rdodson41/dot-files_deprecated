@@ -50,7 +50,12 @@ colors_solarized = $(colors)/solarized.vim
 #  Log usage
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | pull | install | uninstall | update ]" >&2
+	@echo "make: usage: make [ help | push | pull | install | uninstall | update ]" >&2
+
+#  Push repository
+.PHONY: push
+push:
+	@git push --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
 
 #  Pull repository
 .PHONY: pull
