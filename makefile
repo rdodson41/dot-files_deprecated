@@ -62,12 +62,12 @@ pull:
 install: $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 $(root_home)/%: $(root_pwd)$(home)/%
-	@echo "make: ln: $< -> $@" >&2
+	@echo "make: ln: $@ -> $<" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
 	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
-	@echo "make: ln: $< -> $@" >&2
+	@echo "make: ln: $@ -> $<" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
 	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
