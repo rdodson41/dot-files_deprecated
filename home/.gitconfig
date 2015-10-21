@@ -45,3 +45,6 @@
 
 [core]
 	editor    = vi
+
+[push]
+	default = simple
