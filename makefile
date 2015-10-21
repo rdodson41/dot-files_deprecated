@@ -24,7 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set shell
+#  Set shell to bash
 SHELL = bash -o pipefail
 
 #  Set absolute file paths
