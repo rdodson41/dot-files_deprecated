@@ -67,12 +67,12 @@ install-header:
 	@echo "make: Install repository..." >&2
 
 $(root_home)/%: $(root_pwd)$(home)/%
-	@echo "make: Create symbolic link: $? to $@" >&2
+	@echo "make: ln: $? to $@" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
 	@ln -s "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
-	@echo "make: Create symbolic link: $? to $@" >&2
+	@echo "make: ln: $? to $@" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
 	@ln -s "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
@@ -85,7 +85,7 @@ uninstall-header:
 	@echo "make: Uninstall repository..." >&2
 
 uninstall-$(root_home)/%:
-	@echo "make: Remove: $(root_home)/$*"
+	@echo "make: rm: $(root_home)/$*"
 	@rm -f "$(root_home)/$*" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Update repository
