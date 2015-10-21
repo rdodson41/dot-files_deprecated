@@ -55,35 +55,38 @@ help usage:
 #  Pull repository
 .PHONY: pull
 pull:
-	@echo "make: Pull repository" >&2
+	@echo "make: Pull repository..." >&2
 	@git pull --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
 
 #  Install repository
 .PHONY: install
-install: install-header $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+install: $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized) | install-header
 
 .PHONY: install-header
 install-header:
-	@echo "make: Install repository" >&2
+	@echo "make: Install repository..." >&2
 
 $(root_home)/%: $(root_pwd)$(home)/%
-	@mkdir -p $(@D) 2>&1 | sed -e "s/^/make: /" >&2
 	@echo "make: Create symbolic link: $? to $@" >&2
-	@ln -s $? $@ 2>&1 | sed -e "s/^/make: /" >&2
+	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
+	@ln -s "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
-	@mkdir -p $(@D)
 	@echo "make: Create symbolic link: $? to $@" >&2
-	@ln -s $? $@
+	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
+	@ln -s "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Uninstall repository
-.PHONY: uninstall
-uninstall: uinstall-header
-	@rm -f $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+.PHONY:
+uninstall: $(patsubst $(root_pwd)$(home)/%,uninstall-$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized) | uninstall-header
 
 .PHONY: uninstall-header
 uninstall-header:
-	@echo "make: Uninstall repository" >&2
+	@echo "make: Uninstall repository..." >&2
+
+uninstall-$(root_home)/%:
+	@echo "make: Remove: $(root_home)/$*"
+	@rm -f "$(root_home)/$*" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Update repository
 .PHONY: update
