@@ -24,6 +24,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set shell
+SHELL = bash -o pipefail
+
 #  Set absolute file paths
 root = 
 root_home = $(HOME)
@@ -47,30 +50,35 @@ colors_solarized = $(colors)/solarized.vim
 #  Log usage
 .PHONY: help usage
 help usage:
-	@>&2 echo "make: usage: make [ help | pull | install | uninstall | update ]"
+	@echo "make: usage: make [ help | pull | install | uninstall | update ]" >&2
 
 #  Pull repository
 .PHONY: pull
 pull:
-	@git pull --verbose
+	@git pull --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
 
 #  Install repository
 .PHONY: install
-install: pull $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+install: $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 $(root_home)/%: $(root_pwd)$(home)/%
-	@mkdir -p $(@D)
-	@ln -s $? $@
+	@echo "make: ln: $< -> $@" >&2
+	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
+	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
-	@mkdir -p $(@D)
-	@ln -s $? $@
+	@echo "make: ln: $< -> $@" >&2
+	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
+	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Uninstall repository
 .PHONY: uninstall
-uninstall:
-	@rm -f $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+uninstall: $(patsubst $(root_pwd)$(home)/%,uninstall-$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) uninstall-$(root_home_vim)$(colors_solarized) 
+
+uninstall-$(root_home)/%:
+	@echo "make: rm: $(root_home)/$*" >&2
+	@rm -f "$(root_home)/$*" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Update repository
 .PHONY: update
-update: uninstall install
+update: uninstall pull install
