@@ -29,7 +29,6 @@
 	b         = branch --verbose --verbose
 	ba        = branch --verbose --verbose --all
 	br        = branch --verbose --verbose --remotes
-	bd        = branch --verbose --verbose --delete
 	ch        = checkout
 	chb       = checkout -b
 	d         = diff
