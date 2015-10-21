@@ -60,7 +60,11 @@ pull:
 
 #  Install repository
 .PHONY: install
-install: $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+install: install-header $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+
+.PHONY: install-header
+install-header:
+	@echo "make: Install repository" >&2
 
 $(root_home)/%: $(root_pwd)$(home)/%
 	@mkdir -p $(@D) 2>&1 | sed -e "s/^/make: /" >&2
@@ -74,8 +78,12 @@ $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
 
 #  Uninstall repository
 .PHONY: uninstall
-uninstall:
+uninstall: uinstall-header
 	@rm -f $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
+
+.PHONY: uninstall-header
+uninstall-header:
+	@echo "make: Uninstall repository" >&2
 
 #  Update repository
 .PHONY: update
