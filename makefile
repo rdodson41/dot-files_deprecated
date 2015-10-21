@@ -55,37 +55,28 @@ help usage:
 #  Pull repository
 .PHONY: pull
 pull:
-	@echo "make: Pull repository..." >&2
 	@git pull --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
 
 #  Install repository
 .PHONY: install
-install: install-header $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
-
-.PHONY: install-header
-install-header:
-	@echo "make: Install repository..." >&2
+install: $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 $(root_home)/%: $(root_pwd)$(home)/%
-	@echo "make: ln: $? to $@" >&2
+	@echo "make: ln: $< -> $@" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
-	@ln -s "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
+	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
-	@echo "make: ln: $? to $@" >&2
+	@echo "make: ln: $< -> $@" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
-	@ln -s "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
+	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Uninstall repository
-.PHONY:
-uninstall: uninstall-header $(patsubst $(root_pwd)$(home)/%,uninstall-$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized) 
-
-.PHONY: uninstall-header
-uninstall-header:
-	@echo "make: Uninstall repository..." >&2
+.PHONY: uninstall
+uninstall: $(patsubst $(root_pwd)$(home)/%,uninstall-$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) uninstall-$(root_home_vim)$(colors_solarized) 
 
 uninstall-$(root_home)/%:
-	@echo "make: rm: $(root_home)/$*"
+	@echo "make: rm: $(root_home)/$*" >&2
 	@rm -f "$(root_home)/$*" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Update repository
