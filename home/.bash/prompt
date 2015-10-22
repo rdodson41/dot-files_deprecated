@@ -123,4 +123,10 @@ PS1="${PS1}\[${color_solarized_normal}\]:"
 PS1="${PS1}\[${color_solarized_bold_blue}\]\w"
 PS1="${PS1}\[\$(git-branch-color-echo)\]\$(git-branch-echo)"
 PS1="${PS1}\[\$(git-status-color-echo)\]\$(git-status-echo)"
-PS1="${PS1}\[${color_solarized_normal}\] \$ "
+
+#  Terminate the top-level command line prompt with # if the user is looged in as root; otherwise, terminate the top-level command line prompt with $
+if [[ "${USER}" == "root" ]]; then
+	PS1="${PS1}\[${color_solarized_normal}\] # "
+else
+	PS1="${PS1}\[${color_solarized_normal}\] \$ "
+fi
