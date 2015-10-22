@@ -24,6 +24,28 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+update-git-prompt() {
+	git_commit=
+	git_branch=
+	git_branch_upstream=
+	git_remote=
+	git_remote_head=
+	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
+		git_commit="$(git rev-parse --quiet --short HEAD)"
+		git_branch="$(git symbolic-ref --quiet --short HEAD)"
+		if [[ -n "${git_branch}" ]]; then
+			git_branch_upstream="$(git rev-parse --quiet --short --abbrev-ref ${git_branch}@{upstream})"
+		fi
+		if [[ -n "${git_branch}" ]]; then
+			git_remote="$(git config --local --get branch.${git_branch}.remote)"
+		fi
+		if [[ -n "${git_remote}" ]]; then
+			git_remote_head="$(git symbolic-ref --quiet --short refs/remotes/${git_remote}/HEAD)"
+		fi
+	fi
+}
+
+
 #  Echo git branch
 echo-git-branch() {
 	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
