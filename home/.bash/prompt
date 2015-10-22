@@ -50,7 +50,7 @@ git-branch-color-echo() {
 			echo -e "${color_solarized_bold_red}"
 			git-status-update
 			if [[ -n "${git_status}" ]]; then
-				echo -e "${color_solarized_bold_red}Warning:${color_solarized_normal} changes to default remote branch detected" >&2
+				echo -e "${color_solarized_bold_red}Warning:${color_solarized_normal} changes to default branch detected" >&2
 			fi
 		else
 			echo -e "${color_solarized_bold_green}"
