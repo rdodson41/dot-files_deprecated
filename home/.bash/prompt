@@ -24,7 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-update-git-prompt() {
+git-prompt-update() {
 	git_commit=
 	git_branch=
 	git_branch_upstream=
@@ -48,6 +48,38 @@ update-git-prompt() {
 		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
 			git_status="?"
 		fi
+	fi
+}
+
+git-branch-color-echo() {
+	if [[ -n "${git_branch}" ]]; then
+		if [[ -n "${git_branch_upstream}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
+			echo -e "${color_solarized_bold_red}"
+		else
+			echo -e "${color_solarized_bold_green}"
+		fi
+	else
+		echo -e "${color_solarized_normal}"
+	fi
+}
+
+git-branch-echo() {
+	if [[ -n "${git_branch}" ]]; then
+		echo " [${git_branch}]"
+	fi
+}
+
+git-status-color-echo() {
+	if [[ -n "${git_status}" ]]; then
+		echo -e "${color_solarized_bold_red}"
+	else
+		echo -e "${color_solarized_normal}"
+	fi
+}
+
+git-status-echo() {
+	if [[ -n "${git_status}" ]]; then
+		echo " [${git_status}]"
 	fi
 }
 
