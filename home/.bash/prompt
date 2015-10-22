@@ -34,7 +34,7 @@ git-branch-update() {
 		git_commit="$(git rev-parse --quiet --short HEAD)"
 		git_branch="$(git symbolic-ref --quiet --short HEAD)"
 		if [[ -n "${git_branch}" ]]; then
-			git_branch_upstream="$(git rev-parse --quiet --short --abbrev-ref ${git_branch}@{upstream})"
+			git_branch_upstream="$(git rev-parse --quiet --short --abbrev-ref ${git_branch}@{upstream} 2> /dev/null)"
 			git_remote="$(git config --local --get branch.${git_branch}.remote)"
 		fi
 		if [[ -n "${git_remote}" ]]; then
