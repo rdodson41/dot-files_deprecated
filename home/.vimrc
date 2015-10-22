@@ -32,9 +32,11 @@ set number
 "  Enable syntax colorization
 syntax enable
 
+"  Set number of terminal colors to 16
+set t_Co=16
+
 "  Set background to dark
 set background=dark
 
 "  Set color scheme to Solarized
-set t_Co=16
 colorscheme solarized

@@ -47,4 +47,4 @@
 	editor    = vi
 
 [push]
-	default = simple
+	default   = simple
