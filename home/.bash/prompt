@@ -49,7 +49,7 @@ git-branch-color-echo() {
 		if [[ -n "${git_branch_upstream}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
 			echo -e "${color_solarized_bold_red}"
 			if [[ -n "${git_status}" ]]; then
-				echo -e "\[${color_solarized_bold_red}\]Warning:\[${color_solarized_normal}\] changes to default remote branch detected" >&2
+				echo -e "${color_solarized_bold_red}Warning:${color_solarized_normal} changes to default remote branch detected" >&2
 			fi
 		else
 			echo -e "${color_solarized_bold_green}"
