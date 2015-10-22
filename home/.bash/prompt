@@ -92,27 +92,6 @@ git-status-echo() {
 	fi
 }
 
-
-#  Echo git branch
-echo-git-branch() {
-	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
-		echo " [$(git symbolic-ref --quiet --short HEAD || git rev-parse --quiet --short HEAD || echo "unknown")]"
-	fi
-}
-
-#  Echo git status
-echo-git-status() {
-	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
-		if ! git diff --quiet --staged; then
-			echo " [+]"
-		elif ! git diff --quiet; then
-			echo " [!]"
-		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
-			echo " [?]"
-		fi
-	fi
-}
-
 #  Colorize the user name Solarized red if the user is logged in as root; otherwise, colorize the user name Solarized yellow
 if [[ "${USER}" == "root" ]]; then
 	color_solarized_user_name="${color_solarized_bold_red}"
