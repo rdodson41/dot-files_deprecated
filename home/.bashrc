@@ -24,16 +24,6 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Include ~/.bash/aliases if it exists
-if [[ -f "$HOME/.bash/aliases" ]]; then
-	source "$HOME/.bash/aliases"
-fi
-
-#  Include ~/.bash/gpg-agent if it exists
-if [[ -f "$HOME/.bash/gpg-agent" ]]; then
-	source "$HOME/.bash/gpg-agent"
-fi
-
 #  Include ~/.bash/colors if it exists
 if [[ -f "$HOME/.bash/colors" ]]; then
 	source "$HOME/.bash/colors"
@@ -42,6 +32,16 @@ fi
 #  Include ~/.bash/colors-solarized if it exists
 if [[ -f "$HOME/.bash/colors-solarized" ]]; then
 	source "$HOME/.bash/colors-solarized"
+fi
+
+#  Include ~/.bash/aliases if it exists
+if [[ -f "$HOME/.bash/aliases" ]]; then
+	source "$HOME/.bash/aliases"
+fi
+
+#  Include ~/.bash/gpg-agent if it exists
+if [[ -f "$HOME/.bash/gpg-agent" ]]; then
+	source "$HOME/.bash/gpg-agent"
 fi
 
 #  Include ~/.bash/prompt if it exists

@@ -24,7 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set shell
+#  Set shell to bash
 SHELL = bash -o pipefail
 
 #  Set absolute file paths
@@ -50,7 +50,12 @@ colors_solarized = $(colors)/solarized.vim
 #  Log usage
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | pull | install | uninstall | update ]" >&2
+	@echo "make: usage: make [ help | push | pull | install | uninstall | update ]" >&2
+
+#  Push repository
+.PHONY: push
+push:
+	@git push --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
 
 #  Pull repository
 .PHONY: pull
@@ -62,12 +67,12 @@ pull:
 install: $(patsubst $(root_pwd)$(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d)) $(root_home_vim)$(colors_solarized)
 
 $(root_home)/%: $(root_pwd)$(home)/%
-	@echo "make: ln: $< -> $@" >&2
+	@echo "make: ln: $@ -> $<" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
 	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 $(root_home_vim)/%: $(root)$(usr_local)$(opt)$(solarized_vim_colors_solarized)/%
-	@echo "make: ln: $< -> $@" >&2
+	@echo "make: ln: $@ -> $<" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
 	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 

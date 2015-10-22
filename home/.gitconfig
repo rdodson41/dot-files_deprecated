@@ -29,6 +29,8 @@
 	b         = branch --verbose --verbose
 	ba        = branch --verbose --verbose --all
 	br        = branch --verbose --verbose --remotes
+	ch        = checkout
+	chb       = checkout -b
 	d         = diff
 	ds        = diff --staged
 	l         = log --graph --oneline -10
@@ -43,3 +45,6 @@
 
 [core]
 	editor    = vi
+
+[push]
+	default = simple

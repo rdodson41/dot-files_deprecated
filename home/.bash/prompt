@@ -24,23 +24,79 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Update git branch
+git-branch-update() {
+	git_branch=
+	git_branch_upstream=
+	git_remote=
+	git_remote_head=
+	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
+		git_branch="$(git symbolic-ref --quiet --short HEAD)"
+		if [[ -n "${git_branch}" ]]; then
+			git_branch_upstream="$(git rev-parse --quiet --short --abbrev-ref ${git_branch}@{upstream} 2> /dev/null)"
+			git_remote="$(git config --local --get branch.${git_branch}.remote)"
+		fi
+		if [[ -n "${git_remote}" ]]; then
+			git_remote_head="$(git symbolic-ref --quiet --short refs/remotes/${git_remote}/HEAD)"
+		fi
+	fi
+}
+
+#  Echo git branch color
+git-branch-color-echo() {
+	git-branch-update
+	if [[ -n "${git_branch}" ]]; then
+		if [[ -n "${git_branch_upstream}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
+			echo -e "${color_solarized_bold_red}"
+			git-status-update
+			if [[ -n "${git_status}" ]]; then
+				echo -e "${color_solarized_bold_red}Warning:${color_solarized_normal} changes to default branch detected" >&2
+			fi
+		else
+			echo -e "${color_solarized_bold_green}"
+		fi
+	else
+		echo -e "${color_solarized_normal}"
+	fi
+}
+
 #  Echo git branch
-echo-git-branch() {
-	if git rev-parse --is-inside-work-tree &> /dev/null; then
-		echo " [$(git symbolic-ref --quiet --short HEAD || git rev-parse --quiet --short HEAD || echo "unknown")]"
+git-branch-echo() {
+	git-branch-update
+	if [[ -n "${git_branch}" ]]; then
+		echo " [${git_branch}]"
+	fi
+}
+
+#  Update git status
+git-status-update() {
+	git_status=
+	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
+		if ! git diff --quiet --staged; then
+			git_status="+"
+		elif ! git diff --quiet; then
+			git_status="!"
+		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
+			git_status="?"
+		fi
+	fi
+}
+
+#  Echo git status color
+git-status-color-echo() {
+	git-status-update
+	if [[ -n "${git_status}" ]]; then
+		echo -e "${color_solarized_bold_red}"
+	else
+		echo -e "${color_solarized_normal}"
 	fi
 }
 
 #  Echo git status
-echo-git-status() {
-	if git rev-parse --is-inside-work-tree &> /dev/null; then
-		if ! git diff --quiet --staged; then
-			echo " [+]"
-		elif ! git diff --quiet; then
-			echo " [!]"
-		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
-			echo " [?]"
-		fi
+git-status-echo() {
+	git-status-update
+	if [[ -n "${git_status}" ]]; then
+		echo " [${git_status}]"
 	fi
 }
 
@@ -65,6 +121,6 @@ PS1="${PS1}\[${color_solarized_normal}\]@"
 PS1="${PS1}\[${color_solarized_host_name}\]\h"
 PS1="${PS1}\[${color_solarized_normal}\]:"
 PS1="${PS1}\[${color_solarized_bold_blue}\]\w"
-PS1="${PS1}\[${color_solarized_bold_green}\]\$(echo-git-branch)"
-PS1="${PS1}\[${color_solarized_bold_red}\]\$(echo-git-status)"
+PS1="${PS1}\[\$(git-branch-color-echo)\]\$(git-branch-echo)"
+PS1="${PS1}\[\$(git-status-color-echo)\]\$(git-status-echo)"
 PS1="${PS1}\[${color_solarized_normal}\] \$ "
