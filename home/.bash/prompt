@@ -116,6 +116,7 @@ fi
 
 #  Set the top-level command line prompt
 PS1=
+PS1="${PS1}\[${color_solarized_normal}\]"
 PS1="${PS1}\[${color_solarized_user_name}\]\u"
 PS1="${PS1}\[${color_solarized_normal}\]@"
 PS1="${PS1}\[${color_solarized_host_name}\]\h"
