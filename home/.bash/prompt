@@ -101,8 +101,7 @@ git-status-echo() {
 }
 
 #  Set the top-level command line prompt
-PS1=""
-PS1="${PS1}\[${color_normal}\]"
+PS1=
 
 #  Colorize user name bold red if the user is logged in as root; otherwise, colorize user name bold yellow
 if [[ "${USER}" == "root" ]]; then
