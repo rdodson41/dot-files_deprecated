@@ -75,9 +75,14 @@ alias rgrep="rgrep --color=auto"
 
 #  Alias git
 alias g="git"
+
+#  Alias git aliases
 for alias in $(git config --global --get-regexp "^alias[.]" | cut -d " " -f 1 | cut -d "." -f 2-); do
 	alias "g${alias}"="git ${alias}"
 done
+
+#  Alias gpg-agent to initialize as a daemon
+alias gpg-agent-daemon-shell="gpg-agent --daemon ${SHELL}"
 
 #  Alias exit
 alias x="exit"
