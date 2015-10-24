@@ -30,7 +30,7 @@ export GPG_TTY="$(tty)"
 #  Initialize gpg-agent if it is not already active
 gpg-agent() {
 	if [[ -z "${GPG_AGENT_INFO}" ]]; then
-		command gpg-agent --daemon "${SHELL}"
+		command gpg-agent "$@"
 	else
 		echo "gpg-agent: error: gpg-agent is already active" >&2
 		return 1
