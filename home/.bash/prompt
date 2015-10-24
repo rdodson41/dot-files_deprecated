@@ -47,16 +47,16 @@ git-branch-color-echo() {
 	git-branch-update
 	if [[ -n "${git_branch}" ]]; then
 		if [[ -n "${git_branch_upstream}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
-			echo -e "${color_solarized_bold_red}"
+			echo -e "${color_bold_red}"
 			git-status-update
 			if [[ -n "${git_status}" ]]; then
-				echo -e "${color_solarized_bold_red}Warning:${color_solarized_normal} changes to default branch detected" >&2
+				echo -e "${color_bold_red}Warning:${color_normal} changes to default branch detected" >&2
 			fi
 		else
-			echo -e "${color_solarized_bold_green}"
+			echo -e "${color_bold_green}"
 		fi
 	else
-		echo -e "${color_solarized_normal}"
+		echo -e "${color_normal}"
 	fi
 }
 
@@ -86,9 +86,9 @@ git-status-update() {
 git-status-color-echo() {
 	git-status-update
 	if [[ -n "${git_status}" ]]; then
-		echo -e "${color_solarized_bold_red}"
+		echo -e "${color_bold_red}"
 	else
-		echo -e "${color_solarized_normal}"
+		echo -e "${color_normal}"
 	fi
 }
 
@@ -100,27 +100,33 @@ git-status-echo() {
 	fi
 }
 
-#  Colorize the user name Solarized red if the user is logged in as root; otherwise, colorize the user name Solarized yellow
-if [[ "${USER}" == "root" ]]; then
-	color_solarized_user_name="${color_solarized_bold_red}"
-else
-	color_solarized_user_name="${color_solarized_bold_yellow}"
-fi
-
-#  Colorize the host name Solarized red if the user is logged in via ssh; otehrwise, colorize the host name Solarized yellow
-if [[ -n "${SSH_TTY}" ]]; then
-	color_solarized_host_name="${color_solarized_bold_red}"
-else
-	color_solarized_host_name="${color_solarized_bold_yellow}"
-fi
-
 #  Set the top-level command line prompt
 PS1=
-PS1="${PS1}\[${color_solarized_user_name}\]\u"
-PS1="${PS1}\[${color_solarized_normal}\]@"
-PS1="${PS1}\[${color_solarized_host_name}\]\h"
-PS1="${PS1}\[${color_solarized_normal}\]:"
-PS1="${PS1}\[${color_solarized_bold_blue}\]\w"
+
+#  Colorize user name bold red if the user is logged in as root; otherwise, colorize user name bold yellow
+if [[ "${USER}" == "root" ]]; then
+	PS1="${PS1}\[${color_bold_red}\]\u"
+else
+	PS1="${PS1}\[${color_bold_yellow}\]\u"
+fi
+
+PS1="${PS1}\[${color_normal}\]@"
+
+#  Colorize host name bold red if the user is logged in via ssh; otehrwise, colorize host name bold yellow
+if [[ -n "${SSH_TTY}" ]]; then
+	PS1="${PS1}\[${color_bold_red}\]\h"
+else
+	PS1="${PS1}\[${color_bold_yellow}\]\h"
+fi
+
+PS1="${PS1}\[${color_normal}\]:"
+PS1="${PS1}\[${color_bold_blue}\]\w"
 PS1="${PS1}\[\$(git-branch-color-echo)\]\$(git-branch-echo)"
 PS1="${PS1}\[\$(git-status-color-echo)\]\$(git-status-echo)"
-PS1="${PS1}\[${color_solarized_normal}\] \$ "
+
+#  Terminate the top-level command line prompt with # if the user is looged in as root; otherwise, terminate the top-level command line prompt with $
+if [[ "${USER}" == "root" ]]; then
+	PS1="${PS1}\[${color_normal}\] # "
+else
+	PS1="${PS1}\[${color_normal}\] \$ "
+fi

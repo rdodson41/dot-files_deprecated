@@ -29,8 +29,9 @@
 	b         = branch --verbose --verbose
 	ba        = branch --verbose --verbose --all
 	br        = branch --verbose --verbose --remotes
+	c         = commit --verbose
+	ca        = commit --verbose --all
 	ch        = checkout
-	chb       = checkout -b
 	d         = diff
 	ds        = diff --staged
 	l         = log --graph --oneline -10
@@ -38,6 +39,7 @@
 	ls        = log --graph --oneline -10
 	lm        = log --graph --oneline -20
 	ll		  = log --graph --oneline -40
+	m         = merge --verbose --no-ff
 	r         = remote --verbose
 	s         = status
 	ss        = status --short

@@ -62,7 +62,7 @@ color_normal_bright_cyan="${color_normal}${color_bright_cyan}"
 color_normal_bright_white="${color_normal}${color_bright_white}"
 
 #  Set colors - bold
-color_bold="\e[1m"
+color_bold="${color_normal}\e[1m"
 color_bold_black="${color_bold}${color_black}"
 color_bold_red="${color_bold}${color_red}"
 color_bold_green="${color_bold}${color_green}"

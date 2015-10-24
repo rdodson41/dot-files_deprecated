@@ -22,12 +22,27 @@
 "  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 "
 
-"  Set indentation options
+"  Set indentation
 set tabstop=4
 set shiftwidth=4
 
+"  Enable title
+set title
+
+"  Enable cursor line
+set cursorline
+
 "  Enable line numbers
 set number
+
+"  Enable incremental search
+set incsearch
+
+"  Highlight search matches
+set hlsearch
+
+"  Enable autocomplete menu
+set wildmenu
 
 "  Enable syntax colorization
 syntax enable
