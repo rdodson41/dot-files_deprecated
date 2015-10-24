@@ -29,11 +29,6 @@ if [[ -f "$HOME/.bash/colors" ]]; then
 	source "$HOME/.bash/colors"
 fi
 
-#  Include ~/.bash/colors-solarized if it exists
-if [[ -f "$HOME/.bash/colors-solarized" ]]; then
-	source "$HOME/.bash/colors-solarized"
-fi
-
 #  Include ~/.bash/aliases if it exists
 if [[ -f "$HOME/.bash/aliases" ]]; then
 	source "$HOME/.bash/aliases"
