@@ -26,6 +26,9 @@
 set tabstop=4
 set shiftwidth=4
 
+"  Enable title
+set title
+
 "  Enable cursor line
 set cursorline
 
