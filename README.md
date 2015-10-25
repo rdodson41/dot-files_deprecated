@@ -2,6 +2,10 @@
 
 **dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux. Specifically, **dot-files** includes customized bash, vim, git, and gpg configuration files.
 
+![Screenshot: dot-files][1]
+
+[1]: <http://i.imgur.com/zSdxaKv.png> "Screenshot: dot-files"
+
 ---
 ## Installation
 
