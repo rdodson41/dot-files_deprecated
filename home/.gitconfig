@@ -39,7 +39,7 @@
 	ls        = log --graph --oneline -10
 	lm        = log --graph --oneline -20
 	ll		  = log --graph --oneline -40
-	m         = merge --verbose --no-ff
+	m         = merge --verbose --log --no-ff
 	r         = remote --verbose
 	s         = status
 	ss        = status --short
