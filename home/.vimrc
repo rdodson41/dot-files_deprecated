@@ -58,3 +58,11 @@ set background=dark
 
 "  Set color scheme to Solarized
 colorscheme solarized
+
+"  Map j and k to move up and down visually
+nnoremap j gj
+nnoremap k gk
+
+"  Map up and down to move up and down visually
+nnoremap <up> g<up>
+nnoremap <down> g<down>
