@@ -25,29 +25,32 @@ Finally, navigate to the local repository, and use `make install` to install sym
 ---
 ## Credits
 
-  [@mathiasbynens][2] / [dotfiles][3]
-  [@cowboy][4] / [dotfiles][5]
+* [@mathiasbynens][2] / [dotfiles][3]
+* [@cowboy][4] / [dotfiles][5]
+* [@dougblack][6] / [dotfiles][7]
 
   [2]: <https://github.com/mathiasbynens> "Mathias Bynens"
   [3]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
   [4]: <https://github.com/cowboy> "Ben Alman"
   [5]: <https://github.com/cowboy/dotfiles> "dotfiles"
+  [6]: <https://github.com/dougblack> "Doug Black"
+  [7]: <https://github.com/dougblack/dotfiles> "dotfiles"
 
 ---
 ## License
 
-  [GNU General Public License, Version 3, 29 June 2007][1]
+  [GNU General Public License, Version 3, 29 June 2007][8]
 
-  [6]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+  [8]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 ---
-```
+``` text
 Name:     rdodson41/dot-files/README.md
 Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 Created:  Sat Oct 24 23:11:37 UTC 2015
 License:  GNU General Public License, Version 3, 29 June 2007
 ```
-```
+``` text
 Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
 
 This file is part of dot-files.
