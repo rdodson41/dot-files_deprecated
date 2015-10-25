@@ -26,6 +26,7 @@
 
 #  Echo git branch color
 git-branch-color() {
+	echo -e "${color_bold_green}"
 	local git_branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
 		local git_branch_upstream="$(git rev-parse --abbrev-ref "${git_branch}@{upstream}" 2> /dev/null)"
@@ -35,14 +36,8 @@ git-branch-color() {
 				local git_remote_head="$(git symbolic-ref --short "refs/remotes/${git_remote}/HEAD" 2> /dev/null)"
 				if [[ -n "${git_remote_head}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
 					echo -e "${color_bold_red}"
-				else
-					echo -e "${color_bold_green}"
 				fi
-			else
-				echo -e "${color_bold_green}"
 			fi
-		else
-			echo -e "${color_bold_green}"
 		fi
 	fi
 }
