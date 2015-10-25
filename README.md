@@ -6,7 +6,7 @@
 
   [1]: <http://i.imgur.com/zSdxaKv.png> "GNOME Terminal"
 
----
+
 ## Installation
 
 First, navigate to the directory in which you would like to install **dot-files**:
@@ -22,7 +22,7 @@ Finally, navigate to the local repository, and use `make install` to install sym
 	$ cd dot-files
     $ make install
 
----
+
 ## Credits
 
 * [@mathiasbynens][2] / [dotfiles][3]
@@ -36,20 +36,21 @@ Finally, navigate to the local repository, and use `make install` to install sym
   [6]: <https://github.com/dougblack> "Doug Black"
   [7]: <https://github.com/dougblack/dotfiles> "dotfiles"
 
----
+
 ## License
 
   [GNU General Public License, Version 3, 29 June 2007][8]
 
   [8]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
----
+
 ``` text
 Name:     rdodson41/dot-files/README.md
 Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 Created:  Sat Oct 24 23:11:37 UTC 2015
 License:  GNU General Public License, Version 3, 29 June 2007
 ```
+
 ``` text
 Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
 
