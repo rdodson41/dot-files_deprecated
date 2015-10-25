@@ -16,7 +16,7 @@ The quick brown fox jumps over the lazy dog.
 
 [GNU General Public License, Version 3, 29 June 2007][1]
 
-[1]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+[2]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 ---
 ```
