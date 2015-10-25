@@ -30,6 +30,16 @@ Use `make update` to pull changes to the local repository and update the configu
     $ make update
 
 
+## Uninstallation
+
+Navigate to the local repository:
+
+    $ cd /usr/local/opt/dot-files
+
+Use `make uninstall` to uninstall the configuration files from your home directory:
+
+    $ make uninstall
+
 
 ## Credits
 
