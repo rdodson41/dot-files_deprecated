@@ -25,38 +25,39 @@
 #
 
 #  Echo git branch color
-git-branch-color() {
-	echo -e "${color_bold_green}"
-	local git_branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
+echo-git-branch-color() {
+	local git_branch_color="${color_bold_green}"
+	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
-		local git_branch_upstream="$(git rev-parse --abbrev-ref "${git_branch}@{upstream}" 2> /dev/null)"
+		local git_branch_upstream="$(git rev-parse --quiet --abbrev-ref "${git_branch}@{upstream}" 2> /dev/null)"
 		if [[ -n "${git_branch_upstream}" ]]; then
 			local git_remote="$(git config --local --get "branch.${git_branch}.remote" 2> /dev/null)"
 			if [[ -n "${git_remote}" ]]; then
-				local git_remote_head="$(git symbolic-ref --short "refs/remotes/${git_remote}/HEAD" 2> /dev/null)"
+				local git_remote_head="$(git symbolic-ref --quiet --short "refs/remotes/${git_remote}/HEAD" 2> /dev/null)"
 				if [[ -n "${git_remote_head}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
-					echo -e "${color_bold_red}"
+					git_branch_color="${color_bold_red}"
 				fi
 			fi
 		fi
 	fi
+	echo -e "${git_branch_color}"
 }
 
 #  Echo git branch
-git-branch() {
-	local git_branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
+echo-git-branch() {
+	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
 		echo " [${git_branch}]"
 	fi
 }
 
 #  Echo git status color
-git-status-color() {
+echo-git-status-color() {
 	echo -e "${color_bold_red}"
 }
 
 #  Echo git status
-git-status() {
+echo-git-status() {
 	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "$?")" = 1 ]]; then
 		echo " [+]"
 	elif [[ "$(git diff --quiet 2> /dev/null; echo "$?")" = 1 ]]; then
@@ -87,8 +88,8 @@ fi
 
 PS1="${PS1}\[${color_normal}\]:"
 PS1="${PS1}\[${color_bold_blue}\]\w"
-PS1="${PS1}\[\$(git-branch-color)\]\$(git-branch)"
-PS1="${PS1}\[\$(git-status-color)\]\$(git-status)"
+PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
+PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
 
 #  Terminate the top-level command line prompt with # if the user is looged in as root; otherwise, terminate the top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
