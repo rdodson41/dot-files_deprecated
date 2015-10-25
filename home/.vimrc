@@ -26,6 +26,9 @@
 set tabstop=4
 set shiftwidth=4
 
+"  Set scroll offset
+set scrolloff=8
+
 "  Enable title
 set title
 
