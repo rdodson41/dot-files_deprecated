@@ -44,7 +44,7 @@ set incsearch
 "  Highlight search matches
 set hlsearch
 
-"  Enable autocomplete menu
+"  Enable automatic completion menu
 set wildmenu
 
 "  Enable syntax colorization
