@@ -1,7 +1,8 @@
----
 # dot-files
 
-The quick brown fox jumps over the lazy dog.
+**dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux.
+
+**dot-files** includes configuration files for bash, vim, git, and gpg.
 
 ---
 ## Installation
