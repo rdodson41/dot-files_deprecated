@@ -1,5 +1,5 @@
 "
-"  Name:     rdodson41/dot-files/vim/.vimrc
+"  Name:     rdodson41/dot-files/home/.vimrc
 "  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
 "  Created:  Mon Sep 21 18:22:22 UTC 2015
 "  License:  GNU General Public License, Version 3, 29 June 2007
@@ -26,6 +26,9 @@
 set tabstop=4
 set shiftwidth=4
 
+"  Set scroll offset
+set scrolloff=8
+
 "  Enable title
 set title
 
@@ -41,7 +44,7 @@ set incsearch
 "  Highlight search matches
 set hlsearch
 
-"  Enable autocomplete menu
+"  Enable automatic completion menu
 set wildmenu
 
 "  Enable syntax colorization
@@ -55,3 +58,11 @@ set background=dark
 
 "  Set color scheme to Solarized
 colorscheme solarized
+
+"  Map j and k to move up and down visually
+nnoremap j gj
+nnoremap k gk
+
+"  Map up and down to move up and down visually
+nnoremap <up> g<up>
+nnoremap <down> g<down>

@@ -103,7 +103,7 @@ git-status-echo() {
 #  Set the top-level command line prompt
 PS1=
 
-#  Colorize user name bold red if the user is logged in as root; otherwise, colorize user name bold yellow
+#  Colorize the user name bold red if the user is logged in as root; otherwise, colorize the user name bold yellow
 if [[ "${USER}" == "root" ]]; then
 	PS1="${PS1}\[${color_bold_red}\]\u"
 else
@@ -112,7 +112,7 @@ fi
 
 PS1="${PS1}\[${color_normal}\]@"
 
-#  Colorize host name bold red if the user is logged in via ssh; otehrwise, colorize host name bold yellow
+#  Colorize the host name bold red if the user is logged in via ssh; otherwise, colorize the host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
 	PS1="${PS1}\[${color_bold_red}\]\h"
 else

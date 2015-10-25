@@ -44,6 +44,12 @@ if [[ -f "$HOME/.bash/prompt" ]]; then
 	source "$HOME/.bash/prompt"
 fi
 
+#  Enable implicit cd
+shopt -s autocd &> /dev/null
+
+#  Enable recursive file name expansion
+shopt -s globstar &> /dev/null
+
 #  Set directory colors to Solarized Dark if dircolors exists
 if dircolors --version &> /dev/null; then
 	eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
