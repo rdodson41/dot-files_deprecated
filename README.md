@@ -1,22 +1,38 @@
 # dot-files
 
-**dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux. Specifically, **dot-files** includes customized bash, vim, git, and gpg configuration files.
+**dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux. Specifically, **dot-files** includes bash, vim, git, and gpg configuration files.
 
-![Screenshot: dot-files][1]
+ ![GNOME Terminal][1]
 
-[1]: <http://i.imgur.com/zSdxaKv.png> "Screenshot: dot-files"
+  [1]: <http://i.imgur.com/zSdxaKv.png> "GNOME Terminal"
 
 ---
 ## Installation
 
-The quick brown fox jumps over the lazy dog.
+First, navigate to the directory in which you would like to install **dot-files**:
+
+    $ cd /usr/local/opt
+
+Next, clone this repository:
+
+    $ git clone https://github.com/rdodson41/dot-files.git
+
+Navigate to the local repository:
+
+	$ cd dot-files
+
+Finally, use `make install` to install the collection of configuration files to your home directory:
+
+    $ make install
+
+**dot-files** is now installed.
 
 ---
 ## License
 
-[GNU General Public License, Version 3, 29 June 2007][1]
+  [GNU General Public License, Version 3, 29 June 2007][1]
 
-[2]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+  [2]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 ---
 ```
