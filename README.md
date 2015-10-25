@@ -17,22 +17,28 @@ Next, clone this repository:
 
     $ git clone https://github.com/rdodson41/dot-files.git
 
-Navigate to the local repository:
+Finally, navigate to the local repository, and use `make install` to install symbolic links to the configuration files into your home directory:
 
 	$ cd dot-files
-
-Finally, use `make install` to install the collection of configuration files to your home directory:
-
     $ make install
 
-**dot-files** is now installed.
+---
+## Credits
+
+  [@mathiasbynens][2] / [dotfiles][3]
+  [@cowboy][4] / [dotfiles][5]
+
+  [2]: <https://github.com/mathiasbynens> "Mathias Bynens"
+  [3]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
+  [4]: <https://github.com/cowboy> "Ben Alman"
+  [5]: <https://github.com/cowboy/dotfiles> "dotfiles"
 
 ---
 ## License
 
   [GNU General Public License, Version 3, 29 June 2007][1]
 
-  [2]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+  [6]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 ---
 ```
