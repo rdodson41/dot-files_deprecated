@@ -24,79 +24,50 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Update git branch
-git-branch-update() {
-	git_branch=
-	git_branch_upstream=
-	git_remote=
-	git_remote_head=
-	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
-		git_branch="$(git symbolic-ref --quiet --short HEAD)"
-		if [[ -n "${git_branch}" ]]; then
-			git_branch_upstream="$(git rev-parse --quiet --short --abbrev-ref ${git_branch}@{upstream} 2> /dev/null)"
-			git_remote="$(git config --local --get branch.${git_branch}.remote)"
-		fi
-		if [[ -n "${git_remote}" ]]; then
-			git_remote_head="$(git symbolic-ref --quiet --short refs/remotes/${git_remote}/HEAD)"
-		fi
-	fi
-}
-
 #  Echo git branch color
-git-branch-color-echo() {
-	git-branch-update
+git-branch-color() {
+	local git_branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
-		if [[ -n "${git_branch_upstream}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
-			echo -e "${color_bold_red}"
-			git-status-update
-			if [[ -n "${git_status}" ]]; then
-				echo -e "${color_bold_red}Warning:${color_normal} changes to default branch detected" >&2
+		local git_branch_upstream="$(git rev-parse --abbrev-ref "${git_branch}@{upstream}" 2> /dev/null)"
+		if [[ -n "${git_branch_upstream}" ]]; then
+			local git_remote="$(git config --local --get "branch.${git_branch}.remote" 2> /dev/null)"
+			if [[ -n "${git_remote}" ]]; then
+				local git_remote_head="$(git symbolic-ref --short "refs/remotes/${git_remote}/HEAD" 2> /dev/null)"
+				if [[ -n "${git_remote_head}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
+					echo -e "${color_bold_red}"
+				else
+					echo -e "${color_bold_green}"
+				fi
+			else
+				echo -e "${color_bold_green}"
 			fi
 		else
 			echo -e "${color_bold_green}"
 		fi
-	else
-		echo -e "${color_normal}"
 	fi
 }
 
 #  Echo git branch
-git-branch-echo() {
-	git-branch-update
+git-branch() {
+	local git_branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
 		echo " [${git_branch}]"
 	fi
 }
 
-#  Update git status
-git-status-update() {
-	git_status=
-	if [[ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" == "true" ]]; then
-		if ! git diff --quiet --staged; then
-			git_status="+"
-		elif ! git diff --quiet; then
-			git_status="!"
-		elif [[ -n "$(git ls-files --exclude-standard --others)" ]]; then
-			git_status="?"
-		fi
-	fi
-}
-
 #  Echo git status color
-git-status-color-echo() {
-	git-status-update
-	if [[ -n "${git_status}" ]]; then
-		echo -e "${color_bold_red}"
-	else
-		echo -e "${color_normal}"
-	fi
+git-status-color() {
+	echo -e "${color_bold_red}"
 }
 
 #  Echo git status
-git-status-echo() {
-	git-status-update
-	if [[ -n "${git_status}" ]]; then
-		echo " [${git_status}]"
+git-status() {
+	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "$?")" = 1 ]]; then
+		echo " [+]"
+	elif [[ "$(git diff --quiet 2> /dev/null; echo "$?")" = 1 ]]; then
+		echo " [!]"
+	elif [[ -n "$(git ls-files --exclude-standard --others 2> /dev/null)" ]]; then
+		echo " [?]"
 	fi
 }
 
@@ -121,8 +92,8 @@ fi
 
 PS1="${PS1}\[${color_normal}\]:"
 PS1="${PS1}\[${color_bold_blue}\]\w"
-PS1="${PS1}\[\$(git-branch-color-echo)\]\$(git-branch-echo)"
-PS1="${PS1}\[\$(git-status-color-echo)\]\$(git-status-echo)"
+PS1="${PS1}\[\$(git-branch-color)\]\$(git-branch)"
+PS1="${PS1}\[\$(git-status-color)\]\$(git-status)"
 
 #  Terminate the top-level command line prompt with # if the user is looged in as root; otherwise, terminate the top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
