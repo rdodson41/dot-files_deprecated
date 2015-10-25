@@ -9,18 +9,26 @@
 
 ## Installation
 
-First, navigate to the directory in which you would like to install **dot-files**:
+Navigate to the directory in which you would like to clone this repository:
 
     $ cd /usr/local/opt
 
-Next, clone this repository:
+Clone this repository:
 
     $ git clone https://github.com/rdodson41/dot-files.git
 
-Finally, navigate to the local repository, and use `make install` to install the configuration files to your home directory:
+Navigate to the local repository:
 
 	$ cd dot-files
+
+Use `make install` to install the configuration files to your home directory:
+
     $ make install
+
+Use `make update` to pull changes to the local repository and update the configuration files in your home directory:
+
+    $ make update
+
 
 
 ## Credits
