@@ -17,7 +17,7 @@ Next, clone this repository:
 
     $ git clone https://github.com/rdodson41/dot-files.git
 
-Finally, navigate to the local repository, and use `make install` to install symbolic links to the configuration files into your home directory:
+Finally, navigate to the local repository, and use `make install` to install the configuration files to your home directory:
 
 	$ cd dot-files
     $ make install
