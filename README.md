@@ -62,7 +62,7 @@ Use `make uninstall` to uninstall the configuration files from your home directo
   [8]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 
-##
+## Copyright
 
 ``` text
 Name:     rdodson41/dot-files/README.md
