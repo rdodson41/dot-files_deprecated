@@ -41,7 +41,7 @@ usr_local = $(usr)/local
 #  Log usage
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | pull | push | install | uninstall | update ]" >&2
+	@echo "make: usage: make [ help | pull | push | install | uninstall | reinstall | update ]" >&2
 
 #  Pull repository
 .PHONY: pull
@@ -69,6 +69,10 @@ uninstall: $(patsubst $(root_pwd)$(home)/%,uninstall-$(root_home)/%,$(shell find
 uninstall-$(root_home)/%:
 	@echo "make: rm: $(root_home)/$*" >&2
 	@rm -f "$(root_home)/$*" 2>&1 | sed -e "s/^/make: /" >&2
+
+#  Reinstall repository
+.PHONY: reinstall
+reinstall: uninstall install
 
 #  Update repository
 .PHONY: update
