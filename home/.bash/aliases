@@ -25,7 +25,7 @@
 #
 
 #  Set kernal name
-kernal_name="$(uname)"
+KERNAL_NAME="$(uname)"
 
 #  Alias cd to enable faster navigation
 alias -- ~="cd ~"
