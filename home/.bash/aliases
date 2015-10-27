@@ -35,7 +35,7 @@ alias -- ..="cd .."
 #  Set ls
 ls="ls"
 
-#  Set ls and alias dircolors to the GNU versions of the commands if the operating system is OS X and the GNU versions of the commands exist
+#  Set ls and alias dircolors to the GNU versions of the commands if the kernal name is Darwin and the GNU versions of the commands exist
 if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 	if which gls &> /dev/null; then
 		ls="command gls"
