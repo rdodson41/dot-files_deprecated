@@ -25,7 +25,7 @@
 #
 
 #  Set kernal name
-kernal_name="$(uname)"
+export KERNAL_NAME="$(uname)"
 
 #  Alias cd to enable faster navigation
 alias -- ~="cd ~"
@@ -35,8 +35,8 @@ alias -- ..="cd .."
 #  Set ls
 ls="ls"
 
-#  Set ls and alias dircolors to the GNU versions of the commands if the operating system is OS X and the GNU versions of the commands exist
-if [[ "${kernal_name}" == "Darwin" ]]; then
+#  Set ls and alias dircolors to the GNU versions of the commands if the kernal name is Darwin and the GNU versions of the commands exist
+if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 	if which gls &> /dev/null; then
 		ls="command gls"
 	fi
@@ -56,6 +56,9 @@ if ${ls} --version &> /dev/null; then
 else
 	alias ls="${ls} -FGThl"
 fi
+
+#  Unset ls
+unset ls
 
 #  Alias ls to:
 #    -A, --almost-all             list all files with the exception of . and ..

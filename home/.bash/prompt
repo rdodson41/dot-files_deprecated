@@ -26,7 +26,7 @@
 
 #  Echo git branch color
 echo-git-branch-color() {
-	local git_branch_color="${color_bold_green}"
+	local git_branch_color="\e[0;1;38;5;2m"
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
 		local git_branch_upstream="$(git rev-parse --quiet --abbrev-ref "${git_branch}@{upstream}" 2> /dev/null)"
@@ -35,7 +35,7 @@ echo-git-branch-color() {
 			if [[ -n "${git_remote}" ]]; then
 				local git_remote_head="$(git symbolic-ref --quiet --short "refs/remotes/${git_remote}/HEAD" 2> /dev/null)"
 				if [[ -n "${git_remote_head}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
-					git_branch_color="${color_bold_red}"
+					git_branch_color="\e[0;1;38;5;1m"
 				fi
 			fi
 		fi
@@ -53,7 +53,7 @@ echo-git-branch() {
 
 #  Echo git status color
 echo-git-status-color() {
-	echo -e "${color_bold_red}"
+	echo -e "\e[0;1;38;5;1m"
 }
 
 #  Echo git status
@@ -72,28 +72,28 @@ PS1=
 
 #  Colorize the user name bold red if the user is logged in as root; otherwise, colorize the user name bold yellow
 if [[ "${USER}" == "root" ]]; then
-	PS1="${PS1}\[${color_bold_red}\]\u"
+	PS1="${PS1}\[\e[0;1;38;5;1m\]\u"
 else
-	PS1="${PS1}\[${color_bold_yellow}\]\u"
+	PS1="${PS1}\[\e[0;1;38;5;3m\]\u"
 fi
 
-PS1="${PS1}\[${color_normal}\]@"
+PS1="${PS1}\[\e[0m\]@"
 
 #  Colorize the host name bold red if the user is logged in via ssh; otherwise, colorize the host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
-	PS1="${PS1}\[${color_bold_red}\]\h"
+	PS1="${PS1}\[\e[0;1;38;5;1m\]\h"
 else
-	PS1="${PS1}\[${color_bold_yellow}\]\h"
+	PS1="${PS1}\[\e[0;1;38;5;3m\]\h"
 fi
 
-PS1="${PS1}\[${color_normal}\]:"
-PS1="${PS1}\[${color_bold_blue}\]\w"
+PS1="${PS1}\[\e[0m\]:"
+PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
 PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
 PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
 
-#  Terminate the top-level command line prompt with # if the user is looged in as root; otherwise, terminate the top-level command line prompt with $
+#  Terminate the top-level command line prompt with # if the user is logged in as root; otherwise, terminate the top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
-	PS1="${PS1}\[${color_normal}\] # "
+	PS1="${PS1}\[\e[0m\] # "
 else
-	PS1="${PS1}\[${color_normal}\] \$ "
+	PS1="${PS1}\[\e[0m\] \$ "
 fi

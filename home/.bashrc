@@ -24,19 +24,12 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Include ~/.bash/colors if it exists
-if [[ -f "$HOME/.bash/colors" ]]; then
-	source "$HOME/.bash/colors"
-fi
+#  Set gpg tty
+export GPG_TTY="$(tty)"
 
 #  Include ~/.bash/aliases if it exists
 if [[ -f "$HOME/.bash/aliases" ]]; then
 	source "$HOME/.bash/aliases"
-fi
-
-#  Include ~/.bash/gpg-agent if it exists
-if [[ -f "$HOME/.bash/gpg-agent" ]]; then
-	source "$HOME/.bash/gpg-agent"
 fi
 
 #  Include ~/.bash/prompt if it exists
@@ -50,7 +43,9 @@ shopt -s autocd &> /dev/null
 #  Enable recursive file name expansion
 shopt -s globstar &> /dev/null
 
-#  Set directory colors to Solarized Dark if dircolors exists
+#  Set directory colors to Solarized Dark if dircolors exists and ~/.dircolors/solarized/dark exists
 if dircolors --version &> /dev/null; then
-	eval "$(dircolors "/usr/local/opt/dircolors-solarized/dircolors.ansi-dark")"
+	if [[ -f "$HOME/.dircolors/solarized/dark" ]]; then
+		eval "$(dircolors "$HOME/.dircolors/solarized/dark")"
+	fi
 fi
