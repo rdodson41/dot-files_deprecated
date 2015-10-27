@@ -29,11 +29,6 @@ if [[ -f "$HOME/.bash/aliases" ]]; then
 	source "$HOME/.bash/aliases"
 fi
 
-#  Include ~/.bash/gpg-agent if it exists
-if [[ -f "$HOME/.bash/gpg-agent" ]]; then
-	source "$HOME/.bash/gpg-agent"
-fi
-
 #  Include ~/.bash/prompt if it exists
 if [[ -f "$HOME/.bash/prompt" ]]; then
 	source "$HOME/.bash/prompt"
