@@ -24,19 +24,11 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set kernal name
-export KERNAL_NAME="$(uname)"
-
-#  Alias cd to enable faster navigation
-alias -- ~="cd ~"
-alias -- -="cd -"
-alias -- ..="cd .."
-
 #  Set ls
 ls="ls"
 
 #  Set ls and alias dircolors to the GNU versions of the commands if the kernal name is Darwin and the GNU versions of the commands exist
-if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
+if [[ "$(uname)" == "Darwin" ]]; then
 	if which gls &> /dev/null; then
 		ls="command gls"
 	fi
@@ -44,6 +36,11 @@ if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 		alias dircolors="command gdircolors"
 	fi
 fi
+
+#  Alias cd to enable faster navigation
+alias -- ~="cd ~"
+alias -- -="cd -"
+alias -- ..="cd .."
 
 #  Alias ls to:
 #    -F, --classify               indicate file type
@@ -56,9 +53,6 @@ if ${ls} --version &> /dev/null; then
 else
 	alias ls="${ls} -FGThl"
 fi
-
-#  Unset ls
-unset ls
 
 #  Alias ls to:
 #    -A, --almost-all             list all files with the exception of . and ..
@@ -94,3 +88,6 @@ alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 
 #  Alias exit
 alias x="exit"
+
+#  Unset ls
+unset ls
