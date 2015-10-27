@@ -24,11 +24,6 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Alias cd to enable faster navigation
-alias -- ~="cd ~"
-alias -- -="cd -"
-alias -- ..="cd .."
-
 #  Set ls
 ls="ls"
 
@@ -42,6 +37,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	fi
 fi
 
+#  Alias cd to enable faster navigation
+alias -- ~="cd ~"
+alias -- -="cd -"
+alias -- ..="cd .."
+
 #  Alias ls to:
 #    -F, --classify               indicate file type
 #    -G, --color=auto             colorize output if standard output is connected to a terminal
@@ -53,9 +53,6 @@ if ${ls} --version &> /dev/null; then
 else
 	alias ls="${ls} -FGThl"
 fi
-
-#  Unset ls
-unset ls
 
 #  Alias ls to:
 #    -A, --almost-all             list all files with the exception of . and ..
@@ -91,3 +88,6 @@ alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 
 #  Alias exit
 alias x="exit"
+
+#  Unset ls
+unset ls
