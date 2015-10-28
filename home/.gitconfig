@@ -32,6 +32,7 @@
 	c          = commit --verbose
 	ca         = commit --verbose --all
 	ch         = checkout
+	cl         = clone --verbose
 	d          = diff
 	ds         = diff --staged
 	l          = log --graph --oneline -10
