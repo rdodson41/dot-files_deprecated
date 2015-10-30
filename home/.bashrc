@@ -37,9 +37,6 @@ if [[ -f "$HOME/.bash/prompt" ]]; then
 	source "$HOME/.bash/prompt"
 fi
 
-#  Enable implicit cd
-shopt -s autocd &> /dev/null
-
 #  Enable recursive file name expansion
 shopt -s globstar &> /dev/null
 
