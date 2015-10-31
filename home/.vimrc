@@ -38,6 +38,9 @@ set cursorline
 "  Enable line numbers
 set number
 
+"  Enable ruler
+set ruler
+
 "  Enable incremental search
 set incsearch
 
