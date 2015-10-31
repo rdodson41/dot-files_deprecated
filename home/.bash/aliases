@@ -89,5 +89,6 @@ alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 #  Alias exit
 alias x="exit"
 
-#  Unset ls
+#  Unset ls and alias
 unset ls
+unset alias
