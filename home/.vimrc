@@ -38,9 +38,6 @@ set cursorline
 "  Enable line numbers
 set number
 
-"  Show command
-set showcmd
-
 "  Enable ruler
 set ruler
 
