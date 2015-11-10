@@ -24,6 +24,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set path
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+
 #  Set gpg tty
 export GPG_TTY="$(tty)"
 
