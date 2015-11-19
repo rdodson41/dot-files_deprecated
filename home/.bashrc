@@ -27,6 +27,9 @@
 #  Set path
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
+#  Set number of terminal colors
+export TERM_COLORS=256
+
 #  Set gpg tty
 export GPG_TTY="$(tty)"
 
