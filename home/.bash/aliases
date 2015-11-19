@@ -24,19 +24,6 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set ls
-ls="ls"
-
-#  Set ls and alias dircolors to the GNU versions of the commands if the kernal name is Darwin and the GNU versions of the commands exist
-if [[ "$(uname)" == "Darwin" ]]; then
-	if which gls &> /dev/null; then
-		ls="command gls"
-	fi
-	if which gdircolors &> /dev/null; then
-		alias dircolors="command gdircolors"
-	fi
-fi
-
 #  Alias cd to enable faster navigation
 alias -- ~="cd ~"
 alias -- -="cd -"
@@ -48,10 +35,10 @@ alias -- ..="cd .."
 #    -T, --time-style=long-iso    list times in long-iso format
 #    -h, --human-readable         list sizes in human-readable format
 #    -l, --format=long            list files in long format
-if ${ls} --version &> /dev/null; then
-	alias ls="${ls} --classify --format=long --human-readable --time-style=long-iso --color=auto"
+if ls --version &> /dev/null; then
+	alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
 else
-	alias ls="${ls} -FGThl"
+	alias ls="ls -FGThl"
 fi
 
 #  Alias ls to:
