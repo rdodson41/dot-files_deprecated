@@ -29,6 +29,9 @@ set shiftwidth=4
 "  Set scroll offset
 set scrolloff=8
 
+"  Set backspace
+set backspace=2
+
 "  Enable title
 set title
 
