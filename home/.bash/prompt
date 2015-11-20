@@ -72,10 +72,10 @@ echo-git-status()
 	fi
 }
 
-#  Set the top-level command line prompt
+#  Set top-level command line prompt
 export PS1=
 
-#  Colorize the user name bold red if the user is logged in as root; otherwise, colorize the user name bold yellow
+#  Colorize user name bold red if user is logged in as root; otherwise, colorize user name bold yellow
 if [[ "${USER}" == "root" ]]; then
 	PS1="${PS1}\[$(term-put normal bold foreground=red 2> /dev/null)\]\u"
 else
@@ -84,7 +84,7 @@ fi
 
 PS1="${PS1}\[$(term-put normal bold 2> /dev/null)\]@"
 
-#  Colorize the host name bold red if the user is logged in via ssh; otherwise, colorize the host name bold yellow
+#  Colorize host name bold red if user is logged in via ssh; otherwise, colorize host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
 	PS1="${PS1}\[$(term-put normal bold foreground=red 2> /dev/null)\]\h"
 else
@@ -96,7 +96,7 @@ PS1="${PS1}\[$(term-put normal bold foreground=blue 2> /dev/null)\]\w"
 PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
 PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
 
-#  Terminate the top-level command line prompt with # if the user is logged in as root; otherwise, terminate the top-level command line prompt with $
+#  Terminate top-level command line prompt with # if user is logged in as root; otherwise, terminate top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
 	PS1="${PS1}\[$(term-put normal 2> /dev/null)\] # "
 else
