@@ -4,10 +4,7 @@
 
  ![OS X Termina][1]
 
- ![GNOME Terminal][2]
-
   [1]: <http://i.imgur.com/yUfmJYb.png> "OS X Terminal"
-  [2]: <http://i.imgur.com/OBefD1h.png> "GNOME Terminal"
 
 
 ## Installation
