@@ -7,7 +7,7 @@
  ![GNOME Terminal][2]
 
   [1]: <http://i.imgur.com/zSdxaKv.png> "OS X Terminal"
-  [2]: <http://i.imgur.com/zSdxaKv.png> "GNOME Terminal"
+  [2]: <http://i.imgur.com/OBefD1h.png> "GNOME Terminal"
 
 
 ## Installation
