@@ -29,21 +29,15 @@ SHELL = bash -o pipefail
 
 #  Set absolute directories
 root =
-root-home = $(HOME)
 
 #  Set build targets
 home = home
 home-all = $(shell find "$(home)" ! -type d)
 
 #  Set install targets
+root-home = $(HOME)
 root-home-all = $(patsubst $(home)/%,$(root-home)/%,$(home-all))
 install-all = $(root-home-all)
-
-#  Set default installation type
-installation-type = copy
-
-cp = cp
-cp-options = -f
 
 #  Print usage to standard error
 .PHONY: help usage
@@ -72,7 +66,7 @@ install: $(install-all)
 $(root-home)/%: $(home)/%
 	@echo "make: cp: $? -> $@" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
-	@cp $(cp-options) "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
+	@cp -f "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
 #  Uninstall targets
 .PHONY: uninstall
