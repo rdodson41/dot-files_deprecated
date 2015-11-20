@@ -27,6 +27,9 @@
 #  Set shell to bash
 SHELL = bash -o pipefail
 
+#  Set version to most recent git tag
+version = $(shell git describe)
+
 #  Set absolute directories
 root =
 
@@ -47,7 +50,7 @@ help usage:
 #  Print version to standard error
 .PHONY: version
 version:
-	@echo "make: version: $(shell git describe)" >&2
+	@echo "make: version: $(version)" >&2
 
 #  Pull repository
 .PHONY: pull
@@ -64,9 +67,8 @@ push:
 install: $(install-all)
 
 $(root-home)/%: $(home)/%
-	@echo "make: cp: $? -> $@" >&2
-	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
-	@cp -f "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
+	@echo "make: rsync: $(home) -> $(root-home)" >&2
+	@rsync --verbose --archive --human-readable "$(home)/" "$(root-home)" 2>&1 | sed -e "s/^/make: rsync: /" >&2
 
 #  Uninstall targets
 .PHONY: uninstall
