@@ -2,9 +2,12 @@
 
 **dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux. Specifically, **dot-files** includes bash, vim, git, and gpg configuration files.
 
- ![GNOME Terminal][1]
+ ![OS X Termina][1]
 
-  [1]: <http://i.imgur.com/zSdxaKv.png> "GNOME Terminal"
+ ![GNOME Terminal][2]
+
+  [1]: <http://i.imgur.com/zSdxaKv.png> "OS X Terminal"
+  [2]: <http://i.imgur.com/zSdxaKv.png> "GNOME Terminal"
 
 
 ## Installation
@@ -25,9 +28,9 @@ Use `make install` to install the configuration files to your home directory:
 
     $ make install
 
-Use `make update` to pull changes to the local repository and update the configuration files in your home directory:
+Use `make pull install` to update the local repository and install the updated configuration files to your home directory:
 
-    $ make update
+    $ make pull install
 
 
 ## Uninstallation
@@ -43,23 +46,23 @@ Use `make uninstall` to uninstall the configuration files from your home directo
 
 ## Credits
 
-* [@mathiasbynens][2] / [dotfiles][3]
-* [@cowboy][4] / [dotfiles][5]
-* [@dougblack][6] / [dotfiles][7]
+* [@mathiasbynens][3] / [dotfiles][4]
+* [@cowboy][5] / [dotfiles][6]
+* [@dougblack][7] / [dotfiles][8]
 
-  [2]: <https://github.com/mathiasbynens> "Mathias Bynens"
-  [3]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
-  [4]: <https://github.com/cowboy> "Ben Alman"
-  [5]: <https://github.com/cowboy/dotfiles> "dotfiles"
-  [6]: <https://github.com/dougblack> "Doug Black"
-  [7]: <https://github.com/dougblack/dotfiles> "dotfiles"
+  [3]: <https://github.com/mathiasbynens> "Mathias Bynens"
+  [4]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
+  [5]: <https://github.com/cowboy> "Ben Alman"
+  [6]: <https://github.com/cowboy/dotfiles> "dotfiles"
+  [7]: <https://github.com/dougblack> "Doug Black"
+  [8]: <https://github.com/dougblack/dotfiles> "dotfiles"
 
 
 ## License
 
-  [GNU General Public License, Version 3, 29 June 2007][8]
+  [GNU General Public License, Version 3, 29 June 2007][9]
 
-  [8]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+  [9]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 
 ## Copyright
