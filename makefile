@@ -47,7 +47,7 @@ help usage:
 #  Print version to standard error
 .PHONY: version
 version:
-	@echo "make: version: $(shell git describe)"
+	@echo "make: version: $(shell git describe)" >&2
 
 #  Pull repository
 .PHONY: pull
