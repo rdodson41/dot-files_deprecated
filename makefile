@@ -31,23 +31,29 @@ SHELL = bash -o pipefail
 root =
 root-home = $(HOME)
 
-#  Set relative directories
+#  Set build targets
 home = home
-opt = opt
-usr = usr
-usr-local = $(usr)/local
+home-all = $(shell find "$(home)" ! -type d)
 
 #  Set install targets
-install = $(root-home)
-install-all = $(patsubst $(home)/%,$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d))
+root-home-all = $(patsubst $(home)/%,$(root-home)/%,$(home-all))
+install-all = $(root-home-all)
 
 #  Set default installation type
 installation-type = copy
 
-#  Print usage
+cp = cp
+cp-options = -f
+
+#  Print usage to standard error
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | pull | push | install | uninstall ]" >&2
+	@echo "make: usage: make [ help | version | pull | push | install | uninstall ]" >&2
+
+#  Print version to standard error
+.PHONY: version
+version:
+	@echo "make: version: $(shell git describe)"
 
 #  Pull repository
 .PHONY: pull
@@ -61,25 +67,15 @@ push:
 
 #  Install targets
 .PHONY: install
-install:
+install: $(install-all)
 
-$(root_home)/%: $(root_pwd)$(home)/%
-	@echo "make: ln: $@ -> $<" >&2
+$(root-home)/%: $(home)/%
+	@echo "make: cp: $? -> $@" >&2
 	@mkdir -p "$(@D)" 2>&1 | sed -e "s/^/make: /" >&2
-	@ln -s "$<" "$@" 2>&1 | sed -e "s/^/make: /" >&2
+	@cp $(cp-options) "$?" "$@" 2>&1 | sed -e "s/^/make: /" >&2
 
-#  Uninstall repository
+#  Uninstall targets
 .PHONY: uninstall
-uninstall: $(patsubst $(root_pwd)$(home)/%,uninstall-$(root_home)/%,$(shell find $(root_pwd)$(home) ! -type d))
-
-uninstall-$(root_home)/%:
-	@echo "make: rm: $(root_home)/$*" >&2
-	@rm -f "$(root_home)/$*" 2>&1 | sed -e "s/^/make: /" >&2
-
-#  Reinstall repository
-.PHONY: reinstall
-reinstall: uninstall install
-
-#  Update repository
-.PHONY: update
-update: uninstall pull install
+uninstall:
+	@echo "make: rm: $(install-all)" >&2
+	@rm -f $(install-all) 2>&1 | sed -e "s/^/make: /" >&2
