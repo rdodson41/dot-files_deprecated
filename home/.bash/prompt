@@ -82,7 +82,7 @@ else
 	PS1="${PS1}\[$(term-put normal bold foreground=yellow 2> /dev/null)\]\u"
 fi
 
-PS1="${PS1}\[$(term-put normal bold 2> /dev/null)\]@"
+PS1="${PS1}\[$(term-put normal 2> /dev/null)\]@"
 
 #  Colorize host name bold red if user is logged in via ssh; otherwise, colorize host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
@@ -91,7 +91,7 @@ else
 	PS1="${PS1}\[$(term-put normal bold foreground=yellow 2> /dev/null)\]\h"
 fi
 
-PS1="${PS1}\[$(term-put normal bold 2> /dev/null)\]:"
+PS1="${PS1}\[$(term-put normal 2> /dev/null)\]:"
 PS1="${PS1}\[$(term-put normal bold foreground=blue 2> /dev/null)\]\w"
 PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
 PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
