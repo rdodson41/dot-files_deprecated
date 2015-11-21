@@ -4,7 +4,7 @@
 
  ![OS X Termina][1]
 
-  [1]: <http://i.imgur.com/yUfmJYb.png> "OS X Terminal"
+  [1]: <http://i.imgur.com/Q5iIGjF.png> "OS X Terminal"
 
 
 ## Installation
