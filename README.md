@@ -43,23 +43,23 @@ Use `make uninstall` to uninstall the configuration files from your home directo
 
 ## Credits
 
-* [@mathiasbynens][3] / [dotfiles][4]
-* [@cowboy][5] / [dotfiles][6]
-* [@dougblack][7] / [dotfiles][8]
+* [@mathiasbynens][2] / [dotfiles][3]
+* [@cowboy][4] / [dotfiles][5]
+* [@dougblack][6] / [dotfiles][7]
 
-  [3]: <https://github.com/mathiasbynens> "Mathias Bynens"
-  [4]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
-  [5]: <https://github.com/cowboy> "Ben Alman"
-  [6]: <https://github.com/cowboy/dotfiles> "dotfiles"
-  [7]: <https://github.com/dougblack> "Doug Black"
-  [8]: <https://github.com/dougblack/dotfiles> "dotfiles"
+  [2]: <https://github.com/mathiasbynens> "Mathias Bynens"
+  [3]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
+  [4]: <https://github.com/cowboy> "Ben Alman"
+  [5]: <https://github.com/cowboy/dotfiles> "dotfiles"
+  [6]: <https://github.com/dougblack> "Doug Black"
+  [7]: <https://github.com/dougblack/dotfiles> "dotfiles"
 
 
 ## License
 
-  [GNU General Public License, Version 3, 29 June 2007][9]
+  [GNU General Public License, Version 3, 29 June 2007][8]
 
-  [9]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+  [8]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 
 ## Copyright
