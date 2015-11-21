@@ -7,26 +7,27 @@
 #  License:  GNU General Public License, Version 3, 29 June 2007
 #
 #  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
-#  
+#
 #  This file is part of dot-files.
-#  
+#
 #  dot-files is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation, either version 3 of the License, or
 #  (at your option) any later version.
-#  
+#
 #  dot-files is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #  GNU General Public License for more details.
-#  
+#
 #  You should have received a copy of the GNU General Public License
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
 #  Echo git branch color
-echo-git-branch-color() {
-	local git_branch_color="\e[0;1;38;5;2m"
+echo-git-branch-color()
+{
+	local git_branch_color="$(term-put normal bold foreground=green 2> /dev/null)"
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
 		local git_branch_upstream="$(git rev-parse --quiet --abbrev-ref "${git_branch}@{upstream}" 2> /dev/null)"
@@ -35,16 +36,17 @@ echo-git-branch-color() {
 			if [[ -n "${git_remote}" ]]; then
 				local git_remote_head="$(git symbolic-ref --quiet --short "refs/remotes/${git_remote}/HEAD" 2> /dev/null)"
 				if [[ -n "${git_remote_head}" && "${git_branch_upstream}" == "${git_remote_head}" ]]; then
-					git_branch_color="\e[0;1;38;5;1m"
+					git_branch_color="$(term-put normal bold foreground=red 2> /dev/null)"
 				fi
 			fi
 		fi
 	fi
-	echo -e "${git_branch_color}"
+	echo "${git_branch_color}"
 }
 
 #  Echo git branch
-echo-git-branch() {
+echo-git-branch()
+{
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
 		echo " [${git_branch}]"
@@ -52,48 +54,51 @@ echo-git-branch() {
 }
 
 #  Echo git status color
-echo-git-status-color() {
-	echo -e "\e[0;1;38;5;1m"
+echo-git-status-color()
+{
+	local git_status_color="$(term-put normal bold foreground=red 2> /dev/null)"
+	echo "${git_status_color}"
 }
 
 #  Echo git status
-echo-git-status() {
-	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "$?")" = 1 ]]; then
+echo-git-status()
+{
+	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "${?}")" = 1 ]]; then
 		echo " [+]"
-	elif [[ "$(git diff --quiet 2> /dev/null; echo "$?")" = 1 ]]; then
+	elif [[ "$(git diff --quiet 2> /dev/null; echo "${?}")" = 1 ]]; then
 		echo " [!]"
 	elif [[ -n "$(git ls-files --exclude-standard --others 2> /dev/null)" ]]; then
 		echo " [?]"
 	fi
 }
 
-#  Set the top-level command line prompt
-PS1=
+#  Set top-level command line prompt
+export PS1=
 
-#  Colorize the user name bold red if the user is logged in as root; otherwise, colorize the user name bold yellow
+#  Colorize user name bold red if user is logged in as root; otherwise, colorize user name bold yellow
 if [[ "${USER}" == "root" ]]; then
-	PS1="${PS1}\[\e[0;1;38;5;1m\]\u"
+	PS1="${PS1}\[$(term-put normal bold foreground=red 2> /dev/null)\]\u"
 else
-	PS1="${PS1}\[\e[0;1;38;5;3m\]\u"
+	PS1="${PS1}\[$(term-put normal bold foreground=yellow 2> /dev/null)\]\u"
 fi
 
-PS1="${PS1}\[\e[0m\]@"
+PS1="${PS1}\[$(term-put normal bold 2> /dev/null)\]@"
 
-#  Colorize the host name bold red if the user is logged in via ssh; otherwise, colorize the host name bold yellow
+#  Colorize host name bold red if user is logged in via ssh; otherwise, colorize host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
-	PS1="${PS1}\[\e[0;1;38;5;1m\]\h"
+	PS1="${PS1}\[$(term-put normal bold foreground=red 2> /dev/null)\]\h"
 else
-	PS1="${PS1}\[\e[0;1;38;5;3m\]\h"
+	PS1="${PS1}\[$(term-put normal bold foreground=yellow 2> /dev/null)\]\h"
 fi
 
-PS1="${PS1}\[\e[0m\]:"
-PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
+PS1="${PS1}\[$(term-put normal bold 2> /dev/null)\]:"
+PS1="${PS1}\[$(term-put normal bold foreground=blue 2> /dev/null)\]\w"
 PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
 PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
 
-#  Terminate the top-level command line prompt with # if the user is logged in as root; otherwise, terminate the top-level command line prompt with $
+#  Terminate top-level command line prompt with # if user is logged in as root; otherwise, terminate top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
-	PS1="${PS1}\[\e[0m\] # "
+	PS1="${PS1}\[$(term-put normal 2> /dev/null)\] # "
 else
-	PS1="${PS1}\[\e[0m\] \$ "
+	PS1="${PS1}\[$(term-put normal 2> /dev/null)\] \$ "
 fi

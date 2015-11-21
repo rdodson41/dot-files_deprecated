@@ -2,9 +2,9 @@
 
 **dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux. Specifically, **dot-files** includes bash, vim, git, and gpg configuration files.
 
- ![GNOME Terminal][1]
+ ![OS X Termina][1]
 
-  [1]: <http://i.imgur.com/zSdxaKv.png> "GNOME Terminal"
+  [1]: <http://i.imgur.com/yUfmJYb.png> "OS X Terminal"
 
 
 ## Installation
@@ -25,9 +25,9 @@ Use `make install` to install the configuration files to your home directory:
 
     $ make install
 
-Use `make update` to pull changes to the local repository and update the configuration files in your home directory:
+Use `make pull install` to update the local repository and install the updated configuration files to your home directory:
 
-    $ make update
+    $ make pull install
 
 
 ## Uninstallation

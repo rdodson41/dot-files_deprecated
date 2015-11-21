@@ -7,35 +7,22 @@
 #  License:  GNU General Public License, Version 3, 29 June 2007
 #
 #  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
-#  
+#
 #  This file is part of dot-files.
-#  
+#
 #  dot-files is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation, either version 3 of the License, or
 #  (at your option) any later version.
-#  
+#
 #  dot-files is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #  GNU General Public License for more details.
-#  
+#
 #  You should have received a copy of the GNU General Public License
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
-
-#  Set ls
-ls="ls"
-
-#  Set ls and alias dircolors to the GNU versions of the commands if the kernal name is Darwin and the GNU versions of the commands exist
-if [[ "$(uname)" == "Darwin" ]]; then
-	if which gls &> /dev/null; then
-		ls="command gls"
-	fi
-	if which gdircolors &> /dev/null; then
-		alias dircolors="command gdircolors"
-	fi
-fi
 
 #  Alias cd to enable faster navigation
 alias -- ~="cd ~"
@@ -48,10 +35,10 @@ alias -- ..="cd .."
 #    -T, --time-style=long-iso    list times in long-iso format
 #    -h, --human-readable         list sizes in human-readable format
 #    -l, --format=long            list files in long format
-if ${ls} --version &> /dev/null; then
-	alias ls="${ls} --classify --format=long --human-readable --time-style=long-iso --color=auto"
+if ls --version &> /dev/null; then
+	alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
 else
-	alias ls="${ls} -FGThl"
+	alias ls="ls -FGThl"
 fi
 
 #  Alias ls to:
@@ -81,7 +68,7 @@ done
 #  Alias gpg-agent to:
 #        --server                 initialize as a server
 #        --daemon                 initialize as a daemon
-#        --daemon ${SHELL}        initialize as a daemon and spawn ${SHELL} as a sub-process
+#        --daemon ${SHELL}        initialize as a daemon and spawn SHELL as a sub-process
 alias gpg-agent-server="gpg-agent --verbose --server"
 alias gpg-agent-daemon="gpg-agent --verbose --daemon"
 alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
@@ -89,5 +76,5 @@ alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 #  Alias exit
 alias x="exit"
 
-#  Unset ls
-unset ls
+#  Unset alias
+unset alias
