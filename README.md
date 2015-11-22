@@ -17,26 +17,26 @@ Clone this repository:
 
     $ git clone https://github.com/rdodson41/dot-files.git
 
-Navigate to the local repository:
+Navigate to the local copy of this repository:
 
 	$ cd dot-files
 
-Use `make install` to install the configuration files to your home directory:
+Use `make install` to install configuration files to your home directory:
 
     $ make install
 
-Use `make pull install` to update the local repository and install the updated configuration files to your home directory:
+Use `make pull install` to update the local copy of this repository and install updated configuration files to your home directory:
 
     $ make pull install
 
 
 ## Uninstallation
 
-Navigate to the local repository:
+Navigate to the local copy of this repository:
 
     $ cd /usr/local/opt/dot-files
 
-Use `make uninstall` to uninstall the configuration files from your home directory:
+Use `make uninstall` to uninstall configuration files from your home directory:
 
     $ make uninstall
 
