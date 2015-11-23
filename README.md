@@ -46,6 +46,8 @@ Use `make uninstall` to uninstall configuration files from your home directory:
 * [@mathiasbynens][2] / [dotfiles][3]
 * [@cowboy][4] / [dotfiles][5]
 * [@dougblack][6] / [dotfiles][7]
+* [@altercation][8] / [solarized][9]
+* [@seebi][10] / [dircolors-solarized][11]
 
   [2]: <https://github.com/mathiasbynens> "Mathias Bynens"
   [3]: <https://github.com/mathiasbynens/dotfiles> "dotfiles"
@@ -53,13 +55,16 @@ Use `make uninstall` to uninstall configuration files from your home directory:
   [5]: <https://github.com/cowboy/dotfiles> "dotfiles"
   [6]: <https://github.com/dougblack> "Doug Black"
   [7]: <https://github.com/dougblack/dotfiles> "dotfiles"
-
+  [8]: <https://github.com/altercation> "Ethan Schoonover"
+  [9]: <https://github.com/altercation/solarized> "solarized"
+  [10]: <https://github.com/seebi> "Sebastian Tramp"
+  [11]: <https://github.com/seebi/dircolors-solarized> "dircolors-solarized"
 
 ## License
 
-  [GNU General Public License, Version 3, 29 June 2007][8]
+  [GNU General Public License, Version 3, 29 June 2007][12]
 
-  [8]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
+  [12]: <http://www.gnu.org/licenses/gpl-3.0.en.html> "GNU General Public License"
 
 
 ## Copyright
