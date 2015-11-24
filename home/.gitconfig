@@ -50,6 +50,7 @@
 	s          = status
 	ss         = status --short
 	sl         = status --long
+	t          = tag
 
 [core]
 	editor     = vi
