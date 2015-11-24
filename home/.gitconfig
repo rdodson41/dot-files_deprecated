@@ -35,16 +35,22 @@
 	cl         = clone --verbose
 	d          = diff
 	ds         = diff --staged
-	l          = log --graph --oneline -10
 	la         = log --graph --oneline
-	ls         = log --graph --oneline -10
-	lm         = log --graph --oneline -20
-	ll		   = log --graph --oneline -40
+	l          = log --graph --oneline --max-count=10
+	ls         = log --graph --oneline --max-count=10
+	lm         = log --graph --oneline --max-count=20
+	ll         = log --graph --oneline --max-count=40
+	lda        = log --graph --oneline --decorate
+	ld         = log --graph --oneline --decorate --max-count=10
+	lds        = log --graph --oneline --decorate --max-count=10
+	ldm        = log --graph --oneline --decorate --max-count=20
+	ldl        = log --graph --oneline --decorate --max-count=40
 	m          = merge --verbose --log --no-ff
 	r          = remote --verbose
 	s          = status
 	ss         = status --short
 	sl         = status --long
+	t          = tag
 
 [core]
 	editor     = vi
