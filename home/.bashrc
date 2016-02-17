@@ -41,6 +41,9 @@ export TERM_COLORS=256
 #  Set gpg terminal to current terminal
 export GPG_TTY="$(tty)"
 
+#  Enable recursive file name expansion
+shopt -s globstar &> /dev/null
+
 #  Include ~/.bash/aliases if it exists
 if [[ -f "${HOME}/.bash/aliases" ]]; then
 	source "${HOME}/.bash/aliases"
@@ -56,5 +59,3 @@ if [[ -f "${HOME}/.dircolors" ]]; then
 	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
 fi
 
-#  Enable recursive file name expansion
-shopt -s globstar &> /dev/null
