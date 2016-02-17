@@ -30,6 +30,9 @@ export KERNAL_NAME="$(uname)"
 #  Set path to include GNU coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
+#  Set path to include ~/bin
+export PATH="${HOME}/bin:${PATH}"
+
 #  Set number of terminal colors to 256
 export TERM_COLORS=256
 
