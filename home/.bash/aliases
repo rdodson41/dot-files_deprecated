@@ -73,6 +73,9 @@ alias gpg-agent-server="gpg-agent --verbose --server"
 alias gpg-agent-daemon="gpg-agent --verbose --daemon"
 alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 
+#  Alias thefuck
+eval $(thefuck --alias)
+
 #  Alias exit
 alias x="exit"
 
