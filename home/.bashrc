@@ -59,3 +59,7 @@ if [[ -f "${HOME}/.dircolors" ]]; then
 	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
 fi
 
+#  Include ~/.bash/local if it exists
+if [[ -f "${HOME}/.bash/local" ]]; then
+	source "${HOME}/.bash/local"
+fi
