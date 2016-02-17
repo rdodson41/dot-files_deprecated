@@ -24,6 +24,9 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
+#  Set kernal name
+export KERNAL_NAME="$(uname)"
+
 #  Set path to include GNU coreutils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
