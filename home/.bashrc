@@ -51,9 +51,9 @@ if [[ -f "${HOME}/.bash/prompt" ]]; then
 	source "${HOME}/.bash/prompt"
 fi
 
-#  Set directory colors to Solarized Dark if ~/.dircolors/solarized/dark exists
-if [[ -f "${HOME}/.dircolors/solarized/dark" ]]; then
-	eval "$(dircolors "${HOME}/.dircolors/solarized/dark" 2> /dev/null)"
+#  Set directory colors if ~/.dircolors exists
+if [[ -f "${HOME}/.dircolors" ]]; then
+	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
 fi
 
 #  Enable recursive file name expansion
