@@ -24,8 +24,16 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set path to include GNU coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+#  Set kernal name
+export KERNAL_NAME="$(uname)"
+
+#  Set path to include GNU core utilities if the system is OS X
+if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
+	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+fi
+
+#  Set path to include ~/bin
+export PATH="${HOME}/bin:${PATH}"
 
 #  Set number of terminal colors to 256
 export TERM_COLORS=256

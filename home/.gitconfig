@@ -57,3 +57,7 @@
 
 [push]
 	default    = simple
+
+[user]
+	name       = Richard E. Dodson
+	email      = richard.elias.dodson@gmail.com
