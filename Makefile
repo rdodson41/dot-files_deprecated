@@ -42,7 +42,7 @@ install-all = $(root-home-all)
 #  Print usage to standard error
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | version | pull | push | install | uninstall ]" >&2
+	@echo "make: usage: make [ help | version | pull | push | install | uninstall | reinstall ]" >&2
 
 #  Print version to standard error
 .PHONY: version
@@ -72,3 +72,7 @@ $(root-home)/%: $(home)/%
 uninstall:
 	@echo "make: rm: $(install-all)" >&2
 	@rm -f $(install-all) 2>&1 | sed -e "s/^/make: /" >&2
+
+#  Reinstall targets
+.PHONY: reinstall
+reinstall: uninstall install
