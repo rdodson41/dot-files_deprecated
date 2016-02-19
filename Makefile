@@ -27,11 +27,8 @@
 #  Set shell to bash
 SHELL = bash -o pipefail
 
-#  Set version to most recent git tag
+#  Set version to current Git description
 version = $(shell git describe)
-
-#  Set absolute directories
-root =
 
 #  Set build targets
 home = home
