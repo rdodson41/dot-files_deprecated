@@ -38,8 +38,6 @@ export PATH="${HOME}/bin:${PATH}"
 #  Set path to include ~/.rvm/bin
 export PATH="${PATH}:${HOME}/.rvm/bin"
 
-#  Set number of terminal colors to 256
-export TERM_COLORS=256
 
 #  Set gpg terminal to current terminal
 export GPG_TTY="$(tty)"
