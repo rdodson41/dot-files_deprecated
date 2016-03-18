@@ -36,7 +36,7 @@ fi
 export PATH="${HOME}/bin:${PATH}"
 
 #  Set path to include ~/.rvm/bin
-export PATH="${PATH}:${HOME}/.rvm/bin"
+export PATH="${HOME}/.rvm/bin:${PATH}"
 
 
 #  Set gpg terminal to current terminal
