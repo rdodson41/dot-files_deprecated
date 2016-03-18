@@ -71,3 +71,8 @@ fi
 if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
 	source "${HOME}/.rvm/scripts/rvm"
 fi
+
+#  Include ~/.nvm/nvm.sh if it exists
+if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
+	source "${HOME}/.nvm/nvm.sh"
+fi
