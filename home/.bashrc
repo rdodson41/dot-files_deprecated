@@ -35,6 +35,9 @@ fi
 #  Set path to include ~/bin
 export PATH="${HOME}/bin:${PATH}"
 
+#  Set path to include ~/.rvm/bin
+export PATH="${PATH}:${HOME}/.rvm/bin"
+
 #  Set number of terminal colors to 256
 export TERM_COLORS=256
 
@@ -62,4 +65,9 @@ fi
 #  Include ~/.bash/local if it exists
 if [[ -f "${HOME}/.bash/local" ]]; then
 	source "${HOME}/.bash/local"
+fi
+
+#  Include ~/.rvm/scripts/rvm if it exists
+if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
+	source "${HOME}/.rvm/scripts/rvm"
 fi
