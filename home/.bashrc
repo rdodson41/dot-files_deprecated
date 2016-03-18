@@ -32,12 +32,11 @@ if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 fi
 
-#  Set path to include ~/bin
-export PATH="${HOME}/bin:${PATH}"
-
 #  Set path to include ~/.rvm/bin
 export PATH="${HOME}/.rvm/bin:${PATH}"
 
+#  Set path to include ~/bin
+export PATH="${HOME}/bin:${PATH}"
 
 #  Set gpg terminal to current terminal
 export GPG_TTY="$(tty)"
@@ -55,11 +54,6 @@ if [[ -f "${HOME}/.bash/prompt" ]]; then
 	source "${HOME}/.bash/prompt"
 fi
 
-#  Set directory colors if ~/.dircolors exists
-if [[ -f "${HOME}/.dircolors" ]]; then
-	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
-fi
-
 #  Include ~/.bash/local if it exists
 if [[ -f "${HOME}/.bash/local" ]]; then
 	source "${HOME}/.bash/local"
@@ -73,4 +67,9 @@ fi
 #  Include ~/.nvm/nvm.sh if it exists
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
 	source "${HOME}/.nvm/nvm.sh"
+fi
+
+#  Set directory colors if ~/.dircolors exists
+if [[ -f "${HOME}/.dircolors" ]]; then
+	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
 fi
