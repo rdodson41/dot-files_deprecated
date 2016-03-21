@@ -65,7 +65,7 @@ install: $(install-all)
 
 $(root-home)/%: $(home)/%
 	@echo "make: rsync: $(home) -> $(root-home)" >&2
-	@rsync --verbose --archive --no-group --no-owner --human-readable "$(home)/" "$(root-home)" 2>&1 | sed -e "s/^/make: rsync: /" >&2
+	@rsync --verbose --archive --human-readable "$(home)/" "$(root-home)" 2>&1 | sed -e "s/^/make: rsync: /" >&2
 
 #  Uninstall targets
 .PHONY: uninstall
