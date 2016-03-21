@@ -30,6 +30,7 @@ export KERNAL_NAME="$(uname)"
 #  Set path to include GNU core utilities if the system is OS X
 if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 fi
 
 #  Set path to include ~/.rvm/bin
