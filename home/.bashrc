@@ -65,14 +65,14 @@ if [[ -f "${HOME}/.bash/local" ]]; then
 	source "${HOME}/.bash/local"
 fi
 
-#  Include ~/.rvm/scripts/rvm if it exists
-if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
-	source "${HOME}/.rvm/scripts/rvm"
-fi
-
 #  Include ~/.nvm/nvm.sh if it exists
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
 	source "${HOME}/.nvm/nvm.sh"
+fi
+
+#  Include ~/.rvm/scripts/rvm if it exists
+if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
+	source "${HOME}/.rvm/scripts/rvm"
 fi
 
 #  Set directory colors if ~/.dircolors exists
