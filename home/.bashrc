@@ -39,8 +39,10 @@ export PATH="${HOME}/.rvm/bin:${PATH}"
 #  Set path to include ~/bin
 export PATH="${HOME}/bin:${PATH}"
 
-#  Set NVM directory to ~/.nvm
-export NVM_DIR="${HOME}/.nvm"
+#  Set NVM directory to ~/.nvm if it exists
+if [[ -d "${HOME}/.nvm" ]]; then
+	export NVM_DIR="${HOME}/.nvm"
+fi
 
 #  Set gpg terminal to current terminal
 export GPG_TTY="$(tty)"
