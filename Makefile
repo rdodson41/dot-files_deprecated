@@ -28,7 +28,7 @@
 SHELL = bash -o pipefail
 
 #  Set version to current Git description
-version = $(shell git describe | cut -d "-" -f 2-)
+version = $(shell git describe)
 
 #  Set build targets
 home = home
