@@ -73,6 +73,10 @@ alias gpg-agent-server="gpg-agent --verbose --server"
 alias gpg-agent-daemon="gpg-agent --verbose --daemon"
 alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 
+#  Alias bundle
+alias b="bundle"
+alias be="bundle exec"
+
 #  Alias thefuck if it exists
 if which thefuck &> /dev/null; then
 	eval $(thefuck --alias)
