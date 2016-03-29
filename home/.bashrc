@@ -76,8 +76,8 @@ if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
 fi
 
 #  Include /usr/local/etc/bash_completion if it exists
-if [[ -f "$(brew --prefix)/etc/bash_completion)" ]]; then
-	source "$(brew --prefix)/etc/bash_completion)"
+if [[ -f "$(brew --prefix)/etc/bash_completion" ]]; then
+	source "$(brew --prefix)/etc/bash_completion"
 fi
 
 #  Set directory colors if ~/.dircolors exists
