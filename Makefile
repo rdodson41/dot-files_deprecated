@@ -42,7 +42,7 @@ install-all = $(root-home-all)
 #  Print usage to standard error
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | version | pull | push | install | uninstall | reinstall ]" >&2
+	@echo "make: usage: make [ help | version | pull | push | install | uninstall | reinstall | update ]" >&2
 
 #  Print version to standard error
 .PHONY: version
