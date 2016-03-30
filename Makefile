@@ -76,3 +76,7 @@ uninstall:
 #  Reinstall targets
 .PHONY: reinstall
 reinstall: uninstall install
+
+#  Update targets
+.PHONY: update
+update: pull install
