@@ -47,6 +47,7 @@
 	ldl        = log --graph --oneline --decorate --max-count=40
 	m          = merge --verbose --log --no-ff
 	r          = remote --verbose
+	rp         = remote --verbose prune
 	s          = status
 	ss         = status --short
 	sl         = status --long
