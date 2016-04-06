@@ -23,6 +23,8 @@
 #
 
 [alias]
+	alias      = config --get-regexp ^alias[.]
+	user       = config --get-regexp ^user[.]
 	a          = add --verbose
 	aa         = add --verbose --all
 	au         = add --verbose --update
