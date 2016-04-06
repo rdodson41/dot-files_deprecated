@@ -53,6 +53,7 @@
 	s          = status
 	ss         = status --short
 	sl         = status --long
+	sh         = show --oneline
 	t          = tag
 
 [core]
