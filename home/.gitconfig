@@ -55,6 +55,7 @@
 	sl         = status --long
 	sh         = show --oneline
 	t          = tag
+	u          = user
 
 [core]
 	editor     = vi
