@@ -23,6 +23,8 @@
 #
 
 [alias]
+	alias      = config --get-regexp ^alias[.]
+	user       = config --get-regexp ^user[.]
 	a          = add --verbose
 	aa         = add --verbose --all
 	au         = add --verbose --update
@@ -47,10 +49,13 @@
 	ldl        = log --graph --oneline --decorate --max-count=40
 	m          = merge --verbose --log --no-ff
 	r          = remote --verbose
+	rp         = remote --verbose prune
 	s          = status
 	ss         = status --short
 	sl         = status --long
+	sh         = show --oneline
 	t          = tag
+	u          = user
 
 [core]
 	editor     = vi
