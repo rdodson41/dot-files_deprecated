@@ -24,7 +24,6 @@
 
 [alias]
 	alias      = config --get-regexp ^alias[.]
-	user       = config --get-regexp ^user[.]
 	a          = add --verbose
 	aa         = add --verbose --all
 	au         = add --verbose --update
@@ -55,7 +54,7 @@
 	sl         = status --long
 	sh         = show --oneline
 	t          = tag
-	u          = user
+	u          = config --get-regexp ^user[.]
 
 [core]
 	editor     = vi
