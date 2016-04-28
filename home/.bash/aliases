@@ -73,7 +73,8 @@ alias gpg-agent-server="gpg-agent --verbose --server"
 alias gpg-agent-daemon="gpg-agent --verbose --daemon"
 alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
 
-#  Alias bundle
+#  Alias bundle to:
+#          exec                   execute a command in the context of the current bundle
 alias b="bundle"
 alias be="bundle exec"
 
