@@ -24,10 +24,10 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set kernal name
+#  Set kernal name to current system name
 export KERNAL_NAME="$(uname)"
 
-#  Set path to include GNU core utilities if the system is OS X
+#  Set path to include GNU core utilities if system is OS X
 if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
