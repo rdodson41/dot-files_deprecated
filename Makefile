@@ -24,11 +24,11 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set shell to bash
+#  Set shell to Bash
 SHELL = bash -o pipefail
 
 #  Set version to current Git description
-version = $(shell git describe)
+version = $(shell git describe --first-parent)
 
 #  Set build targets
 home = home
@@ -42,36 +42,36 @@ install-all = $(root-home-all)
 #  Print usage to standard error
 .PHONY: help usage
 help usage:
-	@echo "make: usage: make [ help | version | pull | push | install | uninstall | reinstall | update ]" >&2
+	@echo "dot-files: usage: make [ help | version | pull | push | install | uninstall | reinstall | update ]" >&2
 
 #  Print version to standard error
 .PHONY: version
 version:
-	@echo "make: version: $(version)" >&2
+	@echo "dot-files: version: $(version)" >&2
 
 #  Pull repository
 .PHONY: pull
 pull:
-	@git pull --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
+	@git pull --verbose 2>&1 | sed -e "s/^/dot-files: git: /" >&2
 
 #  Push repository
 .PHONY: push
 push:
-	@git push --verbose 2>&1 | sed -e "s/^/make: git: /" >&2
+	@git push --verbose 2>&1 | sed -e "s/^/dot-files: git: /" >&2
 
 #  Install targets
 .PHONY: install
 install: $(install-all)
 
 $(root-home)/%: $(home)/%
-	@echo "make: rsync: $(home) -> $(root-home)" >&2
-	@rsync --verbose --archive --no-group --human-readable "$(home)/" "$(root-home)" 2>&1 | sed -e "s/^/make: rsync: /" >&2
+	@echo "dot-files: rsync: $(home) -> $(root-home)" >&2
+	@rsync --verbose --archive --no-group --human-readable "$(home)/" "$(root-home)" 2>&1 | sed -e "s/^/dot-files: rsync: /" >&2
 
 #  Uninstall targets
 .PHONY: uninstall
 uninstall:
-	@echo "make: rm: $(install-all)" >&2
-	@rm -f $(install-all) 2>&1 | sed -e "s/^/make: /" >&2
+	@echo "dot-files: rm: $(install-all)" >&2
+	@rm -f $(install-all) 2>&1 | sed -e "s/^/dot-files: /" >&2
 
 #  Reinstall targets
 .PHONY: reinstall

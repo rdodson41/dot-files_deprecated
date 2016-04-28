@@ -25,5 +25,8 @@
 #  Ignore OS X directory attribute files
 .DS_Store
 
+#  Ignore backup files
+*~
+
 #  Ignore swap files
 *.swp

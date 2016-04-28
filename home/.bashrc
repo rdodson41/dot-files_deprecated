@@ -24,10 +24,10 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set kernal name
+#  Set kernal name to current system name
 export KERNAL_NAME="$(uname)"
 
-#  Set path to include GNU core utilities if the system is OS X
+#  Set path to include GNU core utilities if system is OS X
 if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
 	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
@@ -39,13 +39,13 @@ export PATH="${HOME}/.rvm/bin:${PATH}"
 #  Set path to include ~/bin
 export PATH="${HOME}/bin:${PATH}"
 
+#  Set GPG terminal to current terminal
+export GPG_TTY="$(tty)"
+
 #  Set NVM directory to ~/.nvm if it exists
 if [[ -d "${HOME}/.nvm" ]]; then
 	export NVM_DIR="${HOME}/.nvm"
 fi
-
-#  Set gpg terminal to current terminal
-export GPG_TTY="$(tty)"
 
 #  Enable recursive file name expansion
 shopt -s globstar &> /dev/null
@@ -63,6 +63,11 @@ fi
 #  Include ~/.bash/local if it exists
 if [[ -f "${HOME}/.bash/local" ]]; then
 	source "${HOME}/.bash/local"
+fi
+
+#  Include ~/.gpg-agent-info if it exists
+if [[ -f "${HOME}/.gpg-agent-info" ]]; then
+	source "${HOME}/.gpg-agent-info"
 fi
 
 #  Include ~/.nvm/nvm.sh if it exists
@@ -83,4 +88,9 @@ fi
 #  Set directory colors if ~/.dircolors exists
 if [[ -f "${HOME}/.dircolors" ]]; then
 	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
+fi
+
+#  Invoke gpg-agent if it has not already been invoked
+if [[ ! -S "${GPG_AGENT_INFO%%:*}" ]]; then
+	eval "$(gpg-agent --daemon --write-env-file 2> /dev/null)"
 fi
