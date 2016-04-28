@@ -65,6 +65,11 @@ if [[ -f "${HOME}/.bash/local" ]]; then
 	source "${HOME}/.bash/local"
 fi
 
+#  Include ~/.gpg-agent-info if it exists
+if [[ -f "${HOME}/.gpg-agent-info" ]]; then
+	source "${HOME}/.gpg-agent-info"
+fi
+
 #  Include ~/.nvm/nvm.sh if it exists
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
 	source "${HOME}/.nvm/nvm.sh"
@@ -83,4 +88,9 @@ fi
 #  Set directory colors if ~/.dircolors exists
 if [[ -f "${HOME}/.dircolors" ]]; then
 	eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
+fi
+
+#  Invoke gpg-agent if it has not already been invoked
+if [[ ! -S "${GPG_AGENT_INFO%%:*}" ]]; then
+	eval "$(gpg-agent --daemon --write-env-file 2> /dev/null)"
 fi
