@@ -24,7 +24,7 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set shell to bash
+#  Set shell to Bash
 SHELL = bash -o pipefail
 
 #  Set version to current Git description
