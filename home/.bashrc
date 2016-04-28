@@ -91,6 +91,8 @@ if [[ -f "${HOME}/.dircolors" ]]; then
 fi
 
 #  Invoke gpg-agent if it has not already been invoked
-if [[ ! -S "${GPG_AGENT_INFO%%:*}" ]]; then
+if [[ -S "${GPG_AGENT_INFO%%:*}" ]]; then
+	export GPG_AGENT_INFO
+else
 	eval "$(gpg-agent --daemon --write-env-file 2> /dev/null)"
 fi
