@@ -26,6 +26,7 @@
 set expandtab
 set softtabstop=2
 set shiftwidth=2
+set autoindent
 
 "  Set scroll offset
 set scrolloff=8
