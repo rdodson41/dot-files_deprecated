@@ -44,6 +44,9 @@ set cursorline
 "  Enable line numbers
 set number
 
+"  Enable status line
+set laststatus=2
+
 "  Enable ruler
 set ruler
 
@@ -75,3 +78,14 @@ nnoremap k gk
 "  Map up and down to move up and down visually if user is in normal mode
 nnoremap <up> g<up>
 nnoremap <down> g<down>
+
+"  Set plugins
+if filereadable(glob('~/.vim/autoload/plug.vim'))
+  call plug#begin()
+
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'tpope/vim-fugitive'
+  Plug 'wikitopian/hardmode'
+
+  call plug#end()
+endif
