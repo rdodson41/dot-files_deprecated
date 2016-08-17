@@ -58,7 +58,7 @@
 	u          = config --get-regexp ^user[.]
 
 [core]
-	editor     = vi
+	editor     = vim
 
 [push]
 	default    = simple
