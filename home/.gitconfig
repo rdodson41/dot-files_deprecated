@@ -53,6 +53,7 @@
 	ss         = status --short
 	sl         = status --long
 	sh         = show --oneline
+	st         = stash
 	t          = tag
 	user       = config --get-regexp ^user[.]
 	u          = config --get-regexp ^user[.]
