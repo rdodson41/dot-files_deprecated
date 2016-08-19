@@ -84,6 +84,8 @@ if filereadable(glob('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'powerline/fonts', { 'do': './install.sh' }
+  Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
   Plug 'tpope/vim-fugitive'
   Plug 'wikitopian/hardmode'
 
