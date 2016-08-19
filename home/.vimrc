@@ -47,8 +47,11 @@ set cursorline
 "  Enable line numbers
 set number
 
-"  Enable status line
-set laststatus=2
+"  Show mode
+set showmode
+
+"  Show command
+set showcmd
 
 "  Enable ruler
 set ruler
@@ -94,3 +97,15 @@ if filereadable(glob('~/.vim/autoload/plug.vim'))
 
   call plug#end()
 endif
+
+"  Initialize Powerline plugin
+autocmd VimEnter * call s:powerline_init()
+
+"  Initialize Powerline plugin
+function s:powerline_init()
+  if exists('g:powerline_loaded')
+    set laststatus=2
+    set noshowmode
+    set noruler
+  endif
+endfunction
