@@ -22,6 +22,9 @@
 "  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 "
 
+"  Set key code delay to 0
+set ttimeoutlen=0
+
 "  Set indentation
 set tabstop=2
 set softtabstop=2
