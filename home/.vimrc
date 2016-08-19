@@ -77,11 +77,11 @@ set background=dark
 "  Set color scheme to Solarized
 colorscheme solarized
 
-"  Map j and k to move up and down visually if user is in normal mode
+"  Map j and k to move cursor up and down visually if user is in normal mode
 nnoremap j gj
 nnoremap k gk
 
-"  Map up and down to move up and down visually if user is in normal mode
+"  Map up and down to move cursor up and down visually if user is in normal mode
 nnoremap <up> g<up>
 nnoremap <down> g<down>
 
