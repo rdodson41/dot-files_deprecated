@@ -98,8 +98,16 @@ if filereadable(glob('~/.vim/autoload/plug.vim'))
   call plug#end()
 endif
 
-"  Initialize Powerline plugin
+"  Initialize plugins
+autocmd VimEnter * call s:initialize_vim_better_whitespace()
 autocmd VimEnter * call s:powerline_init()
+
+"  Initialize vim-better-whitespace
+function s:initialize_vim_better_whitespace()
+  if exists('g:loaded_better_whitespace_plugin')
+    autocmd BufWritePre * StripWhitespace
+  endif
+endfunction
 
 "  Initialize Powerline plugin
 function s:powerline_init()
