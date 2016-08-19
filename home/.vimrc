@@ -100,7 +100,7 @@ endif
 
 "  Initialize plugins
 autocmd VimEnter * call s:initialize_vim_better_whitespace()
-autocmd VimEnter * call s:powerline_init()
+autocmd VimEnter * call s:initialize_powerline()
 
 "  Initialize vim-better-whitespace
 function s:initialize_vim_better_whitespace()
@@ -109,8 +109,8 @@ function s:initialize_vim_better_whitespace()
   endif
 endfunction
 
-"  Initialize Powerline plugin
-function s:powerline_init()
+"  Initialize powerline
+function s:initialize_powerline()
   if exists('g:powerline_loaded')
     set laststatus=2
     set noshowmode
