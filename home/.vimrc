@@ -93,7 +93,6 @@ if filereadable(glob('~/.vim/autoload/plug.vim'))
   Plug 'powerline/fonts', { 'do': './install.sh' }
   Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
   Plug 'tpope/vim-fugitive'
-  Plug 'wikitopian/hardmode'
 
   call plug#end()
 endif
