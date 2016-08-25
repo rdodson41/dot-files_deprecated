@@ -89,6 +89,7 @@ nnoremap <down> g<down>
 if filereadable(glob('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'powerline/fonts', { 'do': './install.sh' }
   Plug 'powerline/powerline', { 'rtp': 'powerline/bindings/vim' }
