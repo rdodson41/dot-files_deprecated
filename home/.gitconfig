@@ -23,46 +23,46 @@
 #
 
 [alias]
-	alias      = config --get-regexp ^alias[.]
-	a          = add --verbose
-	aa         = add --verbose --all
-	au         = add --verbose --update
-	b          = branch --verbose --verbose
-	ba         = branch --verbose --verbose --all
-	br         = branch --verbose --verbose --remotes
-	c          = commit --verbose
-	ca         = commit --verbose --all
-	ch         = checkout
-	cl         = clone --verbose
-	d          = diff
-	ds         = diff --staged
-	la         = log --graph --oneline
-	l          = log --graph --oneline --max-count=10
-	ls         = log --graph --oneline --max-count=10
-	lm         = log --graph --oneline --max-count=20
-	ll         = log --graph --oneline --max-count=40
-	lda        = log --graph --oneline --decorate
-	ld         = log --graph --oneline --decorate --max-count=10
-	lds        = log --graph --oneline --decorate --max-count=10
-	ldm        = log --graph --oneline --decorate --max-count=20
-	ldl        = log --graph --oneline --decorate --max-count=40
-	m          = merge --verbose --log --no-ff
-	r          = remote --verbose
-	rp         = remote --verbose prune
-	s          = status
-	ss         = status --short
-	sl         = status --long
-	sh         = show --oneline
-	st         = stash
-	t          = tag
-	user       = config --get-regexp ^user[.]
-	u          = config --get-regexp ^user[.]
+	alias     = config --get-regexp ^alias[.]
+	a         = add --verbose
+	aa        = add --verbose --all
+	au        = add --verbose --update
+	b         = branch --verbose --verbose
+	ba        = branch --verbose --verbose --all
+	br        = branch --verbose --verbose --remotes
+	c         = commit --verbose
+	ca        = commit --verbose --all
+	ch        = checkout
+	cl        = clone --verbose
+	d         = diff
+	ds        = diff --staged
+	la        = log --graph --oneline
+	l         = log --graph --oneline --max-count=10
+	ls        = log --graph --oneline --max-count=10
+	lm        = log --graph --oneline --max-count=20
+	ll        = log --graph --oneline --max-count=40
+	lda       = log --graph --oneline --decorate
+	ld        = log --graph --oneline --decorate --max-count=10
+	lds       = log --graph --oneline --decorate --max-count=10
+	ldm       = log --graph --oneline --decorate --max-count=20
+	ldl       = log --graph --oneline --decorate --max-count=40
+	m         = merge --verbose --log --no-ff
+	r         = remote --verbose
+	rp        = remote --verbose prune
+	s         = status
+	ss        = status --short
+	sl        = status --long
+	sh        = show --oneline
+	st        = stash
+	t         = tag
+	user      = config --get-regexp ^user[.]
+	u         = config --get-regexp ^user[.]
 
 [core]
-	editor     = vim
+	editor    = vim
 
 [push]
-	default    = simple
+	default   = simple
 
 [user]
-	name       = Richard E. Dodson
+	name      = Richard E. Dodson
