@@ -4,7 +4,7 @@
 "  Created:  Mon Sep 21 18:22:22 UTC 2015
 "  License:  GNU General Public License, Version 3, 29 June 2007
 "
-"  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
+"  Copyright (C) 2015, 2016 Richard E. Dodson <richard.elias.dodson@gmail.com>
 "
 "  This file is part of dot-files.
 "
