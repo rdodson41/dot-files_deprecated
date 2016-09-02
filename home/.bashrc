@@ -24,31 +24,55 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Set kernal name to current system name
+#  Set kernal name
 export KERNAL_NAME="$(uname)"
 
-#  Set path to include GNU core utilities if system is OS X
-if [[ "${KERNAL_NAME}" == "Darwin" ]]; then
-	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+#  Set local software directory
+if [[ "${KERNAL_NAME}" == "Darwin" ]] && which brew &> /dev/null; then
+  export USR_LOCAL="$(brew --prefix)"
+else
+  export USR_LOCAL="/usr/local"
 fi
 
-#  Set path to include ~/.rvm/bin
-export PATH="${HOME}/.rvm/bin:${PATH}"
+#  Set path to include GNU core utilities if they exist
+if [[ "${KERNAL_NAME}" == "Darwin" && -d "${USR_LOCAL}/opt/coreutils/libexec/gnubin" ]]; then
+	export PATH="${USR_LOCAL}/opt/coreutils/libexec/gnubin:${PATH}"
+fi
 
-#  Set path to include ~/bin
-export PATH="${HOME}/bin:${PATH}"
+#  Set manual path to include GNU core utilities if they exist
+if [[ "${KERNAL_NAME}" == "Darwin" && -d "${USR_LOCAL}/opt/coreutils/libexec/gnuman" ]]; then
+  if [[ -n "${MANPATH}" ]]; then
+    export MANPATH="${USR_LOCAL}/opt/coreutils/libexec/gnuman:${MANPATH}"
+  else
+    export MANPATH="${USR_LOCAL}/opt/coreutils/libexec/gnuman"
+  fi
+fi
 
-#  Set GPG terminal to current terminal
-export GPG_TTY="$(tty)"
+#  Set path to include ~/.rvm/bin if it exists
+if [[ -d "${HOME}/.rvm/bin" ]]; then
+	export PATH="${HOME}/.rvm/bin:${PATH}"
+fi
+
+#  Set path to include ~/bin if it exists
+if [[ -d "${HOME}/bin" ]]; then
+  export PATH="${HOME}/bin:${PATH}"
+fi
 
 #  Set NVM directory to ~/.nvm if it exists
 if [[ -d "${HOME}/.nvm" ]]; then
 	export NVM_DIR="${HOME}/.nvm"
 fi
 
-#  Enable recursive file name expansion
+#  Set GPG terminal to current terminal
+export GPG_TTY="$(tty)"
+
+#  Enable recursive file path expansion
 shopt -s globstar &> /dev/null
+
+#  Include /usr/local/etc/bash_completion if it exists
+if [[ -f "${USR_LOCAL}/etc/bash_completion" ]]; then
+	source "${USR_LOCAL}/etc/bash_completion"
+fi
 
 #  Include ~/.bash/aliases if it exists
 if [[ -f "${HOME}/.bash/aliases" ]]; then
@@ -65,11 +89,6 @@ if [[ -f "${HOME}/.bash/local" ]]; then
 	source "${HOME}/.bash/local"
 fi
 
-#  Include ~/.gpg-agent-info if it exists
-if [[ -f "${HOME}/.gpg-agent-info" ]]; then
-	source "${HOME}/.gpg-agent-info"
-fi
-
 #  Include ~/.nvm/nvm.sh if it exists
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
 	source "${HOME}/.nvm/nvm.sh"
@@ -80,9 +99,9 @@ if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
 	source "${HOME}/.rvm/scripts/rvm"
 fi
 
-#  Include /usr/local/etc/bash_completion if it exists
-if [[ -f "$(brew --prefix)/etc/bash_completion" ]]; then
-	source "$(brew --prefix)/etc/bash_completion"
+#  Include ~/.gpg-agent-info if it exists
+if [[ -f "${HOME}/.gpg-agent-info" ]]; then
+	source "${HOME}/.gpg-agent-info"
 fi
 
 #  Set directory colors if ~/.dircolors exists
