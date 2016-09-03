@@ -65,14 +65,6 @@ for alias in $(git config --global --get-regexp "^alias[.]" | cut -d " " -f 1 | 
 	alias "g${alias}"="git ${alias}"
 done
 
-#  Alias gpg-agent to:
-#        --server               initialize as a server
-#        --daemon               initialize as a daemon
-#        --daemon ${SHELL}      initialize as a daemon and spawn SHELL as a sub-process
-alias gpg-agent-server="gpg-agent --verbose --server"
-alias gpg-agent-daemon="gpg-agent --verbose --daemon"
-alias gpg-agent-daemon-shell="gpg-agent --verbose --daemon ${SHELL}"
-
 #  Alias bundle to:
 #          install              install gems which are specified by the current bundle
 #          exec                 execute a command in the context of the current bundle
