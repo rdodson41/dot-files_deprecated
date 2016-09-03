@@ -1,8 +1,8 @@
 # dot-files
 
-**dot-files** is a collection of configuration files with which to customize my software development environment on OS X and Linux. Specifically, **dot-files** includes bash, vim, git, and gpg configuration files.
+**dot-files** is a collection of configuration files with which I customize my software development environment on OS X and Linux. Specifically, **dot-files** includes Bash, Vim, Git, and GPG configuration files.
 
- ![OS X Termina][1]
+ ![OS X Terminal][1]
 
   [1]: <http://i.imgur.com/Q5iIGjF.png> "OS X Terminal"
 
@@ -59,6 +59,7 @@ Use `make uninstall` to uninstall configuration files from your home directory:
   [9]: <https://github.com/altercation/solarized> "solarized"
   [10]: <https://github.com/seebi> "Sebastian Tramp"
   [11]: <https://github.com/seebi/dircolors-solarized> "dircolors-solarized"
+
 
 ## License
 
