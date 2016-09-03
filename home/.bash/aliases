@@ -74,7 +74,7 @@ alias be="bundle exec"
 
 #  Alias thefuck if it exists
 if which thefuck &> /dev/null; then
-	eval $(thefuck --alias)
+	eval "$(thefuck --alias)"
 fi
 
 #  Alias exit
