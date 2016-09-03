@@ -27,9 +27,6 @@
 #  Set shell to Bash
 SHELL = bash -o pipefail
 
-#  Set version to current Git description
-version = $(shell git describe --first-parent)
-
 #  Set build targets
 home = home
 home-all = $(shell find "$(home)" ! -type d)
@@ -42,12 +39,7 @@ install-all = $(root-home-all)
 #  Print usage to standard error
 .PHONY: help usage
 help usage:
-	@echo "dot-files: usage: make [ help | version | pull | push | install | uninstall | reinstall | update ]" >&2
-
-#  Print version to standard error
-.PHONY: version
-version:
-	@echo "dot-files: version: $(version)" >&2
+	@echo "dot-files: usage: make [ help | pull | push | install | uninstall | reinstall | update ]" >&2
 
 #  Pull repository
 .PHONY: pull
