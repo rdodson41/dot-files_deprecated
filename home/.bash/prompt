@@ -24,8 +24,8 @@
 #  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
 #
 
-#  Echo git branch color
-echo-git-branch-color()
+#  Print git branch color
+prompt-git-branch-color()
 {
 	local git_branch_color="\e[0;1;38;5;2m"
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
@@ -44,8 +44,8 @@ echo-git-branch-color()
 	printf "${git_branch_color}"
 }
 
-#  Echo git branch
-echo-git-branch()
+#  Print git branch
+prompt-git-branch()
 {
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
@@ -53,15 +53,15 @@ echo-git-branch()
 	fi
 }
 
-#  Echo git status color
-echo-git-status-color()
+#  Print git status color
+prompt-git-status-color()
 {
 	local git_status_color="\e[0;1;38;5;1m"
 	printf "${git_status_color}"
 }
 
-#  Echo git status
-echo-git-status()
+#  Print git status
+prompt-git-status()
 {
 	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "${?}")" = 1 ]]; then
 		echo " [+]"
@@ -93,8 +93,8 @@ fi
 
 PS1="${PS1}\[\e[0m\]:"
 PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
-PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
-PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
+PS1="${PS1}\[\$(prompt-git-branch-color)\]\$(prompt-git-branch)"
+PS1="${PS1}\[\$(prompt-git-status-color)\]\$(prompt-git-status)"
 
 #  Terminate top-level command line prompt with # if user is logged in as root; otherwise, terminate top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
