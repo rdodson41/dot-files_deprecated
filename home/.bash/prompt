@@ -1,31 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#
-#  Name:     rdodson41/dot-files/home/.bash/prompt
-#  Author:   Richard E. Dodson <richard.elias.dodson@gmail.com>
-#  Created:  Thu Oct 15 00:23:06 UTC 2015
-#  License:  GNU General Public License, Version 3, 29 June 2007
-#
-#  Copyright (C) 2015 Richard E. Dodson <richard.elias.dodson@gmail.com>
-#
-#  This file is part of dot-files.
-#
-#  dot-files is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  dot-files is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with dot-files. If not, see <http://www.gnu.org/licenses/>.
-#
-
-#  Echo git branch color
-echo-git-branch-color()
+prompt-git-branch-color()
 {
 	local git_branch_color="\e[0;1;38;5;2m"
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
@@ -44,8 +19,7 @@ echo-git-branch-color()
 	printf "${git_branch_color}"
 }
 
-#  Echo git branch
-echo-git-branch()
+prompt-git-branch()
 {
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
@@ -53,15 +27,13 @@ echo-git-branch()
 	fi
 }
 
-#  Echo git status color
-echo-git-status-color()
+prompt-git-status-color()
 {
 	local git_status_color="\e[0;1;38;5;1m"
 	printf "${git_status_color}"
 }
 
-#  Echo git status
-echo-git-status()
+prompt-git-status()
 {
 	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "${?}")" = 1 ]]; then
 		echo " [+]"
@@ -72,19 +44,14 @@ echo-git-status()
 	fi
 }
 
-#  Set top-level command line prompt
-export PS1=
-
-#  Colorize user name bold red if user is logged in as root; otherwise, colorize user name bold yellow
 if [[ "${USER}" == "root" ]]; then
-	PS1="${PS1}\[\e[0;1;38;5;1m\]\u"
+	PS1="\[\e[0;1;38;5;1m\]\u"
 else
-	PS1="${PS1}\[\e[0;1;38;5;3m\]\u"
+	PS1="\[\e[0;1;38;5;3m\]\u"
 fi
 
 PS1="${PS1}\[\e[0m\]@"
 
-#  Colorize host name bold red if user is logged in via ssh; otherwise, colorize host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
 	PS1="${PS1}\[\e[0;1;38;5;1m\]\h"
 else
@@ -93,10 +60,9 @@ fi
 
 PS1="${PS1}\[\e[0m\]:"
 PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
-PS1="${PS1}\[\$(echo-git-branch-color)\]\$(echo-git-branch)"
-PS1="${PS1}\[\$(echo-git-status-color)\]\$(echo-git-status)"
+PS1="${PS1}\[\$(prompt-git-branch-color)\]\$(prompt-git-branch)"
+PS1="${PS1}\[\$(prompt-git-status-color)\]\$(prompt-git-status)"
 
-#  Terminate top-level command line prompt with # if user is logged in as root; otherwise, terminate top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
 	PS1="${PS1}\[\e[0m\] # "
 else
