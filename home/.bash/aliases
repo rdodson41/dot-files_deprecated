@@ -1,39 +1,26 @@
 #!/usr/bin/env bash
 
-#  Alias cd to enable faster navigation
 alias -- ~="cd ~"
 alias -- -="cd -"
 alias -- ..="cd .."
 
-#  Alias ls to:
-#    -F, --classify             indicate file type
-#    -G, --color=auto           colorize output if standard output is connected to a terminal
-#    -T, --time-style=long-iso  list times in long-iso format
-#    -h, --human-readable       list sizes in human-readable format
-#    -l, --format=long          list files in long format
 if ls --version &> /dev/null; then
 	alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
 else
 	alias ls="ls -FGThl"
 fi
 
-#  Alias ls to:
-#    -A, --almost-all           list all files with the exception of . and ..
-#    -R, --recursive            list subdirectories recursively
 alias l="ls"
 alias la="ls -A"
 alias lar="ls -AR"
 alias lr="ls -R"
 alias lra="ls -RA"
 
-#  Alias grep, egrep, fgrep, and rgrep to:
-#        --color=auto           colorize output if standard output is connected to a terminal
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias rgrep="rgrep --color=auto"
 
-#  Alias env
 alias env-ssh="env | grep ^SSH | sort"
 alias env-gpg="env | grep ^GPG | sort"
 alias env-gem="env | grep ^GEM | sort"
@@ -41,28 +28,20 @@ alias env-rvm="env | grep ^rvm | sort"
 alias env-nvm="env | grep ^NVM | sort"
 alias env-docker="env | grep ^DOCKER | sort"
 
-#  Alias git
 alias g="git"
 
-#  Alias git aliases
 for alias in $(git config --global --get-regexp "^alias[.]" | cut -d " " -f 1 | cut -d "." -f 2-); do
 	alias "g${alias}"="git ${alias}"
 done
 
-#  Alias bundle to:
-#          install              install gems which are specified by the current bundle
-#          exec                 execute a command in the context of the current bundle
 alias b="bundle"
 alias bi="bundle install"
 alias be="bundle exec"
 
-#  Alias thefuck if it exists
 if which thefuck &> /dev/null; then
 	eval "$(thefuck --alias)"
 fi
 
-#  Alias exit
 alias x="exit"
 
-#  Unset alias
 unset alias

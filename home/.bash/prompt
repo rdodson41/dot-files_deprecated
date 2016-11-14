@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#  Print git branch color
 prompt-git-branch-color()
 {
 	local git_branch_color="\e[0;1;38;5;2m"
@@ -20,7 +19,6 @@ prompt-git-branch-color()
 	printf "${git_branch_color}"
 }
 
-#  Print git branch
 prompt-git-branch()
 {
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
@@ -29,14 +27,12 @@ prompt-git-branch()
 	fi
 }
 
-#  Print git status color
 prompt-git-status-color()
 {
 	local git_status_color="\e[0;1;38;5;1m"
 	printf "${git_status_color}"
 }
 
-#  Print git status
 prompt-git-status()
 {
 	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "${?}")" = 1 ]]; then
@@ -48,10 +44,8 @@ prompt-git-status()
 	fi
 }
 
-#  Set top-level command line prompt
 export PS1=
 
-#  Colorize user name bold red if user is logged in as root; otherwise, colorize user name bold yellow
 if [[ "${USER}" == "root" ]]; then
 	export PS1="${PS1}\[\e[0;1;38;5;1m\]\u"
 else
@@ -60,7 +54,6 @@ fi
 
 export PS1="${PS1}\[\e[0m\]@"
 
-#  Colorize host name bold red if user is logged in via ssh; otherwise, colorize host name bold yellow
 if [[ -n "${SSH_TTY}" ]]; then
 	export PS1="${PS1}\[\e[0;1;38;5;1m\]\h"
 else
@@ -72,7 +65,6 @@ export PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
 export PS1="${PS1}\[\$(prompt-git-branch-color)\]\$(prompt-git-branch)"
 export PS1="${PS1}\[\$(prompt-git-status-color)\]\$(prompt-git-status)"
 
-#  Terminate top-level command line prompt with # if user is logged in as root; otherwise, terminate top-level command line prompt with $
 if [[ "${USER}" == "root" ]]; then
 	export PS1="${PS1}\[\e[0m\] # "
 else
