@@ -44,29 +44,29 @@ prompt-git-status()
 	fi
 }
 
-export PS1=
+export PS1
 
 if [[ "${USER}" == "root" ]]; then
-	export PS1="${PS1}\[\e[0;1;38;5;1m\]\u"
+	PS1="\[\e[0;1;38;5;1m\]\u"
 else
-	export PS1="${PS1}\[\e[0;1;38;5;3m\]\u"
+	PS1="\[\e[0;1;38;5;3m\]\u"
 fi
 
-export PS1="${PS1}\[\e[0m\]@"
+PS1="${PS1}\[\e[0m\]@"
 
 if [[ -n "${SSH_TTY}" ]]; then
-	export PS1="${PS1}\[\e[0;1;38;5;1m\]\h"
+	PS1="${PS1}\[\e[0;1;38;5;1m\]\h"
 else
-	export PS1="${PS1}\[\e[0;1;38;5;3m\]\h"
+	PS1="${PS1}\[\e[0;1;38;5;3m\]\h"
 fi
 
-export PS1="${PS1}\[\e[0m\]:"
-export PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
-export PS1="${PS1}\[\$(prompt-git-branch-color)\]\$(prompt-git-branch)"
-export PS1="${PS1}\[\$(prompt-git-status-color)\]\$(prompt-git-status)"
+PS1="${PS1}\[\e[0m\]:"
+PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
+PS1="${PS1}\[\$(prompt-git-branch-color)\]\$(prompt-git-branch)"
+PS1="${PS1}\[\$(prompt-git-status-color)\]\$(prompt-git-status)"
 
 if [[ "${USER}" == "root" ]]; then
-	export PS1="${PS1}\[\e[0m\] # "
+	PS1="${PS1}\[\e[0m\] # "
 else
-	export PS1="${PS1}\[\e[0m\] \$ "
+	PS1="${PS1}\[\e[0m\] \$ "
 fi
