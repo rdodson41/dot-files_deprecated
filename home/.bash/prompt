@@ -44,8 +44,6 @@ prompt-git-status()
 	fi
 }
 
-export PS1
-
 if [[ "${USER}" == "root" ]]; then
 	PS1="\[\e[0;1;38;5;1m\]\u"
 else

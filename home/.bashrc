@@ -24,10 +24,6 @@ if [[ -d "${HOME}/.rvm/bin" ]]; then
   export PATH="${HOME}/.rvm/bin:${PATH}"
 fi
 
-if [[ -d "${HOME}/bin" ]]; then
-  export PATH="${HOME}/bin:${PATH}"
-fi
-
 if [[ -d "${HOME}/.nvm" ]]; then
   export NVM_DIR="${HOME}/.nvm"
 fi
