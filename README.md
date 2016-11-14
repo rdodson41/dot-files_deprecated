@@ -6,7 +6,6 @@
 
   [1]: <http://i.imgur.com/Q5iIGjF.png> "OS X Terminal"
 
-
 ## Installation
 
 Navigate to the directory in which you would like to clone this repository:
@@ -25,10 +24,9 @@ Use `make install` to install configuration files to your home directory:
 
     $ make install
 
-Use `make pull install` to update the local copy of this repository and install updated configuration files to your home directory:
+Use `make update` to update the local copy of this repository and install updated configuration files to your home directory:
 
-    $ make pull install
-
+    $ make update
 
 ## Uninstallation
 
@@ -39,7 +37,6 @@ Navigate to the local copy of this repository:
 Use `make uninstall` to uninstall configuration files from your home directory:
 
     $ make uninstall
-
 
 ## Credits
 
@@ -59,7 +56,6 @@ Use `make uninstall` to uninstall configuration files from your home directory:
   [9]: <https://github.com/altercation/solarized> "solarized"
   [10]: <https://github.com/seebi> "Sebastian Tramp"
   [11]: <https://github.com/seebi/dircolors-solarized> "dircolors-solarized"
-
 
 ## License
 
