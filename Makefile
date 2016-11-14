@@ -1,5 +1,3 @@
-#!/usr/bin/make -f
-
 #  Set shell to Bash
 SHELL = bash -o pipefail
 

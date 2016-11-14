@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #  Set kernal name
 export KERNAL_NAME="$(uname)"
