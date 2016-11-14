@@ -57,6 +57,14 @@ alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias rgrep="rgrep --color=auto"
 
+#  Alias env
+alias env-ssh="env | grep ^SSH | sort"
+alias env-gpg="env | grep ^GPG | sort"
+alias env-gem="env | grep ^GEM | sort"
+alias env-rvm="env | grep ^rvm | sort"
+alias env-nvm="env | grep ^NVM | sort"
+alias env-docker="env | grep ^DOCKER | sort"
+
 #  Alias git
 alias g="git"
 
