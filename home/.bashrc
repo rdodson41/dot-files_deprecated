@@ -34,16 +34,16 @@ if [[ -f "${HOME}/.bash/prompt" ]]; then
   source "${HOME}/.bash/prompt"
 fi
 
-if [[ -f "${HOME}/.bash/local" ]]; then
-  source "${HOME}/.bash/local"
-fi
-
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
   source "${HOME}/.nvm/nvm.sh"
 fi
 
 if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
   source "${HOME}/.rvm/scripts/rvm"
+fi
+
+if [[ -f "${HOME}/.bash/local" ]]; then
+  source "${HOME}/.bash/local"
 fi
 
 if [[ -f "${HOME}/.dircolors" ]]; then
