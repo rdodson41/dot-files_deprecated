@@ -22,16 +22,16 @@ if [[ -f "${USR_LOCAL}/etc/bash_completion" ]]; then
   source "${USR_LOCAL}/etc/bash_completion"
 fi
 
-if [[ -f "${HOME}/.bash/aliases" ]]; then
-  source "${HOME}/.bash/aliases"
+if [[ -f "${HOME}/.bash/alias.sh" ]]; then
+  source "${HOME}/.bash/alias.sh"
 fi
 
-if [[ -f "${HOME}/.bash/gpg" ]]; then
-  source "${HOME}/.bash/gpg"
+if [[ -f "${HOME}/.bash/gpg.sh" ]]; then
+  source "${HOME}/.bash/gpg.sh"
 fi
 
-if [[ -f "${HOME}/.bash/prompt" ]]; then
-  source "${HOME}/.bash/prompt"
+if [[ -f "${HOME}/.bash/prompt.sh" ]]; then
+  source "${HOME}/.bash/prompt.sh"
 fi
 
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
