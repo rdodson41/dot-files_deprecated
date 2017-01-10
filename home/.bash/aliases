@@ -39,6 +39,7 @@ done
 
 alias b="bundle"
 alias bi="bundle install"
+alias bu="bundle update"
 alias be="bundle exec"
 
 if which thefuck &> /dev/null; then
