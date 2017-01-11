@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 if [[ -x "${HOME}/.bash/alias/docker.rb" && -f "${HOME}/.docker/services.yml" ]]; then
-  eval "$("${HOME}/.bash/alias/docker.rb")"
+  eval "$(rvm use --quiet default && "${HOME}/.bash/alias/docker.rb")"
 fi
