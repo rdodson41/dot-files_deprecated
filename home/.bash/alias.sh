@@ -43,6 +43,10 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 
+for profile in $(triton profiles -H -o name 2> /dev/null | grep --invert-match env); do
+  alias "${profile}"="TRITON_PROFILE=${profile} triton-profile-exec"
+done
+
 if which thefuck &> /dev/null; then
 	eval "$(thefuck --alias)"
 fi
@@ -50,3 +54,4 @@ fi
 alias x="exit"
 
 unset alias
+unset profile

@@ -42,6 +42,10 @@ if [[ -f "${HOME}/.bash/prompt.sh" ]]; then
   source "${HOME}/.bash/prompt.sh"
 fi
 
+if [[ -f "${HOME}/.bash/triton.sh" ]]; then
+  source "${HOME}/.bash/triton.sh"
+fi
+
 if [[ -f "${HOME}/.bash/local.sh" ]]; then
   source "${HOME}/.bash/local.sh"
 fi
