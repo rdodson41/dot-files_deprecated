@@ -34,6 +34,10 @@ if [[ -f "${HOME}/.bash/alias.sh" ]]; then
   source "${HOME}/.bash/alias.sh"
 fi
 
+if [[ -f "${HOME}/.bash/alias/docker.sh" ]]; then
+  source "${HOME}/.bash/alias/docker.sh"
+fi
+
 if [[ -f "${HOME}/.bash/gpg.sh" ]]; then
   source "${HOME}/.bash/gpg.sh"
 fi
