@@ -22,6 +22,14 @@ if [[ -f "${USR_LOCAL}/etc/bash_completion" ]]; then
   source "${USR_LOCAL}/etc/bash_completion"
 fi
 
+if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
+  source "${HOME}/.nvm/nvm.sh"
+fi
+
+if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
+  source "${HOME}/.rvm/scripts/rvm"
+fi
+
 if [[ -f "${HOME}/.bash/alias.sh" ]]; then
   source "${HOME}/.bash/alias.sh"
 fi
@@ -32,14 +40,6 @@ fi
 
 if [[ -f "${HOME}/.bash/prompt.sh" ]]; then
   source "${HOME}/.bash/prompt.sh"
-fi
-
-if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
-  source "${HOME}/.nvm/nvm.sh"
-fi
-
-if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
-  source "${HOME}/.rvm/scripts/rvm"
 fi
 
 if [[ -f "${HOME}/.bash/local" ]]; then
