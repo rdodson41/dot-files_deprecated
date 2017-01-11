@@ -42,8 +42,8 @@ if [[ -f "${HOME}/.bash/prompt.sh" ]]; then
   source "${HOME}/.bash/prompt.sh"
 fi
 
-if [[ -f "${HOME}/.bash/local" ]]; then
-  source "${HOME}/.bash/local"
+if [[ -f "${HOME}/.bash/local.sh" ]]; then
+  source "${HOME}/.bash/local.sh"
 fi
 
 if [[ -f "${HOME}/.dircolors" ]]; then
