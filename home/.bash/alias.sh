@@ -27,6 +27,7 @@ alias env-gem="env | grep ^GEM | sort"
 alias env-rvm="env | grep ^rvm | sort"
 alias env-nvm="env | grep ^NVM | sort"
 alias env-sdc="env | grep ^SDC | sort"
+alias env-triton="env | grep ^TRITON | sort"
 alias env-docker="env | grep ^DOCKER | sort"
 
 alias first="head --lines=1"
