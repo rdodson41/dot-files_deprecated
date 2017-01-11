@@ -26,7 +26,11 @@ alias env-gpg="env | grep ^GPG | sort"
 alias env-gem="env | grep ^GEM | sort"
 alias env-rvm="env | grep ^rvm | sort"
 alias env-nvm="env | grep ^NVM | sort"
+alias env-sdc="env | grep ^SDC | sort"
+alias env-triton="env | grep ^TRITON | sort"
 alias env-docker="env | grep ^DOCKER | sort"
+
+alias first="head --lines=1"
 
 alias g="git"
 
@@ -36,7 +40,12 @@ done
 
 alias b="bundle"
 alias bi="bundle install"
+alias bu="bundle update"
 alias be="bundle exec"
+
+for profile in $(triton profiles -H -o name 2> /dev/null | grep --invert-match env); do
+  alias "${profile}"="TRITON_PROFILE=${profile} triton-profile-exec"
+done
 
 if which thefuck &> /dev/null; then
 	eval "$(thefuck --alias)"
@@ -45,3 +54,4 @@ fi
 alias x="exit"
 
 unset alias
+unset profile
