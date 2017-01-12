@@ -54,6 +54,10 @@ if [[ -f "${HOME}/.bash/local.sh" ]]; then
   source "${HOME}/.bash/local.sh"
 fi
 
+if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
+  source "${HOME}/.iterm2_shell_integration.bash"
+fi
+
 if [[ -f "${HOME}/.dircolors" ]]; then
   eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
 fi
