@@ -26,30 +26,12 @@ if [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
   source "${HOME}/.rvm/scripts/rvm"
 fi
 
-if [[ -f "${HOME}/.bash/alias.sh" ]]; then
-  source "${HOME}/.bash/alias.sh"
-fi
-
-if [[ -f "${HOME}/.bash/alias/docker.sh" ]]; then
-  source "${HOME}/.bash/alias/docker.sh"
-fi
-
-if [[ -f "${HOME}/.bash/gpg.sh" ]]; then
-  source "${HOME}/.bash/gpg.sh"
-fi
-
-if [[ -f "${HOME}/.bash/prompt.sh" ]]; then
-  source "${HOME}/.bash/prompt.sh"
-fi
-
-if [[ -f "${HOME}/.bash/triton.sh" ]]; then
-  source "${HOME}/.bash/triton.sh"
-fi
-
-if [[ -f "${HOME}/.bash/local.sh" ]]; then
-  source "${HOME}/.bash/local.sh"
-fi
+for path in $(find "${HOME}/.bash" -type f -name *.sh); do
+  source "${path}"
+done
 
 if [[ -f "${HOME}/.dircolors" ]]; then
   eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
 fi
+
+unset path
