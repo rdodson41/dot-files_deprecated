@@ -14,10 +14,6 @@ if [[ -d "${USR_LOCAL}/opt/coreutils/libexec/gnuman" ]]; then
   MANPATH="${USR_LOCAL}/opt/coreutils/libexec/gnuman:${MANPATH}"
 fi
 
-if [[ -d "${HOME}/.rvm/bin" ]]; then
-  PATH="${HOME}/.rvm/bin:${PATH}"
-fi
-
 if [[ -f "${USR_LOCAL}/etc/bash_completion" ]]; then
   source "${USR_LOCAL}/etc/bash_completion"
 fi
