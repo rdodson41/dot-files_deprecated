@@ -1,26 +1,24 @@
 #!/usr/bin/env bash
 
-__git_complete_alias()
+__git_alias()
 {
-  local alias="g${1}"
-  local words=(git $(git config --get "alias.${1}"))
-  local value="${words[*]}"
-  eval "
-    __git_wrap_git_${1}()
-    {
-      COMP_WORDS=(${words[*]} \${COMP_WORDS[*]:1})
-      (( COMP_CWORD += $(( ${#words[*]} - 1 )) ))
-      COMP_LINE=\"${value}\${COMP_LINE:${#alias}}\"
-      (( COMP_POINT += $(( ${#value} - ${#alias} )) ))
-      __git_func_wrap __git_main
-    }
-  "
-  complete -o bashdefault -o default -o nospace -F "__git_wrap_git_${1}" "${alias}"
+  while [[ "${#}" -gt 0 ]]; do
+    local alias="g${1}"
+    local value="$(git config --get "alias.${1}")"
+    eval "
+      __git_wrap_git_${1}()
+      {
+        COMP_WORDS=(git ${value} \${COMP_WORDS[*]:1})
+        COMP_LINE=\"git ${value}\${COMP_LINE:${#alias}}\"
+        COMP_CWORD=\"\${#COMP_WORDS[*]}\"
+        COMP_POINT=\"\${#COMP_LINE}\"
+        __git_func_wrap __git_main
+      }
+    "
+    alias "${alias}"="git ${value}"
+    complete -o bashdefault -o default -o nospace -F "__git_wrap_git_${1}" "${alias}"
+    shift
+  done
 }
 
-for alias in $(__git_aliases); do
-	alias "g${alias}"="git ${alias}"
-  __git_complete_alias "${alias}"
-done
-
-unset alias
+__git_alias $(__git_aliases)
