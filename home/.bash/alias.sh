@@ -27,8 +27,6 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 
-if which thefuck &> /dev/null; then
-	eval "$(thefuck --alias)"
-fi
+eval "$(thefuck --alias 2> /dev/null)"
 
 alias x="exit"
