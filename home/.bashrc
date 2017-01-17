@@ -1,21 +1,17 @@
 #!/usr/bin/env bash
 
-if which brew &> /dev/null; then
-  USR_LOCAL="$(brew --prefix)"
-else
-  USR_LOCAL="/usr/local"
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 fi
 
-if [[ -d "${USR_LOCAL}/opt/coreutils/libexec/gnubin" ]]; then
-  PATH="${USR_LOCAL}/opt/coreutils/libexec/gnubin:${PATH}"
+if [[ -d "/usr/local/opt/coreutils/libexec/gnuman" ]]; then
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 fi
 
-if [[ -d "${USR_LOCAL}/opt/coreutils/libexec/gnuman" ]]; then
-  MANPATH="${USR_LOCAL}/opt/coreutils/libexec/gnuman:${MANPATH}"
-fi
-
-if [[ -f "${USR_LOCAL}/etc/bash_completion" ]]; then
-  source "${USR_LOCAL}/etc/bash_completion"
+if [[ -f "/usr/local/etc/bash_completion" ]]; then
+  source "/usr/local/etc/bash_completion"
 fi
 
 if [[ -f "${HOME}/.nvm/nvm.sh" ]]; then
