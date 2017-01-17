@@ -10,7 +10,6 @@ alias la="ls --almost-all"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-alias rgrep="rgrep --color=auto"
 
 alias env-ssh="env | grep ^SSH | sort"
 alias env-gpg="env | grep ^GPG | sort"
