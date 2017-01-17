@@ -32,12 +32,6 @@ alias env-docker="env | grep ^DOCKER | sort"
 
 alias first="head --lines=1"
 
-alias g="git"
-
-for alias in $(git config --global --get-regexp "^alias[.]" | cut -d " " -f 1 | cut -d "." -f 2-); do
-	alias "g${alias}"="git ${alias}"
-done
-
 alias b="bundle"
 alias bi="bundle install"
 alias bu="bundle update"
@@ -48,5 +42,3 @@ if which thefuck &> /dev/null; then
 fi
 
 alias x="exit"
-
-unset alias
