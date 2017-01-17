@@ -4,17 +4,8 @@ alias -- ~="cd ~"
 alias -- -="cd -"
 alias -- ..="cd .."
 
-if ls --version &> /dev/null; then
-	alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
-else
-	alias ls="ls -FGThl"
-fi
-
-alias l="ls"
-alias la="ls -A"
-alias lar="ls -AR"
-alias lr="ls -R"
-alias lra="ls -RA"
+alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
+alias la="ls --almost-all"
 
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
