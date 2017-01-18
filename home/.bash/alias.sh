@@ -3,7 +3,7 @@
 alias -- -="cd -"
 alias -- ..="cd .."
 
-alias ls="ls --classify --format=long --human-readable --time-style=long-iso --color=auto"
+alias ls="ls --format=long --human-readable --time-style=long-iso --classify --color=auto"
 alias la="ls --almost-all"
 
 alias grep="grep --color=auto"
