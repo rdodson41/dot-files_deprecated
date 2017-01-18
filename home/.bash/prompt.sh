@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-prompt-git-branch-color()
+git-branch-color()
 {
 	local git_branch_color="\e[0;1;38;5;2m"
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
@@ -19,7 +19,7 @@ prompt-git-branch-color()
 	printf "${git_branch_color}"
 }
 
-prompt-git-branch()
+git-branch()
 {
 	local git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null)"
 	if [[ -n "${git_branch}" ]]; then
@@ -27,13 +27,13 @@ prompt-git-branch()
 	fi
 }
 
-prompt-git-status-color()
+git-status-color()
 {
 	local git_status_color="\e[0;1;38;5;1m"
 	printf "${git_status_color}"
 }
 
-prompt-git-status()
+git-status()
 {
 	if [[ "$(git diff --quiet --staged 2> /dev/null; echo "${?}")" = 1 ]]; then
 		echo " [+]"
@@ -60,8 +60,8 @@ fi
 
 PS1="${PS1}\[\e[0m\]:"
 PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
-PS1="${PS1}\[\$(prompt-git-branch-color)\]\$(prompt-git-branch)"
-PS1="${PS1}\[\$(prompt-git-status-color)\]\$(prompt-git-status)"
+PS1="${PS1}\[\$(git-branch-color)\]\$(git-branch)"
+PS1="${PS1}\[\$(git-status-color)\]\$(git-status)"
 
 if [[ "${USER}" == "root" ]]; then
 	PS1="${PS1}\[\e[0m\] # "
