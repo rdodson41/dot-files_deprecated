@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ -x "${HOME}/.bash/alias/triton.rb" ]]; then
-  eval "$(rvm use --quiet default 2> /dev/null && triton profiles -H -o name 2> /dev/null | grep --invert-match env | "${HOME}/.bash/alias/triton.rb")"
+if [[ -f "${HOME}/.bash/alias/triton.jq" ]]; then
+  eval "$(triton profiles --json 2> /dev/null | jq --from-file "${HOME}/.bash/alias/triton.jq" --raw-output 2> /dev/null)"
 fi
