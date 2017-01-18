@@ -4,6 +4,8 @@ triton-profile-exec()
 {
   (
     eval "$(triton env)"
-    eval "$@"
+    eval "${@}"
   )
 }
+
+complete -c triton-profile-exec
