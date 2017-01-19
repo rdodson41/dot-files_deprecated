@@ -5,11 +5,9 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
-
-set scrolloff=8
-
 set backspace=2
 
+set scrolloff=8
 set title
 set cursorline
 set number
@@ -19,7 +17,6 @@ set ruler
 
 set incsearch
 set hlsearch
-
 set wildmenu
 
 syntax enable
