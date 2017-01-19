@@ -1,11 +1,11 @@
 home = home
-home-all = $(shell find "$(home)" ! -type d)
+home-all = $(shell find "$(home)" -type f)
 
 root-home = $(HOME)
 root-home-all = $(patsubst $(home)/%,$(root-home)/%,$(home-all))
 
-.PHONY: help usage
-help usage:
+.PHONY: help
+help:
 	@echo "usage: make [ help | pull | install | update | uninstall | reinstall ]" >&2
 
 .PHONY: pull

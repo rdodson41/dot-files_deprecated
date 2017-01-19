@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ -x "${HOME}/.bash/alias/docker.rb" && -f "${HOME}/.docker/services.yml" ]]; then
-  eval "$(rvm use --quiet default && "${HOME}/.bash/alias/docker.rb")"
+if [[ -f "${HOME}/.bash/alias/docker.jq" && -f "${HOME}/.docker/services.json" ]]; then
+  eval "$(jq --from-file "${HOME}/.bash/alias/docker.jq" --raw-output < "${HOME}/.docker/services.json" 2> /dev/null)"
 fi

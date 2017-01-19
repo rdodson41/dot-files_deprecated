@@ -1,6 +1,6 @@
 # dot-files
 
-**dot-files** is a collection of configuration files with which I customize my software development environment on OS X and Linux. Specifically, **dot-files** includes Bash, Vim, Git, and GPG configuration files.
+**dot-files** is a collection of configuration files with which I customize my software development environment on OS X and Linux. Specifically, **dot-files** includes Bash, Vim, Git, GPG, Triton, and Docker configuration files.
 
  ![OS X Terminal][1]
 
@@ -18,7 +18,7 @@ Clone this repository:
 
 Navigate to the local copy of this repository:
 
-	$ cd dot-files
+    $ cd dot-files
 
 Use `make install` to install configuration files to your home directory:
 
