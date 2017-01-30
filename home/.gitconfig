@@ -31,6 +31,8 @@
 	sh        = show --oneline
 	st        = stash
 	t         = tag
+	update    = !git pull && git remote prune origin && git gc
+	up        = !git pull && git remote prune origin && git gc
 	user      = config --get-regexp ^user[.]
 	u         = config --get-regexp ^user[.]
 
