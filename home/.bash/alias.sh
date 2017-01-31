@@ -21,9 +21,6 @@ alias env-docker="env | grep ^DOCKER | sort"
 
 alias first="head --lines=1"
 
-alias g="git"
-alias g-="git checkout -"
-
 alias b="bundle"
 alias bi="bundle install"
 alias bu="bundle update"
