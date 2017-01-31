@@ -1,9 +1,7 @@
 { name: (. | split(" ") | .[0] | split(".") | .[1]), value: (. | split(" ") | .[1:] | join(" ")) } |
 (
-  "alias \"g\(.name)\"=\"git \(.value)\"",
-  if .value | test("^!") then
-    "complete -o bashdefault -o default -o nospace \"g\(.name)\""
-  else
+  if .value | test("^!") | not then
+    "alias \"g\(.name)\"=\"git \(.value)\"",
     "__git_wrap_git_\(.name)()",
     "{",
     "  COMP_WORDS=(git \(.value) \"${COMP_WORDS[@]:1}\")",
