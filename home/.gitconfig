@@ -10,6 +10,7 @@
 	ca        = commit --verbose --all
 	ch        = checkout
 	cl        = clone --verbose
+	core      = config --get-regexp ^core[.]
 	d         = diff
 	ds        = diff --staged
 	l         = log --graph --oneline --max-count=10
@@ -31,8 +32,6 @@
 	ss        = status --short
 	st        = stash
 	t         = tag
-	u         = config --get-regexp ^user[.]
-	up        = !git pull && git remote prune origin && git gc
 	update    = !git pull && git remote prune origin && git gc
 	user      = config --get-regexp ^user[.]
 
