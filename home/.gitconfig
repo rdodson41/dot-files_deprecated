@@ -42,9 +42,6 @@
 	editor    = vim
 	pager 		= diff-so-fancy | less --tabs=2
 
-[diff-so-fancy]
-  markEmptyLines = false
-
 [push]
 	default   = simple
 
