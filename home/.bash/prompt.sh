@@ -89,7 +89,7 @@ PS1="${PS1}\[\$(git-branch-color)\]\$(git-branch)"
 PS1="${PS1}\[\$(git-status-color)\]\$(git-status)"
 
 if [[ "${USER}" == "root" ]]; then
-	PS1="${PS1}\[\e[0m\] # "
+	PS1="${PS1}\[\e[0m\]\n# "
 else
-	PS1="${PS1}\[\e[0m\] \$ "
+	PS1="${PS1}\[\e[0m\]\n\$ "
 fi
