@@ -10,6 +10,10 @@ if [[ -d "/usr/local/opt/coreutils/libexec/gnuman" ]]; then
   MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 fi
 
+if [[ -d "${HOME}/Developer/go" ]]; then
+  export GOPATH="${HOME}/Developer/go"
+fi
+
 if [[ -f "/usr/local/etc/bash_completion" ]]; then
   source "/usr/local/etc/bash_completion"
 fi
