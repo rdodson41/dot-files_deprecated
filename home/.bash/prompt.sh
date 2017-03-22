@@ -1,5 +1,29 @@
 #!/usr/bin/env bash
 
+ruby-version-color()
+{
+	printf "\e[0;1;38;5;1m"
+}
+
+ruby-version()
+{
+	if [[ -n "${rvm_ruby_string}" ]]; then
+		echo " [${rvm_ruby_string}]"
+	fi
+}
+
+triton-profile-color()
+{
+	printf "\e[0;1;38;5;9m"
+}
+
+triton-profile()
+{
+	if [[ -n "${TRITON_PROFILE}" ]]; then
+		echo " [${TRITON_PROFILE}]"
+	fi
+}
+
 git-branch-color()
 {
 	local git_branch_color="\e[0;1;38;5;2m"
@@ -29,8 +53,7 @@ git-branch()
 
 git-status-color()
 {
-	local git_status_color="\e[0;1;38;5;1m"
-	printf "${git_status_color}"
+	printf "\e[0;1;38;5;1m"
 }
 
 git-status()
@@ -60,6 +83,8 @@ fi
 
 PS1="${PS1}\[\e[0m\]:"
 PS1="${PS1}\[\e[0;1;38;5;4m\]\w"
+PS1="${PS1}\[\$(ruby-version-color)\]\$(ruby-version)"
+PS1="${PS1}\[\$(triton-profile-color)\]\$(triton-profile)"
 PS1="${PS1}\[\$(git-branch-color)\]\$(git-branch)"
 PS1="${PS1}\[\$(git-status-color)\]\$(git-status)"
 
