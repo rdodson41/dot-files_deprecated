@@ -33,6 +33,7 @@ nnoremap <down> g<down>
 
 if filereadable(glob('~/.vim/autoload/plug.vim'))
   call plug#begin()
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'powerline/fonts', { 'do': './install.sh' }
