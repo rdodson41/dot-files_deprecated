@@ -15,6 +15,9 @@ set showmode
 set showcmd
 set ruler
 
+set splitbelow
+set splitright
+
 set incsearch
 set hlsearch
 set wildmenu
@@ -31,8 +34,12 @@ nnoremap k gk
 nnoremap <up> g<up>
 nnoremap <down> g<down>
 
+map <Leader>! :VimuxPromptCommand<Enter>
+
 if filereadable(glob('~/.vim/autoload/plug.vim'))
   call plug#begin()
+  Plug 'benmills/vimux'
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'powerline/fonts', { 'do': './install.sh' }
