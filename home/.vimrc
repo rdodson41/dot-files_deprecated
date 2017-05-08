@@ -1,4 +1,5 @@
 set ttimeoutlen=0
+set updatetime=0
 
 set tabstop=2
 set softtabstop=2
