@@ -1,4 +1,5 @@
 set ttimeoutlen=0
+set updatetime=0
 
 set tabstop=2
 set softtabstop=2
@@ -38,6 +39,7 @@ map <Leader>! :VimuxPromptCommand<Enter>
 
 if filereadable(glob('~/.vim/autoload/plug.vim'))
   call plug#begin()
+  Plug 'airblade/vim-gitgutter'
   Plug 'benmills/vimux'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'ctrlpvim/ctrlp.vim'

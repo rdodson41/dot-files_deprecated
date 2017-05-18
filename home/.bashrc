@@ -14,6 +14,8 @@ if [[ -d "${HOME}/Developer/go" ]]; then
   export GOPATH="${HOME}/Developer/go"
 fi
 
+export GPG_TTY="$(tty)"
+
 if [[ -f "/usr/local/etc/bash_completion" ]]; then
   source "/usr/local/etc/bash_completion"
 fi
