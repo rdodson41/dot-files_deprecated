@@ -6,11 +6,7 @@ root-home-all = $(patsubst $(home)/%,$(root-home)/%,$(home-all))
 
 .PHONY: help
 help:
-	@echo "usage: make [ help | pull | install | uninstall | reinstall | update ]" >&2
-
-.PHONY: pull
-pull:
-	git pull --verbose
+	@echo "usage: make [ help | install | uninstall | pull | update ]" >&2
 
 .PHONY: install
 install: $(root-home-all)
@@ -20,10 +16,11 @@ $(root-home)/%: $(home)/%
 
 .PHONY: uninstall
 uninstall:
-	rm $(root-home-all)
+	rm --force $(root-home-all)
 
-.PHONY: reinstall
-reinstall: uninstall install
+.PHONY: pull
+pull:
+	git pull --verbose
 
 .PHONY: update
 update: uninstall pull install
