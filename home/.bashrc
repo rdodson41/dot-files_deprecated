@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
 if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
   PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 fi
