@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
-  PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-fi
-
-if [[ -d "/usr/local/opt/coreutils/libexec/gnuman" ]]; then
-  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
-fi
 
 if [[ -d "${HOME}/Developer/go" ]]; then
   export GOPATH="${HOME}/Developer/go"
