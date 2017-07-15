@@ -14,6 +14,9 @@ fi
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
+alias zgrep="zgrep --color=auto"
+alias zegrep="zegrep --color=auto"
+alias zfgrep="zfgrep --color=auto"
 
 alias env-ssh="env | grep ^SSH | sort"
 alias env-gpg="env | grep ^GPG | sort"
@@ -23,6 +26,9 @@ alias env-nvm="env | grep ^NVM | sort"
 alias env-sdc="env | grep ^SDC | sort"
 alias env-triton="env | grep ^TRITON | sort"
 alias env-docker="env | grep ^DOCKER | sort"
+
+alias g="git"
+alias g-="git checkout -"
 
 alias b="bundle"
 alias bi="bundle install"
