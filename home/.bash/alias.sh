@@ -3,8 +3,13 @@
 alias -- -="cd -"
 alias -- ..="cd .."
 
-alias ls="ls --format=long --human-readable --time-style=long-iso --classify --color=auto"
-alias la="ls --almost-all"
+if ls --version &> /dev/null; then
+  alias ls="ls --format=long --human-readable --time-style=long-iso --classify --color=auto"
+  alias la="ls --almost-all"
+else
+  alias ls="ls -TFGlh"
+  alias la="ls -A"
+fi
 
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
@@ -18,8 +23,6 @@ alias env-nvm="env | grep ^NVM | sort"
 alias env-sdc="env | grep ^SDC | sort"
 alias env-triton="env | grep ^TRITON | sort"
 alias env-docker="env | grep ^DOCKER | sort"
-
-alias first="head --lines=1"
 
 alias b="bundle"
 alias bi="bundle install"
