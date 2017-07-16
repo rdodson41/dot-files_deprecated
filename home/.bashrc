@@ -28,6 +28,6 @@ eval "$(find "${HOME}/.bash" -type f -name *.sh -exec echo source \"{}\" \;)"
 
 if [[ -d "${GNU_BIN}" ]]; then
   eval "$("${GNU_BIN}/dircolors" "${HOME}/.dircolors")"
-else
+elif dircolors --version &> /dev/null; then
   eval "$(dircolors "${HOME}/.dircolors")"
 fi
