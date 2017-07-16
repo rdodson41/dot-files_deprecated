@@ -16,7 +16,7 @@ $(root-home)/%: $(home)/%
 
 .PHONY: uninstall
 uninstall:
-	rm --force $(root-home-all)
+	rm -f $(root-home-all)
 
 .PHONY: pull
 pull:
