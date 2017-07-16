@@ -3,7 +3,10 @@
 alias -- -="cd -"
 alias -- ..="cd .."
 
-if ls --version &> /dev/null; then
+if [[ -d "${GNU_BIN}" ]]; then
+  alias ls="\"${GNU_BIN}/ls\" --format=long --human-readable --time-style=long-iso --classify --color=auto"
+  alias la="ls --almost-all"
+elif ls --version &> /dev/null; then
   alias ls="ls --format=long --human-readable --time-style=long-iso --classify --color=auto"
   alias la="ls --almost-all"
 else
