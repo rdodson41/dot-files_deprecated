@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export GNU_BIN="/usr/local/opt/coreutils/libexec/gnubin"
+
 export GPG_TTY="$(tty)"
 
 if [[ -d "${HOME}/Developer/go" ]]; then
