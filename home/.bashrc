@@ -26,6 +26,8 @@ fi
 
 eval "$(find "${HOME}/.bash" -type f -name *.sh -exec echo source \"{}\" \;)"
 
-if [[ -f "${HOME}/.dircolors" ]]; then
-  eval "$(dircolors "${HOME}/.dircolors" 2> /dev/null)"
+if [[ -d "${GNU_BIN}" ]]; then
+  eval "$("${GNU_BIN}/dircolors" "${HOME}/.dircolors")"
+else
+  eval "$(dircolors "${HOME}/.dircolors")"
 fi
